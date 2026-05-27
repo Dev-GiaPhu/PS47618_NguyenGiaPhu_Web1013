@@ -1,0 +1,4 @@
+<p></p> 1 dòng
+<br> xuống dòng
+<sup></sup> mũ số
+<sub></sub> số nhỏ dưới

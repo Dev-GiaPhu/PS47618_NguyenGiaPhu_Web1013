@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Box Model</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700;800&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            font-size:62.5%;
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:"Catamaran", sans-serif;
+            color:#3a3e3b;
+        }
+
+        .nav{
+            border:1px solid #94ca5b;
+            padding:10rem 5rem;
+            width:30rem;
+            background-color:#e5e5e5;
+            margin:3rem auto;
+        }
+
+        .nav__list{
+            list-style:none;
+            text-align:center;
+        }
+
+        .nav__list li{
+            margin:1.5rem 0;
+        }
+
+        .nav__list a{
+            text-decoration:none;
+            color:#3a3e3b;
+            text-transform:uppercase;
+            font-size:2.4rem;
+            font-weight:700;
+            letter-spacing:0.7rem;
+            transition:0.3s;
+            display:inline-block;
+        }
+
+        .nav__list a:hover{
+            background:#beed8c;
+            color:#678e3e;
+            padding-left:1.5rem;
+            border-left:0.25rem solid #678e3e;
+        }
+
+        .header{
+            position:relative;
+            min-height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+
+            padding:2rem;
+            overflow:hidden;
+        }
+
+        .header::before{
+            content:"";
+            position:absolute;
+            inset:0;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+            url("https://hankooktea.wordpress.com/wp-content/uploads/2012/05/mg_5770.jpg");
+
+            background-size:cover;
+            background-position:center;
+
+            filter:blur(5px);
+            transform:scale(1.08);
+
+            z-index:-1;
+        }
+
+        .header__content{
+            color:#ffffff;
+        }
+
+        .header h2{
+            font-family:"Great Vibes", cursive;
+            font-size:clamp(3rem, 5vw, 8rem);
+            color:#ffffff;
+            letter-spacing:0.1rem;
+        }
+
+        .header h1{
+            font-size:clamp(7rem, 7vw, 26rem);
+            line-height:clamp(6rem, 7vw, 20rem);
+            text-transform:uppercase;
+            letter-spacing:0rem;
+            margin:2rem 0;
+            transition:0.4s;
+        }
+
+        .header h1:hover{
+            color:#82cf60;
+            transform:scale(1.03);
+        }
+
+        .header__btn{
+            font-size:1.6rem;
+            padding:2rem 3rem;
+        }
+
+        .features{
+            background:#fff;
+        }
+
+        .feature_item{
+            width:100%;
+            padding:8rem 0;
+            border:1px solid #94ca5b;
+            text-align:center;
+            transition:0.3s;
+        }
+
+        .feature_title{
+            color:#698f3f;
+            text-transform:uppercase;
+            letter-spacing:0.7rem;
+            font-size:1.8rem;
+            margin-bottom:1.5rem;
+            transition:0.3s;
+        }
+
+        .feature_text{
+            width:320px;
+            max-width:90%;
+            margin:0 auto;
+            font-size:1.5rem;
+            line-height:1.6;
+            color:#3a3e3b;
+            transition:0.3s;
+        }
+
+        .feature_item:hover{
+            background:#698f3f;
+        }
+
+        .feature_item:hover .feature_title{
+            color:#ffffff;
+        }
+
+        .feature_item:hover .feature_text{
+            color:#ffffff;
+        }
+
+        #about{
+            padding:3rem 0;
+        }
+
+        .about_left{
+            border:7px solid #698f3f;
+            border-radius:22px;
+            background-color:#698f3f;
+            width:40%;
+            margin-left:2rem;
+        }
+
+        .about_left img{
+            width:100%;
+            display:block;
+            border-radius:15px;
+        }
+
+        .about_right{
+            width:40%;
+            margin-left:2rem;
+            margin-top:3rem;
+        }
+
+        .about_right h2{
+            font-family:"Great Vibes", cursive;
+            color:#698f3f;
+            font-size:4rem;
+            letter-spacing:0.7rem;
+            margin-bottom:2rem;
+        }
+
+        .about_right h1{
+            text-transform:uppercase;
+            font-size:3.5rem;
+            margin-bottom:2rem;
+        }
+
+        .about_right p{
+            font-size:1.6rem;
+            line-height:1.8;
+            margin-bottom:2rem;
+        }
+
+        #products{
+            background:#2f3732;
+            padding:4rem 0;
+            color:white;
+        }
+
+        .product_intro{
+            width:30%;
+            padding:3rem 1rem;
+            border:1px solid #94ca5b;
+            border-bottom:5px solid #698f3f;
+        }
+
+        .product_intro h2{
+            font-family:"Great Vibes", cursive;
+            color:#698f3f;
+            font-size:3rem;
+            letter-spacing:0.5rem;
+            margin-bottom:1rem;
+        }
+
+        .product_intro h1{
+            color:white;
+            text-transform:uppercase;
+            font-size:2.5rem;
+            margin-bottom:2rem;
+        }
+
+        .product_intro p{
+            font-size:1.4rem;
+            line-height:1.7;
+            margin-bottom:2rem;
+        }
+
+        .product_item{
+            width:30%;
+            padding-top:3rem;
+            padding-bottom:3rem;
+
+            border:1px solid #94ca5b;
+            border-bottom:5px solid #698f3f;
+        }
+
+        .product_img{
+            width:80%;
+            display:block;
+            margin:auto;
+            border-radius:22px;
+        }
+
+        .product_item__title{
+            color:#fff;
+            text-transform:uppercase;
+            font-size:2rem;
+            letter-spacing:calc(0.7rem - 0.3rem);
+            margin:2rem 0;
+            padding-left:1rem;
+        }
+
+        .product_item__price{
+            color:#698f3f;
+            font-size:1.8rem;
+            padding-left:1rem;
+        }
+
+        .product_item__price span{
+            margin-right:1rem;
+            font-size:3rem;
+            font-weight:400;
+        }
+
+        .btn{
+            color:#3a3e3b;
+            text-transform:uppercase;
+            text-decoration:none;
+            font-size:1.4rem;
+            font-weight:700;
+
+            background-color:#448827;
+            outline:3px solid #448827;
+            outline-offset:4px;
+
+            padding:1rem 1rem;
+
+            display:inline-block;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#63c03b;
+            color:#ffffff;
+            outline-color:#72ca4d;
+            box-shadow:0 2px 40px #b7ff98;
+            transform:scale(1.1);
+        }
+
+        #services{
+            background:#e5e5e5;
+            padding:8rem 0;
+            text-align:center;
+        }
+
+        .services_title_small{
+            font-family:"Great Vibes", cursive;
+            color:#698f3f;
+            font-size:3rem;
+            letter-spacing:0.7rem;
+            margin-bottom:1rem;
+        }
+
+        .services_title{
+            text-transform:uppercase;
+            font-size:3rem;
+            margin-bottom:6rem;
+        }
+
+        .service_card{
+            width:60%;
+            margin:5rem auto;
+            border:4px solid #698f3f;
+            border-radius:22px;
+            background:#698f3f;
+            overflow:hidden;
+            box-shadow:0 8px 18px rgba(0,0,0,0.25);
+        }
+
+        .service_card img{
+            width:100%;
+            height:420px;
+            object-fit:cover;
+            display:block;
+        }
+
+        .service_info{
+            padding:4rem;
+        }
+
+        .service_info h3{
+            color:#fff;
+            text-transform:capitalize;
+            font-size:2rem;
+            letter-spacing:0.4rem;
+            margin-bottom:3rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+        <ul class="nav__list">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contacts">Contacts</a></li>
+        </ul>
+    </div>
+
+    <div class="header">
+        <div class="header__content">
+            <h2>Over one hundred flavors of tea</h2>
+
+            <h1>Specially crafted tea</h1>
+
+            <a href="#about" class="btn header__btn">Explore</a>
+        </div>
+    </div>
+
+    <div class="features" id="features">
+
+        <div class="feature_item">
+            <h4 class="feature_title">Made with love</h4>
+            <p class="feature_text">
+                Our tea is made with love, from the collection of the leaves to the brewing.
+            </p>
+        </div>
+
+        <div class="feature_item">
+            <h4 class="feature_title">Relaxation</h4>
+            <p class="feature_text">
+                Set aside anxiety and relax after a hard day with a cup of hot tea in your hands.
+            </p>
+        </div>
+
+        <div class="feature_item">
+            <h4 class="feature_title">Energy</h4>
+            <p class="feature_text">
+                Our tea will energize you with vitamins and invigorate the rest of the day.
+            </p>
+        </div>
+
+        <div class="feature_item">
+            <h4 class="feature_title">Family Recipe</h4>
+            <p class="feature_text">
+                All our recipes are passed down from generation to generation for a long time.
+            </p>
+        </div>
+
+    </div>
+
+    <div id="about">
+
+        <div class="about_left">
+            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=1200&auto=format&fit=crop" alt="About Us">
+        </div>
+
+        <div class="about_right">
+            <h2>About Our</h2>
+
+            <h1>Tea Station</h1>
+
+            <p>
+                Once upon a time we only had a couple of teapots and enjoyed tea only with our family.
+                Over time, we were able to afford to buy a small tea plantation.
+            </p>
+
+            <p>
+                Now we have a whole teahouse and we delight many people with delicious and hot tea.
+                We serve black long tea, relaxing green and jasmine tea, tea with spices and many others.
+            </p>
+
+            <a href="#" class="btn">Learn More</a>
+        </div>
+
+    </div>
+
+    <div id="products">
+
+        <div class="product_intro">
+            <h2>Check Out</h2>
+
+            <h1>Our Products</h1>
+
+            <p>
+                Our assortment includes long tea, relaxing and invigorating green tea with spices,
+                lemon juice, jasmine, cinnamon and anise, milk tea and many others.
+            </p>
+
+            <a href="#" class="btn">Inventory</a>
+        </div>
+
+        <div class="product_item">
+
+            <img 
+                class="product_img"
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop"
+                alt="Black Long Tea"
+            >
+
+            <h3 class="product_item__title">Black Long Tea</h3>
+
+            <p class="product_item__price">
+                <span>$</span>3.99
+            </p>
+
+        </div>
+
+        <div class="product_item">
+
+            <img 
+                class="product_img"
+                src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1200&auto=format&fit=crop"
+                alt="Green Tea With Jasmine"
+            >
+
+            <h3 class="product_item__title">Green Tea With Jasmine</h3>
+
+            <p class="product_item__price">
+                <span>$</span>4.99
+            </p>
+
+        </div>
+
+    </div>
+
+    <div id="services">
+
+        <h2 class="services_title_small">Explore</h2>
+
+        <h1 class="services_title">Our Services</h1>
+
+        <div class="service_card">
+            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1200&auto=format&fit=crop" alt="Custom Recipe Service">
+
+            <div class="service_info">
+                <h3>Custom Recipe Service</h3>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+
+        <div class="service_card">
+            <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?q=80&w=1200&auto=format&fit=crop" alt="Home Delivery Service">
+
+            <div class="service_info">
+                <h3>Home Delivery Service</h3>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+
+        <div class="service_card">
+            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=1200&auto=format&fit=crop" alt="Tea Aging Service">
+
+            <div class="service_info">
+                <h3>Tea Aging Service</h3>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
