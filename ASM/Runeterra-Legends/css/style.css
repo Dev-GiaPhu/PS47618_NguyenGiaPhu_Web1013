@@ -1,0 +1,793 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;600;800&display=swap");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Inter", sans-serif;
+    background:#030512;
+    color:white;
+    overflow-x:hidden;
+    cursor:none;
+}
+
+body::selection{
+    background:#facc15;
+    color:#030512;
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9998;
+    opacity:0.05;
+    background-image:repeating-radial-gradient(circle at 0 0, #fff 0, transparent 1px, transparent 4px);
+    mix-blend-mode:screen;
+}
+
+#particles{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+}
+
+/* CUSTOM CURSOR - ĐÃ SỬA NHANH HƠN */
+
+.cursor{
+    position:fixed;
+    width:42px;
+    height:42px;
+    border:1px solid rgba(250,204,21,0.9);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:10000;
+    transform:translate(-50%, -50%);
+    mix-blend-mode:difference;
+    transition:
+        width 0.16s ease,
+        height 0.16s ease,
+        border-color 0.16s ease;
+}
+
+.cursor_inner{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:#facc15;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    box-shadow:0 0 25px #facc15;
+}
+
+.cursor.active{
+    width:78px;
+    height:78px;
+    border-color:#38bdf8;
+}
+
+/* NAV */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:24px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:999;
+    background:linear-gradient(to bottom, rgba(3,5,18,0.92), rgba(3,5,18,0.2));
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    font-family:"Cinzel", serif;
+    font-size:26px;
+    font-weight:900;
+    color:#facc15;
+    letter-spacing:4px;
+}
+
+nav{
+    display:flex;
+    gap:34px;
+}
+
+.nav_link{
+    text-decoration:none;
+    color:#e5e7eb;
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    position:relative;
+}
+
+.nav_link::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    background:linear-gradient(90deg, #38bdf8, #facc15);
+    box-shadow:0 0 15px #38bdf8;
+    transition:0.35s;
+}
+
+.nav_link:hover::after{
+    width:100%;
+}
+
+/* LIGHT SWEEP TEXT - ĐÃ THÊM MỜ DẦN */
+
+.liquid_text{
+    position:relative;
+    display:inline-block;
+    transition:0.35s;
+    overflow:hidden;
+}
+
+.liquid_text:hover{
+    color:#fff;
+    text-shadow:
+        0 0 8px #38bdf8,
+        0 0 18px #38bdf8,
+        0 0 38px #facc15;
+    filter:brightness(1.25);
+}
+
+.liquid_text::before{
+    content:"";
+    position:absolute;
+    top:-25%;
+    left:-40%;
+    width:90px;
+    height:160%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.85),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+    filter:blur(8px);
+    opacity:0;
+    pointer-events:none;
+}
+
+.liquid_text:hover::before{
+    animation:lightSweep 0.9s ease-in-out forwards;
+}
+
+@keyframes lightSweep{
+    0%{
+        left:-45%;
+        opacity:0;
+    }
+
+    18%{
+        opacity:0.9;
+    }
+
+    65%{
+        opacity:0.75;
+    }
+
+    100%{
+        left:120%;
+        opacity:0;
+    }
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero_bg{
+    position:absolute;
+    inset:-5%;
+    background:
+        linear-gradient(rgba(3,5,18,0.1), rgba(3,5,18,0.95)),
+        url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg");
+
+    background-size:cover;
+    background-position:center;
+    filter:saturate(130%) contrast(115%);
+    animation:slowZoom 16s ease-in-out infinite alternate;
+}
+
+.hero_overlay{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 45%, transparent 0%, rgba(3,5,18,0.25) 35%, #030512 78%),
+        linear-gradient(90deg, #030512 0%, transparent 25%, transparent 75%, #030512 100%);
+}
+
+.hero_content{
+    position:relative;
+    z-index:2;
+    width:min(1100px, 90%);
+}
+
+.eyebrow{
+    color:#38bdf8;
+    text-transform:uppercase;
+    font-weight:900;
+    letter-spacing:5px;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.hero_title{
+    font-family:"Cinzel", serif;
+    font-size:clamp(64px, 12vw, 180px);
+    line-height:0.86;
+    letter-spacing:3px;
+    color:#facc15;
+    text-shadow:
+        0 0 18px rgba(250,204,21,0.6),
+        0 0 80px rgba(56,189,248,0.25);
+}
+
+.hero_desc{
+    max-width:760px;
+    margin:30px auto 45px;
+    color:#dbeafe;
+    font-size:clamp(16px, 2vw, 22px);
+    line-height:1.8;
+}
+
+.magic_btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:18px 48px;
+    color:#030512;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-weight:900;
+    letter-spacing:2px;
+    background:#facc15;
+    border-radius:999px;
+    overflow:hidden;
+    isolation:isolate;
+    box-shadow:0 0 35px rgba(250,204,21,0.45);
+    transition:0.4s;
+}
+
+.magic_btn::before{
+    content:"";
+    position:absolute;
+    inset:-60%;
+    background:conic-gradient(from 90deg, transparent, #38bdf8, transparent, #facc15, transparent);
+    animation:spin 3s linear infinite;
+    z-index:-2;
+}
+
+.magic_btn::after{
+    content:"";
+    position:absolute;
+    inset:3px;
+    background:#facc15;
+    border-radius:999px;
+    z-index:-1;
+}
+
+.magic_btn:hover{
+    transform:translateY(-8px) scale(1.04);
+    box-shadow:0 0 60px rgba(56,189,248,0.7);
+}
+
+.scroll_hint{
+    position:absolute;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#94a3b8;
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:3px;
+    z-index:2;
+}
+
+.scroll_hint span{
+    display:block;
+    width:2px;
+    height:45px;
+    background:linear-gradient(#38bdf8, transparent);
+    margin:0 auto 10px;
+    animation:scrollLine 1.5s infinite;
+}
+
+/* SECTIONS */
+
+.section{
+    position:relative;
+    z-index:1;
+    padding:120px 7%;
+    background:#050814;
+}
+
+.section:nth-of-type(even){
+    background:#080d21;
+}
+
+.section_head{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section_title{
+    font-family:"Cinzel", serif;
+    font-size:clamp(44px, 7vw, 100px);
+    color:#facc15;
+    text-transform:uppercase;
+}
+
+/* CHAMPIONS */
+
+.champion_showcase{
+    display:grid;
+    grid-template-columns:1fr 1.2fr 1fr;
+    gap:28px;
+    align-items:center;
+}
+
+.champion_panel{
+    height:560px;
+    position:relative;
+    overflow:hidden;
+    border-radius:36px;
+    background:#111827;
+    border:1px solid rgba(250,204,21,0.28);
+    transform-style:preserve-3d;
+    box-shadow:0 20px 70px rgba(0,0,0,0.45);
+    transition:box-shadow 0.4s;
+}
+
+.champion_panel.big{
+    height:660px;
+}
+
+.champion_panel:hover{
+    box-shadow:
+        0 25px 90px rgba(0,0,0,0.65),
+        0 0 45px rgba(56,189,248,0.4);
+}
+
+.champion_panel img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(95%) brightness(80%);
+    transition:0.7s;
+}
+
+/* CANH LẠI VỊ TRÍ NHÂN VẬT */
+
+.champion_panel.ahri img{
+    object-position:58% center;
+}
+
+.champion_panel.yasuo img{
+    object-position:50% center;
+}
+
+.champion_panel.jinx img{
+    object-position:60% center;
+}
+
+.champion_panel:hover img{
+    transform:scale(1.12);
+    filter:saturate(130%) brightness(105%);
+}
+
+.champion_panel::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(to top, #030512 0%, rgba(3,5,18,0.65) 25%, transparent 60%),
+        radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(56,189,248,0.35), transparent 30%);
+    opacity:0.9;
+}
+
+.champion_info{
+    position:absolute;
+    left:30px;
+    right:30px;
+    bottom:30px;
+    z-index:2;
+    transform:translateZ(60px);
+}
+
+.champion_info p{
+    color:#38bdf8;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.champion_info h3{
+    font-family:"Cinzel", serif;
+    font-size:50px;
+    color:#facc15;
+    margin:8px 0;
+}
+
+.champion_info span{
+    color:#e5e7eb;
+    font-size:16px;
+}
+
+/* REGIONS - HOVER HIỆN ẢNH BÊN PHẢI */
+
+.region_timeline{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+}
+
+.region_item{
+    position:relative;
+    padding:46px 46px;
+    min-height:220px;
+    border-radius:30px;
+    overflow:hidden;
+
+    background:
+        linear-gradient(90deg, rgba(8,13,33,0.98) 0%, rgba(8,13,33,0.88) 44%, rgba(8,13,33,0.25) 100%);
+
+    border:1px solid rgba(255,255,255,0.12);
+    transition:0.45s;
+    isolation:isolate;
+}
+
+.region_item::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background-size:cover;
+    background-position:right center;
+    opacity:0;
+    transform:scale(1.08);
+    transition:0.55s ease;
+}
+
+.region_item::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+
+    background:
+        linear-gradient(90deg,
+            #050814 0%,
+            rgba(5,8,20,0.96) 30%,
+            rgba(5,8,20,0.72) 52%,
+            rgba(5,8,20,0.25) 76%,
+            rgba(5,8,20,0.08) 100%
+        );
+
+    opacity:1;
+    transition:0.45s;
+}
+
+.region_item:hover{
+    transform:translateX(18px);
+    box-shadow:
+        0 0 55px rgba(56,189,248,0.24),
+        inset 0 0 40px rgba(250,204,21,0.05);
+    border-color:rgba(250,204,21,0.38);
+}
+
+.region_item:hover::before{
+    opacity:1;
+    transform:scale(1);
+}
+
+.region_item:hover::after{
+    background:
+        linear-gradient(90deg,
+            #050814 0%,
+            rgba(5,8,20,0.98) 28%,
+            rgba(5,8,20,0.72) 48%,
+            rgba(5,8,20,0.22) 72%,
+            rgba(5,8,20,0.02) 100%
+        );
+}
+
+/* ẢNH REGION */
+
+.region_item.demacia::before{
+    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg");
+}
+
+.region_item.noxus::before{
+    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Darius_0.jpg");
+}
+
+.region_item.ionia::before{
+    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Irelia_0.jpg");
+}
+
+.region_item.freljord::before{
+    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg");
+}
+
+.region_item.shurima::before{
+    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Azir_0.jpg");
+}
+
+.region_item span,
+.region_item h3,
+.region_item p{
+    position:relative;
+    z-index:2;
+    max-width:55%;
+}
+
+.region_item span{
+    color:#38bdf8;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.region_item h3{
+    font-family:"Cinzel", serif;
+    font-size:42px;
+    color:#facc15;
+    margin:10px 0;
+}
+
+.region_item p{
+    color:#cbd5e1;
+    font-size:18px;
+    line-height:1.7;
+}
+
+/* LORE */
+
+.lore{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:
+        linear-gradient(rgba(3,5,18,0.65), rgba(3,5,18,0.95)),
+        url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Mordekaiser_0.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.lore_card{
+    max-width:860px;
+    padding:58px;
+    border-radius:36px;
+    background:rgba(3,5,18,0.5);
+    border:1px solid rgba(255,255,255,0.18);
+    backdrop-filter:blur(18px);
+    box-shadow:
+        inset 0 0 30px rgba(255,255,255,0.04),
+        0 0 80px rgba(56,189,248,0.2);
+}
+
+.lore_card p{
+    color:#e2e8f0;
+    font-size:20px;
+    line-height:1.85;
+    margin-bottom:35px;
+}
+
+/* GALLERY */
+
+.gallery_grid{
+    columns:3 280px;
+    column-gap:24px;
+}
+
+.gallery_img{
+    width:100%;
+    margin-bottom:24px;
+    border-radius:26px;
+    display:block;
+    cursor:none;
+    border:1px solid rgba(250,204,21,0.22);
+    filter:brightness(85%) saturate(95%);
+    transition:0.5s;
+}
+
+.gallery_img:hover{
+    transform:scale(1.035);
+    filter:brightness(110%) saturate(130%);
+    box-shadow:0 0 60px rgba(250,204,21,0.35);
+}
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    z-index:9999;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.lightbox img{
+    max-width:95%;
+    max-height:90vh;
+    border-radius:28px;
+    box-shadow:0 0 80px rgba(56,189,248,0.4);
+}
+
+footer{
+    position:relative;
+    z-index:1;
+    padding:34px;
+    text-align:center;
+    color:#94a3b8;
+    background:#020617;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(70px);
+    transition:1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ANIMATION */
+
+@keyframes slowZoom{
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.08);
+    }
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes scrollLine{
+    0%{
+        transform:scaleY(0);
+        transform-origin:top;
+    }
+
+    50%{
+        transform:scaleY(1);
+        transform-origin:top;
+    }
+
+    100%{
+        transform:scaleY(0);
+        transform-origin:bottom;
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+    body{
+        cursor:auto;
+    }
+
+    .cursor{
+        display:none;
+    }
+
+    .navbar{
+        flex-direction:column;
+        gap:18px;
+        padding:18px 5%;
+    }
+
+    nav{
+        gap:14px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .nav_link{
+        font-size:12px;
+    }
+
+    .champion_showcase{
+        grid-template-columns:1fr;
+    }
+
+    .champion_panel,
+    .champion_panel.big{
+        height:520px;
+    }
+
+    .region_item span,
+    .region_item h3,
+    .region_item p{
+        max-width:100%;
+    }
+
+    .region_item::after{
+        background:linear-gradient(90deg, rgba(5,8,20,0.96), rgba(5,8,20,0.72));
+    }
+
+    .lore{
+        background-attachment:scroll;
+    }
+}
+
+@media(max-width:560px){
+    .hero_title{
+        font-size:54px;
+    }
+
+    .section{
+        padding:90px 5%;
+    }
+
+    .lore_card{
+        padding:34px;
+    }
+
+    .champion_info h3{
+        font-size:40px;
+    }
+
+    .region_item{
+        padding:34px 28px;
+    }
+
+    .region_item h3{
+        font-size:34px;
+    }
+}
