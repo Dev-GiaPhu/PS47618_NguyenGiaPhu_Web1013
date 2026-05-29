@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Runeterra Legends</title>
+    <title>Legends of Runeterra</title>
+
+    <link rel="icon" href="images/icon/icon.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -17,7 +19,9 @@
     <canvas id="particles"></canvas>
 
     <header class="navbar">
-        <div class="logo liquid_text">RUNETERRA</div>
+        <a href="#home" class="logo">
+            <img src="images/logo/logo.png" alt="Legends of Runeterra Logo">
+        </a>
 
         <nav>
             <a href="#home" class="nav_link liquid_text">Home</a>
@@ -36,11 +40,11 @@
             <p class="eyebrow liquid_text">Welcome to the Rift</p>
 
             <h1 class="hero_title liquid_text">
-                RUNETERRA<br>LEGENDS
+                LEGENDS OF<br>RUNETERRA
             </h1>
 
             <p class="hero_desc">
-                Một fanmade website lấy cảm hứng từ thế giới Runeterra,
+                Một fanmade website lấy cảm hứng từ thế giới Legends of Runeterra,
                 kết hợp fantasy, glow, parallax và hiệu ứng cinematic.
             </p>
 
@@ -64,29 +68,44 @@
         <div class="champion_showcase">
 
             <article class="champion_panel reveal tilt_card ahri">
-                <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt="Ahri">
+                <img style="object-position: 60% center" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt="Ahri">
+
                 <div class="champion_info">
-                    <p>MAGE / ASSASSIN</p>
+                    <p class="champion_role">MAGE / ASSASSIN</p>
+
                     <h3 class="liquid_text">Ahri</h3>
-                    <span>Nine-Tailed Fox</span>
+
+                    <span class="champion_bio">
+                        A mysterious fox spirit who manipulates emotions and draws power from the souls of her prey.
+                    </span>
                 </div>
             </article>
 
             <article class="champion_panel reveal tilt_card big yasuo">
-                <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg" alt="Yasuo">
+                <img style="object-position: 80% center" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg" alt="Yasuo">
+
                 <div class="champion_info">
-                    <p>FIGHTER / ASSASSIN</p>
+                    <p class="champion_role">FIGHTER / ASSASSIN</p>
+
                     <h3 class="liquid_text">Yasuo</h3>
-                    <span>The Unforgiven</span>
+
+                    <span class="champion_bio">
+                        An ionian swordsman driven by guilt, wind technique and the search for redemption.
+                    </span>
                 </div>
             </article>
 
             <article class="champion_panel reveal tilt_card jinx">
-                <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jinx_0.jpg" alt="Jinx">
+                <img style="object-position: 70% center" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jinx_0.jpg" alt="Jinx">
+
                 <div class="champion_info">
-                    <p>MARKSMAN</p>
+                    <p class="champion_role">MARKSMAN</p>
+
                     <h3 class="liquid_text">Jinx</h3>
-                    <span>Loose Cannon</span>
+
+                    <span class="champion_bio">
+                        A chaotic marksman from Zaun who lives for explosions, madness and beautiful destruction.
+                    </span>
                 </div>
             </article>
 
@@ -101,13 +120,13 @@
 
         <div class="region_timeline">
 
-            <div class="region_item reveal demacia">
+            <div class="region_item reveal demacia" style="--bg-pos: 0% center";>
                 <span>01</span>
                 <h3 class="liquid_text">Demacia</h3>
                 <p>Vùng đất của danh dự, ánh sáng và những chiến binh bảo vệ công lý.</p>
             </div>
 
-            <div class="region_item reveal noxus">
+            <div class="region_item reveal noxus" style="--bg-pos: 0% 0%";>
                 <span>02</span>
                 <h3 class="liquid_text">Noxus</h3>
                 <p>Đế quốc mạnh mẽ, nơi sức mạnh và tham vọng quyết định vị thế.</p>
@@ -176,7 +195,7 @@
     </div>
 
     <footer>
-        <p>© 2026 Runeterra Legends — Fanmade Cinematic Website</p>
+        <p>© 2026 Legends of Runeterra — Fanmade Cinematic Website</p>
     </footer>
 
     <script src="js/main.js"></script>

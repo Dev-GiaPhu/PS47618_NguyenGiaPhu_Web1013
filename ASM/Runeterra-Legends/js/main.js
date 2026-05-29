@@ -1,6 +1,26 @@
 const cursor = document.querySelector(".cursor");
 
-/* CURSOR - ĐÃ SỬA KHÔNG BỊ CHẬM */
+/* RANDOM HERO BACKGROUND */
+
+const backgrounds = [
+    "images/background/bg1.png",
+    "images/background/bg2.png",
+    "images/background/bg3.png",
+    "images/background/bg4.png",
+    "images/background/bg5.png",
+    "images/background/bg6.png",
+    "images/background/bg7.png",
+    "images/background/bg8.png",
+    "images/background/bg9.png"
+];
+
+const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+const heroBg = document.querySelector(".hero_bg");
+
+heroBg.style.backgroundImage =
+`linear-gradient(rgba(3,5,18,0.08), rgba(3,5,18,0.95)), url('${randomBg}')`;
+
+/* CURSOR */
 
 document.addEventListener("mousemove", function(e){
     cursor.style.left = e.clientX + "px";
@@ -86,7 +106,7 @@ lightbox.addEventListener("click", function(){
     lightbox.classList.remove("active");
 });
 
-/* PARTICLE CANVAS */
+/* PARTICLES */
 
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");

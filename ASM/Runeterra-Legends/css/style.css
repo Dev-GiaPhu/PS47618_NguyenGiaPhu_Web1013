@@ -42,7 +42,7 @@ body::selection{
     pointer-events:none;
 }
 
-/* CUSTOM CURSOR - ĐÃ SỬA NHANH HƠN */
+/* CURSOR */
 
 .cursor{
     position:fixed;
@@ -85,7 +85,7 @@ body::selection{
     top:0;
     left:0;
     width:100%;
-    padding:24px 7%;
+    padding:20px 7%;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -95,12 +95,10 @@ body::selection{
     border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-.logo{
-    font-family:"Cinzel", serif;
-    font-size:26px;
-    font-weight:900;
-    color:#facc15;
-    letter-spacing:4px;
+.logo img{
+    height:52px;
+    display:block;
+    object-fit:contain;
 }
 
 nav{
@@ -134,13 +132,13 @@ nav{
     width:100%;
 }
 
-/* LIGHT SWEEP TEXT - ĐÃ THÊM MỜ DẦN */
+/* LIGHT SWEEP KHÔNG BỊ CROP */
 
 .liquid_text{
     position:relative;
     display:inline-block;
     transition:0.35s;
-    overflow:hidden;
+    overflow:visible;
 }
 
 .liquid_text:hover{
@@ -155,26 +153,24 @@ nav{
 .liquid_text::before{
     content:"";
     position:absolute;
-    top:-25%;
+    top:-45%;
     left:-40%;
-    width:90px;
-    height:160%;
-
+    width:120px;
+    height:190%;
     background:linear-gradient(
         90deg,
         transparent,
-        rgba(255,255,255,0.85),
+        rgba(255,255,255,0.75),
         transparent
     );
-
     transform:skewX(-20deg);
-    filter:blur(8px);
+    filter:blur(12px);
     opacity:0;
     pointer-events:none;
 }
 
 .liquid_text:hover::before{
-    animation:lightSweep 0.9s ease-in-out forwards;
+    animation:lightSweep 1s ease-in-out forwards;
 }
 
 @keyframes lightSweep{
@@ -183,12 +179,12 @@ nav{
         opacity:0;
     }
 
-    18%{
-        opacity:0.9;
+    20%{
+        opacity:0.85;
     }
 
-    65%{
-        opacity:0.75;
+    70%{
+        opacity:0.65;
     }
 
     100%{
@@ -213,12 +209,12 @@ nav{
     position:absolute;
     inset:-5%;
     background:
-        linear-gradient(rgba(3,5,18,0.1), rgba(3,5,18,0.95)),
-        url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg");
+        linear-gradient(rgba(3,5,18,0.08), rgba(3,5,18,0.95)),
+        url("../images/background/bg1.jpg");
 
     background-size:cover;
     background-position:center;
-    filter:saturate(130%) contrast(115%);
+    filter:saturate(130%) contrast(110%) brightness(200%);
     animation:slowZoom 16s ease-in-out infinite alternate;
 }
 
@@ -226,14 +222,14 @@ nav{
     position:absolute;
     inset:0;
     background:
-        radial-gradient(circle at 50% 45%, transparent 0%, rgba(3,5,18,0.25) 35%, #030512 78%),
+        radial-gradient(circle at 50% 50%, transparent 20%, rgba(3,5,18,0.25) 50%, rgb(3, 5, 18, 1) 80%),
         linear-gradient(90deg, #030512 0%, transparent 25%, transparent 75%, #030512 100%);
 }
 
 .hero_content{
     position:relative;
     z-index:2;
-    width:min(1100px, 90%);
+    width:min(1200px, 92%);
 }
 
 .eyebrow{
@@ -247,13 +243,14 @@ nav{
 
 .hero_title{
     font-family:"Cinzel", serif;
-    font-size:clamp(64px, 12vw, 180px);
+    font-size:clamp(58px, 11vw, 165px);
     line-height:0.86;
     letter-spacing:3px;
-    color:#facc15;
+    color:#ffffff;
     text-shadow:
-        0 0 18px rgba(250,204,21,0.6),
-        0 0 80px rgba(56,189,248,0.25);
+        0 0 12px #38bdf8,
+        0 0 34px rgba(56,189,248,0.85),
+        0 0 80px rgba(250,204,21,0.35);
 }
 
 .hero_desc{
@@ -392,8 +389,6 @@ nav{
     transition:0.7s;
 }
 
-/* CANH LẠI VỊ TRÍ NHÂN VẬT */
-
 .champion_panel.ahri img{
     object-position:58% center;
 }
@@ -403,12 +398,12 @@ nav{
 }
 
 .champion_panel.jinx img{
-    object-position:60% center;
+    object-position:62% center;
 }
 
 .champion_panel:hover img{
     transform:scale(1.12);
-    filter:saturate(130%) brightness(105%);
+    filter:saturate(130%) brightness(108%);
 }
 
 .champion_panel::after{
@@ -416,21 +411,34 @@ nav{
     position:absolute;
     inset:0;
     background:
-        linear-gradient(to top, #030512 0%, rgba(3,5,18,0.65) 25%, transparent 60%),
+        linear-gradient(to top, rgba(3,5,18,0.95) 0%, rgba(3,5,18,0.75) 20%, transparent 52%),
         radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(56,189,248,0.35), transparent 30%);
-    opacity:0.9;
+    opacity:0.75;
+    transition:0.45s;
+}
+
+.champion_panel:hover::after{
+    opacity:1;
+    background:
+        linear-gradient(to top, rgba(3,5,18,0.98) 0%, rgba(3,5,18,0.86) 32%, rgba(3,5,18,0.2) 62%, transparent 82%),
+        radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(56,189,248,0.42), transparent 30%);
 }
 
 .champion_info{
     position:absolute;
     left:30px;
     right:30px;
-    bottom:30px;
+    bottom:32px;
     z-index:2;
     transform:translateZ(60px);
+    transition:0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.champion_info p{
+.champion_panel:hover .champion_info{
+    bottom:58px;
+}
+
+.champion_role{
     color:#38bdf8;
     font-size:12px;
     font-weight:900;
@@ -444,12 +452,31 @@ nav{
     margin:8px 0;
 }
 
-.champion_info span{
+.champion_bio{
+    display:block;
+    max-width:90%;
     color:#e5e7eb;
     font-size:16px;
+    line-height:1.7;
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    transform:translateY(24px);
+    filter:blur(8px);
+    transition:0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* REGIONS - HOVER HIỆN ẢNH BÊN PHẢI */
+.champion_panel:hover .champion_bio{
+    opacity:1;
+    max-height:140px;
+    transform:translateY(0);
+    filter:blur(0);
+    text-shadow:
+        0 0 10px rgba(56,189,248,0.4),
+        0 0 22px rgba(250,204,21,0.15);
+}
+
+/* REGIONS */
 
 .region_timeline{
     max-width:1100px;
@@ -465,10 +492,8 @@ nav{
     min-height:220px;
     border-radius:30px;
     overflow:hidden;
-
     background:
         linear-gradient(90deg, rgba(8,13,33,0.98) 0%, rgba(8,13,33,0.88) 44%, rgba(8,13,33,0.25) 100%);
-
     border:1px solid rgba(255,255,255,0.12);
     transition:0.45s;
     isolation:isolate;
@@ -491,7 +516,6 @@ nav{
     position:absolute;
     inset:0;
     z-index:-1;
-
     background:
         linear-gradient(90deg,
             #050814 0%,
@@ -500,7 +524,6 @@ nav{
             rgba(5,8,20,0.25) 76%,
             rgba(5,8,20,0.08) 100%
         );
-
     opacity:1;
     transition:0.45s;
 }
@@ -529,26 +552,24 @@ nav{
         );
 }
 
-/* ẢNH REGION */
-
 .region_item.demacia::before{
-    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg");
+    background-image:url("../images/background/bg3.png");
 }
 
 .region_item.noxus::before{
-    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Darius_0.jpg");
+    background-image:url("../images/background/bg7.png");
 }
 
 .region_item.ionia::before{
-    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Irelia_0.jpg");
+    background-image:url("https://static.wikia.nocookie.net/leagueoflegends/images/6/69/Ionia_The_Placidium_of_Navori.jpg");
 }
 
 .region_item.freljord::before{
-    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg");
+    background-image:url("https://static.wikia.nocookie.net/leagueoflegends/images/8/83/Freljord_Rakelstake.jpg");
 }
 
 .region_item.shurima::before{
-    background-image:url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Azir_0.jpg");
+    background-image:url("https://static.wikia.nocookie.net/leagueoflegends/images/3/3b/Shurima_Capital_of_Shurima.jpg");
 }
 
 .region_item span,
@@ -614,8 +635,20 @@ nav{
 /* GALLERY */
 
 .gallery_grid{
-    columns:3 280px;
-    column-gap:24px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 24px;
+}
+
+.gallery_img{
+    width:100%;
+    margin-bottom:24px;
+    border-radius:26px;
+    display:block;
+    cursor:none;
+    border:1px solid rgba(250,204,21,0.22);
+    filter:brightness(85%) saturate(95%);
 }
 
 .gallery_img{
@@ -768,7 +801,7 @@ footer{
 
 @media(max-width:560px){
     .hero_title{
-        font-size:54px;
+        font-size:48px;
     }
 
     .section{
@@ -789,5 +822,9 @@ footer{
 
     .region_item h3{
         font-size:34px;
+    }
+
+    .logo img{
+        height:42px;
     }
 }
