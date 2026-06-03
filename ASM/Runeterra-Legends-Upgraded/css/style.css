@@ -36,7 +36,7 @@ html{
 }
 
 body{
-    font-family:"Rajdhani", sans-serif;
+    font-family:"Be Vietnam Pro", sans-serif;
     background:var(--bg);
     color:var(--text);
     overflow-x:hidden;
@@ -138,14 +138,13 @@ body{
         width .15s,
         height .15s,
         border-color .15s,
-        box-shadow .15s,
-        background .15s;
+        box-shadow .15s
 }
 
 .cursor_dot{
     position:absolute;
-    width:5px;
-    height:5px;
+    width:2px;
+    height:2px;
     background:var(--gold);
     border-radius:50%;
     left:50%;

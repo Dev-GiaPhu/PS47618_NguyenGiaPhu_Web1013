@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 5.2.2 - Flexbox</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: white;
+        }
+
+        .container {
+            width: 90%;
+            height: 300px;
+            margin: 30px auto;
+            border: 8px solid red;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+
+        .box {
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            font-size: 80px;
+        }
+
+        .box1 {
+            width: 250px;
+            background: #4b1f19;
+            font-size: 120px
+        }
+
+        .box2 {
+            width: 180px;
+            background: #e8b23e;
+        }
+
+        .box3 {
+            width: 180px;
+            background: #c96543;
+        }
+
+        .box4 {
+            width: 180px;
+            background: #252d5c;
+        }
+
+        .box5 {
+            width: 180px;
+            background: #7ac943;
+        }
+
+        .link {
+            margin-left: 40px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+        <div class="box box5">5</div>
+    </div>
+
+    <a href="banner.html" class="link">banner html</a>
+
+</body>
+</html>

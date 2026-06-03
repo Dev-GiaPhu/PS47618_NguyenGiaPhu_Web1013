@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3 - Checked Pseudo Menu</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-button {
+            position: fixed;
+            top: 120px;
+            left: 60px;
+            z-index: 1000;
+
+            font-size: 30px;
+            cursor: pointer;
+            background: #eeeeee;
+            padding: 8px 15px;
+            border-radius: 4px;
+            color: #111;
+        }
+
+        .close-icon {
+            display: none;
+        }
+
+        .nav {
+            background-color: #e5e5e5;
+
+            position: fixed;
+            top: 100px;
+            left: 0;
+
+            width: 250px;
+            height: 100%;
+
+            display: none;
+            z-index: 999;
+
+            padding-top: 120px;
+            padding-left: 25px;
+        }
+
+        .nav ul {
+            list-style: none;
+        }
+
+        .nav ul li {
+            margin-bottom: 18px;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        .nav ul li:first-child a {
+            color: #5a8b32;
+            border-left: 3px solid #5a8b32;
+            padding-left: 6px;
+        }
+
+        #menu-toggle:checked ~ .nav {
+            display: block;
+        }
+
+        #menu-toggle:checked + .menu-button .open-icon {
+            display: none;
+        }
+
+        #menu-toggle:checked + .menu-button .close-icon {
+            display: inline-block;
+        }
+
+        .top-menu {
+            height: 50px;
+            background: #e5e5e5;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .top-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        .hero {
+            height: 520px;
+
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                url("https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            text-align: center;
+            color: white;
+            padding-top: 40px;
+        }
+
+        .small-title {
+            color: #5a8b32;
+            font-size: 24px;
+            letter-spacing: 8px;
+            font-family: cursive;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            letter-spacing: 15px;
+            margin-bottom: 45px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 55px;
+
+            border: 4px solid #5a8b32;
+            background: rgba(120, 160, 70, 0.7);
+
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 8px;
+        }
+
+        .content {
+            height: 250px;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .top-menu {
+                display: none;
+            }
+
+            .menu-button {
+                top: 120px;
+                left: 25px;
+            }
+
+            .nav {
+                top: 100px;
+            }
+
+            .hero {
+                justify-content: flex-start;
+                text-align: left;
+                padding-left: 70px;
+                padding-top: 100px;
+            }
+
+            .small-title {
+                font-size: 20px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+                line-height: 1.8;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .menu-button {
+                display: none;
+            }
+
+            .nav {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle" class="menu-button">
+        <span class="open-icon">☰</span>
+        <span class="close-icon">×</span>
+    </label>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="#">FEATURES</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">PRODUCTS</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="#">CONTACTS</a></li>
+        </ul>
+    </nav>
+
+    <div class="top-menu">
+        <a href="#">FEATURES</a>
+        <a href="#">ABOUT</a>
+        <a href="#">PRODUCTS</a>
+        <a href="#">SERVICES</a>
+        <a href="#">CONTACTS</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="small-title">Over one hundred flavors of tea</p>
+            <h1>SPECIALLY CRAFTED TEA</h1>
+            <a href="#" class="btn">EXPLORE</a>
+        </div>
+    </section>
+
+    <div class="content"></div>
+
+</body>
+</html>

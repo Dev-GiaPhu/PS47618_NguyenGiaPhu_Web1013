@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;600;800&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Amatic+SC:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Oswald:400&display=swa");
 *{
     margin:0;
     padding:0;
@@ -11,7 +12,6 @@ html{
 }
 
 body{
-    font-family:"Inter", sans-serif;
     background:#030512;
     color:white;
     overflow-x:hidden;
@@ -19,7 +19,7 @@ body{
 }
 
 body::selection{
-    background:#facc15;
+    background:#ffde39;
     color:#030512;
 }
 
@@ -64,12 +64,12 @@ body::selection{
     position:absolute;
     width:8px;
     height:8px;
-    background:#facc15;
+    background:#ffde39;
     border-radius:50%;
     left:50%;
     top:50%;
     transform:translate(-50%, -50%);
-    box-shadow:0 0 25px #facc15;
+    box-shadow:0 0 25px #ffde39;
 }
 
 .cursor.active{
@@ -123,7 +123,7 @@ nav{
     bottom:-8px;
     width:0;
     height:2px;
-    background:linear-gradient(90deg, #38bdf8, #facc15);
+    background:linear-gradient(90deg, #38bdf8, #ffde39);
     box-shadow:0 0 15px #38bdf8;
     transition:0.35s;
 }
@@ -136,7 +136,6 @@ nav{
 
 .liquid_text{
     position:relative;
-    display:inline-block;
     transition:0.35s;
     overflow:visible;
 }
@@ -144,9 +143,9 @@ nav{
 .liquid_text:hover{
     color:#fff;
     text-shadow:
-        0 0 8px #38bdf8,
-        0 0 18px #38bdf8,
-        0 0 38px #facc15;
+        0 0 8px #c07a00,
+        0 0 18px #c07a00,
+        0 0 38px #c07a00;
     filter:brightness(1.25);
 }
 
@@ -232,7 +231,7 @@ nav{
     color:#38bdf8;
     text-transform:uppercase;
     font-weight:900;
-    letter-spacing:3px;
+    letter-spacing:1px;
     font-size:clamp(5px, 3vw, 30px);
     margin-bottom:10px;
 }
@@ -242,19 +241,20 @@ nav{
     font-size:clamp(58px, 11vw, 165px);
     line-height:0.86;
     letter-spacing:3px;
-    color:#facc15;
+    color:#ffde39;
     text-shadow:
-        0 0 12px #38bdf8,
-        0 0 34px rgba(56,189,248,0.85),
-        0 0 80px rgba(250,204,21,0.35);
+        0 0 12px #c07a00,
+        0 0 34px #c07a00,
+        0 0 80px #c07a00;
 }
 
 .hero_desc{
+    font-family:"Open Sans", sans-serif;
     max-width:760px;
     margin:30px auto 45px;
     color:#dbeafe;
-    font-size:clamp(16px, 2vw, 22px);
-    line-height:1.8;
+    font-size:clamp(8px, 2vw, 20px);
+    line-height: auto;
 }
 
 .magic_btn{
@@ -268,7 +268,7 @@ nav{
     text-transform:uppercase;
     font-weight:900;
     letter-spacing:2px;
-    background:#facc15;
+    background:#ffde39;
     border-radius:999px;
     overflow:hidden;
     isolation:isolate;
@@ -280,7 +280,7 @@ nav{
     content:"";
     position:absolute;
     inset:-60%;
-    background:conic-gradient(from 90deg, transparent, #38bdf8, transparent, #facc15, transparent);
+    background:conic-gradient(from 90deg, transparent, #38bdf8, transparent, #ffde39, transparent);
     animation:spin 3s linear infinite;
     z-index:-2;
 }
@@ -289,7 +289,7 @@ nav{
     content:"";
     position:absolute;
     inset:3px;
-    background:#facc15;
+    background:#ffde39;
     border-radius:999px;
     z-index:-1;
 }
@@ -341,7 +341,7 @@ nav{
 .section_title{
     font-family:"Cinzel", serif;
     font-size:clamp(44px, 7vw, 100px);
-    color:#facc15;
+    color:#ffde39;
     text-transform:uppercase;
 }
 
@@ -444,7 +444,7 @@ nav{
 .champion_info h3{
     font-family:"Cinzel", serif;
     font-size:50px;
-    color:#facc15;
+    color:#ffde39;
     margin:8px 0;
 }
 
@@ -557,15 +557,15 @@ nav{
 }
 
 .region_item.ionia::before{
-    background-image:url("https://static.wikia.nocookie.net/leagueoflegends/images/6/69/Ionia_The_Placidium_of_Navori.jpg");
+    background-image:url("../images/background/bg6.png");
 }
 
 .region_item.freljord::before{
-    background-image:url("https://static.wikia.nocookie.net/leagueoflegends/images/8/83/Freljord_Rakelstake.jpg");
+    background-image:url("../images/background/bg2.jpg");
 }
 
 .region_item.shurima::before{
-    background-image:url("https://static.wikia.nocookie.net/leagueoflegends/images/3/3b/Shurima_Capital_of_Shurima.jpg");
+    background-image:url("../images/background/bg9.png");
 }
 
 .region_item span,
@@ -585,7 +585,7 @@ nav{
 .region_item h3{
     font-family:"Cinzel", serif;
     font-size:42px;
-    color:#facc15;
+    color:#ffde39;
     margin:10px 0;
 }
 

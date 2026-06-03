@@ -84,7 +84,9 @@ const regions = [
         desc:"Vương quốc của danh dự, ánh sáng và những chiến binh bảo vệ công lý.",
         tags:["Honor","Light","Petricite"],
         bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/3b37fbd9906411615fcf2e5f00b27bfd372cec12-1598x1080.jpg?accountingTag=LoL",
-        icon:"https://universe.leagueoflegends.com/images/demacia_crest_icon.png",
+        type:"image",
+        pos:"center 45%",
+        icon:"https://universe.leagueoflegends.com/images/demacia_emblem.png",
         info:{
             Honor:"Danh dự là cốt lõi của Demacia.",
             Light:"Ánh sáng đại diện cho công lý và niềm tin.",
@@ -97,6 +99,8 @@ const regions = [
         desc:"Đế quốc mạnh mẽ, nơi sức mạnh và tham vọng quyết định vị thế.",
         tags:["Power","Empire","Ambition"],
         bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/b824f0dbbab967b775a12053e3e5a912e5c3de5b-1920x653.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"center center",
         icon:"https://universe.leagueoflegends.com/images/noxus_emblem.png",
         info:{
             Power:"Ở Noxus, kẻ mạnh có quyền vươn lên.",
@@ -109,7 +113,9 @@ const regions = [
         slug:"ionia",
         desc:"Vùng đất huyền bí, nơi linh hồn, thiên nhiên và kiếm thuật hòa làm một.",
         tags:["Spirit","Balance","Blade"],
-        bg:"https://universe.leagueoflegends.com/images/ionia_splash.jpg",
+        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/5b2f763df14096727e8b38405392126034ab9899-1920x888.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"55% center",
         icon:"https://universe.leagueoflegends.com/images/iona_emblem.png",
         info:{
             Spirit:"Ionia tràn đầy năng lượng linh hồn.",
@@ -122,8 +128,10 @@ const regions = [
         slug:"freljord",
         desc:"Xứ sở băng giá với những bộ tộc cổ xưa và quyền năng nguyên thủy.",
         tags:["Iceborn","Tribes","True Ice"],
-        bg:"https://universe.leagueoflegends.com/images/freljord_splash.jpg",
-        icon:"images/regions/icons/freljord.png",
+        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/2381b4ffc9dd696220c2936d2ae7a2df82ddc336-1900x1019.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"center 35%",
+        icon:"https://universe.leagueoflegends.com/images/freljord_emblem.png",
         info:{
             Iceborn:"Iceborn là những người mang sức mạnh băng cổ đại.",
             Tribes:"Các bộ tộc Freljord luôn đấu tranh để sinh tồn.",
@@ -135,8 +143,10 @@ const regions = [
         slug:"shurima",
         desc:"Đế chế sa mạc cổ đại, nơi những vị thần chiến binh từng thống trị.",
         tags:["Ascended","Sun Disc","Empire"],
-        bg:"https://universe.leagueoflegends.com/images/shurima_splash.jpg",
-        icon:"images/regions/icons/shurima.png",
+        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe/c1f3e06c2deead6fbd679d53d1e9467fbd8f801d-1920x995.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"center 50%",
+        icon:"https://universe.leagueoflegends.com/images/shurima_emblem.png",
         info:{
             Ascended:"Ascended là những chiến binh được nâng lên thành bán thần.",
             "Sun Disc":"Sun Disc là biểu tượng quyền năng của Shurima.",
@@ -148,8 +158,10 @@ const regions = [
         slug:"piltover",
         desc:"Thành phố tiến bộ, công nghệ Hextech và những phát minh rực rỡ.",
         tags:["Progress","Hextech","Innovation"],
-        bg:"https://universe.leagueoflegends.com/images/piltover_splash.jpg",
-        icon:"images/regions/icons/piltover.png",
+        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/529e35506fb3f3889bed61f30a69789c3385ec1f-1920x939.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"center 45%",
+        icon:"https://universe.leagueoflegends.com/images/piltover_emblem.png",
         info:{
             Progress:"Piltover đại diện cho tiến bộ.",
             Hextech:"Hextech kết hợp khoa học và ma thuật.",
@@ -161,8 +173,10 @@ const regions = [
         slug:"zaun",
         desc:"Thành phố ngầm hỗn loạn, nơi hóa chất và phát minh sinh tồn cùng nhau.",
         tags:["Chemtech","Chaos","Undercity"],
-        bg:"https://universe.leagueoflegends.com/images/zaun_splash.jpg",
-        icon:"images/regions/icons/zaun.png",
+        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe/6f32e7187bacff3654d196d1b0e77d12b8edb92a-824x1080.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"center 45%",
+        icon:"https://universe.leagueoflegends.com/images/zaun_emblem.png",
         info:{
             Chemtech:"Chemtech là công nghệ hóa học nguy hiểm.",
             Chaos:"Zaun hỗn loạn nhưng cực kỳ sáng tạo.",
@@ -174,8 +188,10 @@ const regions = [
         slug:"bilgewater",
         desc:"Thành phố cảng của hải tặc, săn quái biển và kho báu.",
         tags:["Pirates","Sea","Fortune"],
-        bg:"https://universe.leagueoflegends.com/images/bilgewater_splash.jpg",
-        icon:"images/regions/icons/bilgewater.png",
+        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe/e11375ab64f8a8f5c3eb7698b4fc2aa02d738fc4-1920x911.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"center 50%",
+        icon:"https://universe.leagueoflegends.com/images/bilgewater_emblem.png",
         info:{
             Pirates:"Bilgewater là thiên đường của hải tặc.",
             Sea:"Biển cả là linh hồn của Bilgewater.",
@@ -187,8 +203,10 @@ const regions = [
         slug:"shadow-isles",
         desc:"Quần đảo bị nguyền rủa, nơi sương đen và linh hồn vất vưởng.",
         tags:["Mist","Undead","Curse"],
-        bg:"https://universe.leagueoflegends.com/images/shadow-isles_splash.jpg",
-        icon:"images/regions/icons/shadow-isles.png",
+        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe/a16b2a6f1de9d71d750ed8b14ebfcc8f07c8b6a4-1920x721.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"center 50%",
+        icon:"https://universe.leagueoflegends.com/images/shadow_isles_emblem.png",
         info:{
             Mist:"Black Mist nuốt chửng sự sống.",
             Undead:"Shadow Isles đầy linh hồn bất tử.",
@@ -200,8 +218,10 @@ const regions = [
         slug:"targon",
         desc:"Ngọn núi thiêng nơi con người chạm tới các thực thể vũ trụ.",
         tags:["Celestial","Aspects","Mountain"],
-        bg:"https://universe.leagueoflegends.com/images/targon_splash.jpg",
-        icon:"images/regions/icons/targon.png",
+        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/68cbc6b051ee43da9255b97c14ad2bb60d01fe07-1920x959.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"center 42%",
+        icon:"https://universe.leagueoflegends.com/images/mt_targon_emblem.png",
         info:{
             Celestial:"Targon gắn với sức mạnh thiên giới.",
             Aspects:"Aspects là hiện thân của các ý niệm vũ trụ.",
@@ -214,6 +234,8 @@ const regions = [
         desc:"Vùng đất kỳ ảo của Yordle, cổng dịch chuyển và phép màu.",
         tags:["Yordle","Magic","Portals"],
         bg:"https://universe.leagueoflegends.com/images/bandle-city_splash.jpg",
+        type:"image",
+        pos:"center center",
         icon:"images/regions/icons/bandle-city.png",
         info:{
             Yordle:"Yordle là cư dân đặc trưng của Bandle City.",
@@ -227,6 +249,8 @@ const regions = [
         desc:"Vùng đất nguyên tố ẩn mình trong rừng sâu với ma thuật cổ xưa.",
         tags:["Elements","Jungle","Arcology"],
         bg:"https://universe.leagueoflegends.com/images/ixtal_splash.jpg",
+        type:"image",
+        pos:"center center",
         icon:"images/regions/icons/ixtal.png",
         info:{
             Elements:"Ixtal nổi tiếng với ma thuật nguyên tố.",
@@ -240,6 +264,8 @@ const regions = [
         desc:"Khoảng không ngoài thực tại, nơi sinh vật hư không luôn muốn nuốt chửng thế giới.",
         tags:["Void","Horror","Evolution"],
         bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe/7107e5dbca7887931748e7ae0924e6eda17ef6f4-1920x1064.jpg?accountingTag=LoL",
+        type:"image",
+        pos:"center 50%",
         icon:"https://universe.leagueoflegends.com/images/void_crest_icon.png",
         info:{
             Void:"Void là chiều không gian xa lạ.",
@@ -253,6 +279,8 @@ const regions = [
         desc:"Những huyền thoại không bị giới hạn bởi một vùng đất duy nhất.",
         tags:["Legends","Wanderers","Mystery"],
         bg:"https://universe.leagueoflegends.com/images/runeterra_splash.jpg",
+        type:"image",
+        pos:"center center",
         icon:"images/regions/icons/runeterra.png",
         info:{
             Legends:"Runeterra chứa những huyền thoại tự do.",
@@ -451,7 +479,7 @@ function createChampionCard(champ, i){
 
             <div class="card_body">
                 <div class="card_top">
-                    <span class="champ_num">${String((championIndex + i + 1)).padStart(2,"0")}</span>
+                    <span class="champ_num">${String(((championIndex + i) % champions.length) + 1).padStart(2,"0")}</span>
                     <button class="champ_region" data-region="${champ.region.toLowerCase().replaceAll(" ","-")}">
                         ${champ.region}
                     </button>
@@ -764,9 +792,23 @@ function renderRegions(){
     const grid = document.getElementById("regionsGrid");
 
     grid.innerHTML = regions.map(function(region, index){
+        const regionMedia =
+            region.type === "video"
+            ? `
+                <video class="region_bg_video" autoplay muted loop playsinline style="object-position:${region.pos || "center center"}">
+                    <source src="${region.bg}" type="${region.videoType || "video/mp4"}">
+                </video>
+              `
+            : `
+                <div class="region_bg" style="
+                    background-image:url('${region.bg}');
+                    background-position:${region.pos || "center center"};
+                "></div>
+              `;
+
         return `
             <article class="region_card reveal_up ${region.slug}" style="--delay:${index * 0.04}s">
-                <div class="region_bg" style="background-image:url('${region.bg}')"></div>
+                ${regionMedia}
                 <div class="region_gradient"></div>
 
                 <img src="${region.icon}" class="region_icon" alt="${region.name} icon">

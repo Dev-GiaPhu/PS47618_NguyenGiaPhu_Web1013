@@ -3,8 +3,8 @@ const cursor = document.querySelector(".cursor");
 /* RANDOM HERO BACKGROUND */
 
 const backgrounds = [
-    "images/background/bg1.png",
-    "images/background/bg2.png",
+    "images/background/bg1.jpg",
+    "images/background/bg2.jpg",
     "images/background/bg3.png",
     "images/background/bg4.png",
     "images/background/bg5.png",
