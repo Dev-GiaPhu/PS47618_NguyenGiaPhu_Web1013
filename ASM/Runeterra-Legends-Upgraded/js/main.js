@@ -83,9 +83,10 @@ const regions = [
         slug:"demacia",
         desc:"Vương quốc của danh dự, ánh sáng và những chiến binh bảo vệ công lý.",
         tags:["Honor","Light","Petricite"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/3b37fbd9906411615fcf2e5f00b27bfd372cec12-1598x1080.jpg?accountingTag=LoL",
-        type:"image",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/36c564338d66ac2000a3d6c091dd78c443230623.webm?accountingTag=LoL",
+        type:"video",
         pos:"center 45%",
+        size:"120%",
         icon:"https://universe.leagueoflegends.com/images/demacia_emblem.png",
         info:{
             Honor:"Danh dự là cốt lõi của Demacia.",
@@ -98,9 +99,10 @@ const regions = [
         slug:"noxus",
         desc:"Đế quốc mạnh mẽ, nơi sức mạnh và tham vọng quyết định vị thế.",
         tags:["Power","Empire","Ambition"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/b824f0dbbab967b775a12053e3e5a912e5c3de5b-1920x653.jpg?accountingTag=LoL",
-        type:"image",
-        pos:"center center",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/329c91313054076a869a6ceb95c995107320e334.webm?accountingTag=LoL",
+        type:"video",
+        pos:"45% -50px",
+        size:"120%",
         icon:"https://universe.leagueoflegends.com/images/noxus_emblem.png",
         info:{
             Power:"Ở Noxus, kẻ mạnh có quyền vươn lên.",
@@ -113,9 +115,10 @@ const regions = [
         slug:"ionia",
         desc:"Vùng đất huyền bí, nơi linh hồn, thiên nhiên và kiếm thuật hòa làm một.",
         tags:["Spirit","Balance","Blade"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/5b2f763df14096727e8b38405392126034ab9899-1920x888.jpg?accountingTag=LoL",
-        type:"image",
-        pos:"55% center",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/a9b6b551e2589189615eb4f7d56a17862ff3a882.webm?accountingTag=LoL",
+        type:"video",
+        pos:"75% 20px",
+        size:"130%",
         icon:"https://universe.leagueoflegends.com/images/iona_emblem.png",
         info:{
             Spirit:"Ionia tràn đầy năng lượng linh hồn.",
@@ -128,9 +131,10 @@ const regions = [
         slug:"freljord",
         desc:"Xứ sở băng giá với những bộ tộc cổ xưa và quyền năng nguyên thủy.",
         tags:["Iceborn","Tribes","True Ice"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/2381b4ffc9dd696220c2936d2ae7a2df82ddc336-1900x1019.jpg?accountingTag=LoL",
-        type:"image",
-        pos:"center 35%",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/aa302815ab40524f8382dbc9865d6cbd7df0b9f9.webm?accountingTag=LoL",
+        type:"video",
+        pos:"75% -5px",
+        size:"120%",
         icon:"https://universe.leagueoflegends.com/images/freljord_emblem.png",
         info:{
             Iceborn:"Iceborn là những người mang sức mạnh băng cổ đại.",
@@ -143,9 +147,10 @@ const regions = [
         slug:"shurima",
         desc:"Đế chế sa mạc cổ đại, nơi những vị thần chiến binh từng thống trị.",
         tags:["Ascended","Sun Disc","Empire"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe/c1f3e06c2deead6fbd679d53d1e9467fbd8f801d-1920x995.jpg?accountingTag=LoL",
-        type:"image",
-        pos:"center 50%",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/903a0dc3286518114b68113d0778e5299a26a729.webm?accountingTag=LoL",
+        type:"video",
+        pos:"80% 75%",
+        size:"120%",
         icon:"https://universe.leagueoflegends.com/images/shurima_emblem.png",
         info:{
             Ascended:"Ascended là những chiến binh được nâng lên thành bán thần.",
@@ -158,9 +163,10 @@ const regions = [
         slug:"piltover",
         desc:"Thành phố tiến bộ, công nghệ Hextech và những phát minh rực rỡ.",
         tags:["Progress","Hextech","Innovation"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/529e35506fb3f3889bed61f30a69789c3385ec1f-1920x939.jpg?accountingTag=LoL",
-        type:"image",
-        pos:"center 45%",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/2b8b859578a41fc8a9272dacc0bdd6405a248c10.webm?accountingTag=LoL",
+        type:"video",
+        pos:"25% 50%",
+        size:"120%",
         icon:"https://universe.leagueoflegends.com/images/piltover_emblem.png",
         info:{
             Progress:"Piltover đại diện cho tiến bộ.",
@@ -173,9 +179,10 @@ const regions = [
         slug:"zaun",
         desc:"Thành phố ngầm hỗn loạn, nơi hóa chất và phát minh sinh tồn cùng nhau.",
         tags:["Chemtech","Chaos","Undercity"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe/6f32e7187bacff3654d196d1b0e77d12b8edb92a-824x1080.jpg?accountingTag=LoL",
-        type:"image",
-        pos:"center 45%",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/7feffff28f5a4df3f58438b83d4553b37ae647e0.webm?accountingTag=LoL",
+        type:"video",
+        pos:"75% 5px",
+        size:"120%",
         icon:"https://universe.leagueoflegends.com/images/zaun_emblem.png",
         info:{
             Chemtech:"Chemtech là công nghệ hóa học nguy hiểm.",
@@ -188,9 +195,10 @@ const regions = [
         slug:"bilgewater",
         desc:"Thành phố cảng của hải tặc, săn quái biển và kho báu.",
         tags:["Pirates","Sea","Fortune"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe/e11375ab64f8a8f5c3eb7698b4fc2aa02d738fc4-1920x911.jpg?accountingTag=LoL",
-        type:"image",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/d9beea1a5d1cfc7ec6bbc100d3fb522175930f38.webm?accountingTag=LoL",
+        type:"video",
         pos:"center 50%",
+        size:"120%",
         icon:"https://universe.leagueoflegends.com/images/bilgewater_emblem.png",
         info:{
             Pirates:"Bilgewater là thiên đường của hải tặc.",
@@ -203,9 +211,10 @@ const regions = [
         slug:"shadow-isles",
         desc:"Quần đảo bị nguyền rủa, nơi sương đen và linh hồn vất vưởng.",
         tags:["Mist","Undead","Curse"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe/a16b2a6f1de9d71d750ed8b14ebfcc8f07c8b6a4-1920x721.jpg?accountingTag=LoL",
-        type:"image",
-        pos:"center 50%",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/9648da1fe76a45096b7095940d7991269d97d351.webm?accountingTag=LoL",
+        type:"video",
+        pos:"75% 10px",
+        size:"120%",
         icon:"https://universe.leagueoflegends.com/images/shadow_isles_emblem.png",
         info:{
             Mist:"Black Mist nuốt chửng sự sống.",
@@ -218,9 +227,10 @@ const regions = [
         slug:"targon",
         desc:"Ngọn núi thiêng nơi con người chạm tới các thực thể vũ trụ.",
         tags:["Celestial","Aspects","Mountain"],
-        bg:"https://cmsassets.rgpub.io/sanity/images/dsfx7636/universe_live/68cbc6b051ee43da9255b97c14ad2bb60d01fe07-1920x959.jpg?accountingTag=LoL",
-        type:"image",
-        pos:"center 42%",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/d00f9e798c7e63fed1eaa8b92770f280d0c7f241.webm?accountingTag=LoL",
+        type:"video",
+        pos:"100% center",
+        size:"120%",
         icon:"https://universe.leagueoflegends.com/images/mt_targon_emblem.png",
         info:{
             Celestial:"Targon gắn với sức mạnh thiên giới.",
@@ -233,10 +243,11 @@ const regions = [
         slug:"bandle-city",
         desc:"Vùng đất kỳ ảo của Yordle, cổng dịch chuyển và phép màu.",
         tags:["Yordle","Magic","Portals"],
-        bg:"https://universe.leagueoflegends.com/images/bandle-city_splash.jpg",
-        type:"image",
-        pos:"center center",
-        icon:"images/regions/icons/bandle-city.png",
+        bg:"https://cmsassets.rgpub.io/sanity/files/dsfx7636/universe/84d14187e66ee28277609d55a3db93b96ae2a34c.webm?accountingTag=LoL",
+        type:"video",
+        pos:"30% -50px",
+        size:"120%",
+        icon:"https://universe.leagueoflegends.com/images/bandle_city_emblem.png",
         info:{
             Yordle:"Yordle là cư dân đặc trưng của Bandle City.",
             Magic:"Ma thuật nơi này kỳ lạ và khó đoán.",
@@ -795,16 +806,17 @@ function renderRegions(){
         const regionMedia =
             region.type === "video"
             ? `
-                <video class="region_bg_video" autoplay muted loop playsinline style="object-position:${region.pos || "center center"}">
+                <video class="region_bg_video" autoplay muted loop playsinline style=" object-position:${region.pos || "center center"}; --video-scale:${region.size || "100%"};">
                     <source src="${region.bg}" type="${region.videoType || "video/mp4"}">
                 </video>
-              `
+            `
             : `
                 <div class="region_bg" style="
                     background-image:url('${region.bg}');
-                    background-position:${region.pos || "center center"};
+                    background-position:${region.pos || "center center"};  
+                    background-size:${region.size || "cover"};
                 "></div>
-              `;
+            `;
 
         return `
             <article class="region_card reveal_up ${region.slug}" style="--delay:${index * 0.04}s">
