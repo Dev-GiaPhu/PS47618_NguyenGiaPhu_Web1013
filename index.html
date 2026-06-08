@@ -11,6 +11,9 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:wght@500;600;700&family=Playfair+Display:wght@700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
 
+  <!-- Font Awesome để dùng icon mũi tên và download -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     * {
       margin: 0;
@@ -33,10 +36,6 @@
       overflow: hidden;
     }
 
-    /* 
-      STAGE là cái box trắng ở giữa web.
-      Toàn bộ bên trong sẽ scale chung, không bị lệch bố cục.
-    */
     .stage {
       position: relative;
       width: 1200px;
@@ -58,7 +57,6 @@
       background: #f8f9fb;
     }
 
-    /* Ảnh nền nhân vật nằm bên trong box trắng */
     .bg-layer {
       position: absolute;
       inset: 0;
@@ -76,14 +74,11 @@
       object-fit: cover;
       object-position: center;
       opacity: 0;
-      transition: opacity 0.35s ease;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+      will-change: opacity;
     }
 
-    .bg-img.active {
-      opacity: 1;
-    }
-
-    /* Lớp phủ nhẹ để chữ dễ đọc */
     .soft-overlay {
       position: absolute;
       inset: 0;
@@ -97,7 +92,6 @@
       );
     }
 
-    /* Nội dung web nằm trên ảnh nền */
     .content {
       position: relative;
       z-index: 2;
@@ -122,7 +116,7 @@
     h1 {
       width: 760px;
       font-family: "Playfair Display", serif;
-      font-size: 84px;
+      font-size: 70px;
       line-height: 0.98;
       font-weight: 900;
       letter-spacing: -2.8px;
@@ -140,27 +134,24 @@
     }
 
     .buttons {
+      margin-top: 180px;
       width: 980px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
+      gap: 10px;
     }
 
     .btn {
       position: relative;
       height: 300px;
       overflow: hidden;
-
-      /* Box trong suốt + blur nền phía dưới */
       background: rgba(255, 255, 255, 0.34);
       border: 1px solid rgba(15, 23, 42, 0.16);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
       box-shadow:
         0 20px 70px rgba(15, 23, 42, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.45);
-
       transition: 0.35s ease;
     }
 
@@ -250,21 +241,42 @@
       z-index: 5;
       width: 54px;
       height: 54px;
-
       border: 1px solid rgba(37, 99, 235, 0.38);
       background: rgba(255, 255, 255, 0.48);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-
       color: #2563eb;
       text-decoration: none;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Be Vietnam Pro", sans-serif;
-      font-size: 25px;
-      font-weight: 800;
+      font-size: 23px;
       transition: 0.3s ease;
+    }
+
+    .download-icon i {
+      position: absolute;
+      transition: 0.28s ease;
+    }
+
+    .download-icon .icon-arrow {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .download-icon .icon-download {
+      opacity: 0;
+      transform: translateY(8px) scale(0.75);
+    }
+
+    .download-icon:hover .icon-arrow {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.75);
+    }
+
+    .download-icon:hover .icon-download {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
     .btn:hover .download-icon {
@@ -301,7 +313,6 @@
       color: #111827;
     }
 
-    /* Màn hình quá nhỏ thì vẫn scale toàn bộ box, không đổi layout */
     @media (max-width: 700px) {
       body {
         overflow: auto;
@@ -314,15 +325,9 @@
 <body>
   <section class="stage" id="stage">
     <div class="canvas" id="canvas">
-      <!-- Ảnh nền nằm trong box trắng -->
       <div class="bg-layer">
-        <!-- Mặc định: đứng khoanh tay -->
-        <img class="bg-img active" id="imgDefault" src="./images/bg1.png" alt="">
-
-        <!-- Hover nút 1: tay chỉ nút Legends Of Runeterra -->
+        <img class="bg-img" id="imgDefault" src="./images/bg1.png" alt="">
         <img class="bg-img" id="imgAsm" src="./images/bg2.png" alt="">
-
-        <!-- Hover nút 2: tay chỉ nút Download bài lab -->
         <img class="bg-img" id="imgLab" src="./images/bg3.png" alt="">
       </div>
 
@@ -339,7 +344,6 @@
         </p>
 
         <div class="buttons">
-          <!-- Nút 1 -->
           <div class="btn btn-asm">
             <a class="main-link" href="./ASM/Runeterra-Legends/">
               <span class="arrow">→</span>
@@ -350,13 +354,12 @@
               </span>
             </a>
 
-            <!-- Thay link demo tải xuống tại đây -->
             <a class="download-icon" href="https://downgit.github.io/#/home?url=https://github.com/Dev-GiaPhu/PS47618_NguyenGiaPhu_Web1013/tree/main/ASM" target="_blank" title="Tải xuống ASM.zip">
-              ↓
+              <i class="fa-solid fa-arrow-down icon-arrow"></i>
+              <i class="fa-solid fa-download icon-download"></i>
             </a>
           </div>
 
-          <!-- Nút 2 -->
           <div class="btn btn-lab">
             <a class="main-link" href="./downloadlab.html">
               <span class="arrow">→</span>
@@ -371,17 +374,13 @@
 
         <div class="footer">
           <span>Nguyễn Gia Phú PS47618 - GAM21201.</span>
-          <a class="github-link" href="https://github.com/Dev-GiaPhu/PS47618_NguyenGiaPhu_Web1013.git" target="_blank">GitHub</a>
+          <a class="github-link" href="https://github.com/Dev-GiaPhu/PS47618_NguyenGiaPhu_Web1013.git" target="_blank"><i class="fa-brands fa-square-github"></i> GitHub</a>
         </div>
       </main>
     </div>
   </section>
 
   <script>
-    /* 
-      Scale toàn bộ box theo màn hình.
-      Không reflow layout, nên vị trí tay chỉ và vị trí nút giữ nguyên tỉ lệ.
-    */
     const DESIGN_WIDTH = 1200;
     const DESIGN_HEIGHT = 900;
 
@@ -408,36 +407,115 @@
     window.addEventListener("load", scaleStage);
     window.addEventListener("resize", scaleStage);
 
-    /* Đổi ảnh nền khi hover nút */
     const imgDefault = document.getElementById("imgDefault");
     const imgAsm = document.getElementById("imgAsm");
     const imgLab = document.getElementById("imgLab");
 
+    const buttons = document.querySelector(".buttons");
     const btnAsm = document.querySelector(".btn-asm");
     const btnLab = document.querySelector(".btn-lab");
 
-    function showImage(image) {
-      imgDefault.classList.remove("active");
-      imgAsm.classList.remove("active");
-      imgLab.classList.remove("active");
+    const allImages = [imgDefault, imgAsm, imgLab];
 
-      image.classList.add("active");
+    let visibleImage = imgDefault;
+    let targetImage = imgDefault;
+    let resetTimer = null;
+    let transitionTimer = null;
+    let transitionId = 0;
+
+    function prepareImages() {
+      allImages.forEach(function (img) {
+        img.style.opacity = "0";
+        img.style.zIndex = "1";
+      });
+
+      imgDefault.style.opacity = "1";
+      imgDefault.style.zIndex = "2";
+
+      visibleImage = imgDefault;
+      targetImage = imgDefault;
+    }
+
+    function crossFadeTo(nextImage) {
+      clearTimeout(resetTimer);
+      clearTimeout(transitionTimer);
+
+      if (targetImage === nextImage && nextImage.style.opacity === "1") {
+        return;
+      }
+
+      transitionId++;
+
+      const thisTransition = transitionId;
+      const coverImage = visibleImage;
+
+      targetImage = nextImage;
+
+      allImages.forEach(function (img) {
+        img.style.zIndex = "1";
+      });
+
+      coverImage.style.transition = "none";
+      coverImage.style.opacity = "1";
+      coverImage.style.zIndex = "2";
+
+      nextImage.style.transition = "none";
+      nextImage.style.opacity = "0";
+      nextImage.style.zIndex = "3";
+
+      nextImage.offsetHeight;
+
+      nextImage.style.transition = "opacity 0.3s ease";
+      nextImage.style.opacity = "1";
+
+      transitionTimer = setTimeout(function () {
+        if (thisTransition !== transitionId) {
+          return;
+        }
+
+        allImages.forEach(function (img) {
+          img.style.transition = "opacity 0.3s ease";
+
+          if (img !== nextImage) {
+            img.style.opacity = "0";
+            img.style.zIndex = "1";
+          }
+        });
+
+        nextImage.style.opacity = "1";
+        nextImage.style.zIndex = "2";
+
+        visibleImage = nextImage;
+        targetImage = nextImage;
+      }, 330);
+    }
+
+    function backToDefaultDelay() {
+      clearTimeout(resetTimer);
+
+      resetTimer = setTimeout(function () {
+        crossFadeTo(imgDefault);
+      }, 300);
     }
 
     btnAsm.addEventListener("mouseenter", function () {
-      showImage(imgAsm);
+      crossFadeTo(imgAsm);
     });
 
     btnLab.addEventListener("mouseenter", function () {
-      showImage(imgLab);
+      crossFadeTo(imgLab);
     });
 
-    btnAsm.addEventListener("mouseleave", function () {
-      showImage(imgDefault);
+    buttons.addEventListener("mouseenter", function () {
+      clearTimeout(resetTimer);
     });
 
-    btnLab.addEventListener("mouseleave", function () {
-      showImage(imgDefault);
+    buttons.addEventListener("mouseleave", function () {
+      backToDefaultDelay();
+    });
+
+    window.addEventListener("load", function () {
+      prepareImages();
     });
   </script>
 </body>

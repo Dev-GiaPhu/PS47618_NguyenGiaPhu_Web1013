@@ -11,6 +11,9 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:wght@500;600;700&family=Playfair+Display:wght@700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
 
+  <!-- Font Awesome để dùng icon download -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     * {
       margin: 0;
@@ -230,9 +233,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Be Vietnam Pro", sans-serif;
-      font-size: 25px;
-      font-weight: 800;
+      font-size: 23px;
+      transition: 0.3s ease;
+    }
+
+    .download-action i {
       transition: 0.3s ease;
     }
 
@@ -253,6 +258,10 @@
       transform: translateY(-4px);
     }
 
+    .download-action:hover i {
+      color: #111827;
+    }
+
     .side-panel {
       min-height: 430px;
       padding: 34px;
@@ -270,7 +279,7 @@
 
     .side-title {
       font-family: "Be Vietnam Pro", sans-serif;
-      font-size: 34px;
+      font-size: 30px;
       line-height: 1.1;
       font-weight: 800;
       letter-spacing: -1.2px;
@@ -287,7 +296,7 @@
 
     .side-number {
       font-family: "Playfair Display", serif;
-      font-size: 112px;
+      font-size: 80px;
       line-height: 0.85;
       font-weight: 900;
       color: rgba(37, 99, 235, 0.18);
@@ -320,6 +329,16 @@
       color: #111827;
     }
 
+    .empty-message {
+      padding: 30px;
+      border: 1px solid rgba(15, 23, 42, 0.16);
+      background: rgba(255, 255, 255, 0.42);
+      font-family: "Lora", serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #475569;
+    }
+
     @media (max-width: 700px) {
       body {
         overflow: auto;
@@ -341,29 +360,33 @@
         <h1>Tải xuống bài lab</h1>
 
         <p class="intro">
-          Danh sách các bài lab được tổng hợp tại đây để cô có thể xem hoặc tải xuống nhanh.
-          Các đường dẫn có thể được cập nhật thêm trong những lần nộp bài sau.
+          Danh sách bài lab được lấy tự động từ GitHub theo thư mục TH.
+          Khi thêm thư mục Lab mới lên GitHub, trang này sẽ tự cập nhật và tạo link tải bằng DownGit.
         </p>
 
         <section class="download-area">
-          <div class="download-list" id="downloadList"></div>
+          <div class="download-list" id="downloadList">
+            <div class="empty-message">
+              Đang tải danh sách bài lab từ GitHub...
+            </div>
+          </div>
 
           <aside class="side-panel">
             <div>
-              <div class="side-title">Danh sách bài nộp</div>
+              <div class="side-title">Danh sách bài LAB</div>
               <p class="side-text">
-                Mỗi mục bên trái gồm tên bài, mô tả ngắn và nút tải xuống. Chỉ cần thêm link mới trong phần
-                <b>downloadItems</b> là trang sẽ tự render thêm.
+                Đây là danh sách tải xuống các bài lab được cập nhật liên tục theo GitHub.
+                Nếu chưa thấy bài mới, có thể thư mục đó chưa được upload hoặc GitHub API đang tải chậm.
               </p>
             </div>
 
-            <div class="side-number" id="itemCount">00</div>
+            <div class="side-number" id="itemCount">...</div>
           </aside>
         </section>
 
         <div class="footer">
           <span>Nguyễn Gia Phú PS47618 - GAM21201.</span>
-          <a class="github-link" href="LINK_GITHUB_CUA_BAN" target="_blank">GitHub</a>
+          <a class="github-link" href="https://github.com/Dev-GiaPhu/PS47618_NguyenGiaPhu_Web1013.git" target="_blank">GitHub</a>
         </div>
       </main>
     </div>
@@ -371,65 +394,134 @@
 
   <script>
     /*
-      THÊM LINK TẢI Ở ĐÂY.
-      Muốn thêm bài mới thì copy một block:
-      {
-        title: "...",
-        desc: "...",
-        link: "..."
-      },
+      CẤU HÌNH GITHUB Ở ĐÂY.
+      Link gốc của bạn:
+      https://github.com/Dev-GiaPhu/PS47618_NguyenGiaPhu_Web1013/tree/main/TH
     */
-    const downloadItems = [
-      {
-        title: "Lab 1",
-        desc: "Tải xuống thư mục bài Lab 1.",
-        link: "LINK_TAI_LAB_1"
-      },
-      {
-        title: "Lab 2",
-        desc: "Tải xuống thư mục bài Lab 2.",
-        link: "LINK_TAI_LAB_2"
-      },
-      {
-        title: "Lab 3",
-        desc: "Tải xuống thư mục bài Lab 3.",
-        link: "LINK_TAI_LAB_3"
-      },
-      {
-        title: "Lab 4",
-        desc: "Tải xuống thư mục bài Lab 4.",
-        link: "LINK_TAI_LAB_4"
-      }
-    ];
+    const githubConfig = {
+      owner: "Dev-GiaPhu",
+      repo: "PS47618_NguyenGiaPhu_Web1013",
+      branch: "main",
+      folderPath: "TH"
+    };
 
     const downloadList = document.getElementById("downloadList");
     const itemCount = document.getElementById("itemCount");
 
-    function renderDownloadItems() {
+    function getGithubApiUrl() {
+      return `https://api.github.com/repos/${githubConfig.owner}/${githubConfig.repo}/contents/${githubConfig.folderPath}?ref=${githubConfig.branch}`;
+    }
+
+    function getGithubFolderUrl(folderName) {
+      return `https://github.com/${githubConfig.owner}/${githubConfig.repo}/tree/${githubConfig.branch}/${githubConfig.folderPath}/${folderName}`;
+    }
+
+    function getDownGitUrl(githubFolderUrl) {
+      return `https://downgit.github.io/#/home?url=${encodeURIComponent(githubFolderUrl)}`;
+    }
+
+    function sortLabFolders(a, b) {
+      const numberA = Number(a.name.match(/\d+/)?.[0] || 0);
+      const numberB = Number(b.name.match(/\d+/)?.[0] || 0);
+
+      if (numberA !== numberB) {
+        return numberA - numberB;
+      }
+
+      return a.name.localeCompare(b.name, "vi", {
+        numeric: true,
+        sensitivity: "base"
+      });
+    }
+
+    function renderLoading() {
+      downloadList.innerHTML = `
+        <div class="empty-message">
+          Đang tải danh sách bài lab từ GitHub...
+        </div>
+      `;
+
+      itemCount.textContent = "...";
+    }
+
+    function renderError(message) {
+      downloadList.innerHTML = `
+        <div class="empty-message">
+          ${message}
+        </div>
+      `;
+
+      itemCount.textContent = "0";
+    }
+
+    function renderDownloadItems(items) {
       downloadList.innerHTML = "";
 
-      downloadItems.forEach(function(item) {
+      if (!items.length) {
+        renderError("Không tìm thấy thư mục Lab nào trong GitHub.");
+        return;
+      }
+
+      items.forEach(function(item) {
+        const githubFolderUrl = getGithubFolderUrl(item.name);
+        const downGitUrl = getDownGitUrl(githubFolderUrl);
+
         const card = document.createElement("div");
         card.className = "download-card";
 
         card.innerHTML = `
           <div class="download-info">
-            <span class="download-title">${item.title}</span>
-            <span class="download-desc">${item.desc}</span>
+            <span class="download-title">${item.name}</span>
+            <span class="download-desc">
+              Tải xuống thư mục ${item.name} từ GitHub.
+            </span>
           </div>
 
-          <a class="download-action" href="${item.link}" target="_blank" title="Tải xuống">
-            ↓
+          <a class="download-action" href="${downGitUrl}" target="_blank" title="Tải xuống ${item.name}">
+            <i class="fa-solid fa-download"></i>
           </a>
         `;
 
         downloadList.appendChild(card);
       });
 
-      itemCount.textContent = String(downloadItems.length).padStart(2, "0");
+      itemCount.textContent = String(items.length).padStart(2, "0");
     }
 
-    renderDownloadItems();
+    async function loadGithubFolders() {
+      renderLoading();
+
+      try {
+        const response = await fetch(getGithubApiUrl(), {
+          headers: {
+            "Accept": "application/vnd.github+json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("GitHub API error");
+        }
+
+        const data = await response.json();
+
+        const folders = data
+          .filter(function(item) {
+            return item.type === "dir";
+          })
+          .filter(function(item) {
+            return /^lab/i.test(item.name);
+          })
+          .sort(sortLabFolders);
+
+        renderDownloadItems(folders);
+      } catch (error) {
+        renderError(
+          "Không thể tải danh sách bài lab từ GitHub. Hãy truy cập trực tiếp vào repo trên GitHub: <a href=\"" + getGithubFolderUrl("") + "\" target=\"_blank\">" + getGithubFolderUrl("") + "</a>"
+        );
+      }
+    }
+
+    loadGithubFolders();
 
     /*
       Scale toàn bộ box theo màn hình.
