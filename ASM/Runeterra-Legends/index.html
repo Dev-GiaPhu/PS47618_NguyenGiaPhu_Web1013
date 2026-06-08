@@ -6,201 +6,221 @@
     <title>Legends of Runeterra</title>
 
     <link rel="icon" href="images/icon/icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <div class="cursor">
-        <div class="cursor_inner"></div>
+    <div class="cursor" id="cursor">
+        <div class="cursor_dot"></div>
     </div>
 
     <div class="noise"></div>
     <canvas id="particles"></canvas>
 
-    <header class="navbar">
+    <div class="ambient_orb orb1"></div>
+    <div class="ambient_orb orb2"></div>
+    <div class="ambient_orb orb3"></div>
+
+    <header class="navbar" id="navbar">
         <a href="#home" class="logo">
-            <img src="images/logo/logo.png" alt="Legends of Runeterra Logo">
+            <img src="images/logo/logo.png" alt="Legends of Runeterra">
         </a>
 
-        <nav>
-            <a href="#home" class="nav_link liquid_text">Home</a>
-            <a href="#champions" class="nav_link liquid_text">Champions</a>
-            <a href="#regions" class="nav_link liquid_text">Regions</a>
-            <a href="#lore" class="nav_link liquid_text">Lore</a>
-            <a href="#gallery" class="nav_link liquid_text">Gallery</a>
+        <nav class="main_nav">
+            <a href="#home" class="nav_link">Home</a>
+            <a href="#champions" class="nav_link">Champions</a>
+            <a href="#regions" class="nav_link">Regions</a>
+            <a href="#lore" class="nav_link">Lore</a>
+            <a href="#gallery" class="nav_link">Gallery</a>
         </nav>
+
+        <a class="nav_cta" href="https://bacon.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.live.sea.exe">
+            Download
+        </a>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero_bg"></div>
-        <div class="hero_overlay"></div>
+        <div class="hero_bg" id="heroBg"></div>
+        <div class="hero_vignette"></div>
 
-        <div class="hero_content reveal">
-            <p class="eyebrow liquid_text">LEGENDS OF</p>
+        <div class="hero_content">
+            <a class="hero_badge reveal_up" href="https://github.com/Dev-GiaPhu/PS47618_NguyenGiaPhu_Web1013.git" target="_blank">
+                <span class="badge_dot"></span>
+                Nguyễn Gia Phú - Github
+            </a>
 
-            <h1 class="hero_title liquid_text">
-                RUNETERRA
+            <h1 class="hero_title reveal_up">
+                <span class="title_line line1">LEGENDS OF</span>
+                <span class="title_line line2">RUNETERRA</span>
             </h1>
 
-            <p class="hero_desc">
-                Trong tựa game thẻ bài chiến thuật này,
-                kỹ năng chính là yếu tố quyết định chiến thắng của bạn.
-                Hãy kết hợp các anh hùng, đồng minh cùng các khu vực của Runeterra
-                để tạo ra những bộ combo đa dạng và vượt mặt đối thủ.
+            <p class="hero_desc reveal_up">
+                Khám phá thế giới huyền thoại — nơi ma thuật, chiến tranh và vinh quang đan xen.
+                Mỗi vị tướng, mỗi vùng đất là một câu chuyện đang chờ được kể.
             </p>
 
-            <a href="#champions" class="magic_btn">
-                <span>Explore Now</span>
-            </a>
+            <div class="hero_actions reveal_up">
+                <a href="#champions" class="btn_primary">
+                    <span class="btn_glow"></span>
+                    <span>Khám Phá Ngay</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                </a>
+
+                <a href="#gallery" class="btn_ghost">Xem Gallery</a>
+            </div>
         </div>
 
-        <div class="scroll_hint">
-            <span></span>
-            Scroll
+        <div class="hero_scroll_indicator">
+            <div class="scroll_line"></div>
+            <span>Cuộn xuống</span>
+        </div>
+
+        <div class="hero_corner_decor tl"></div>
+        <div class="hero_corner_decor tr"></div>
+        <div class="hero_corner_decor bl"></div>
+        <div class="hero_corner_decor br"></div>
+    </section>
+
+    <section id="champions" class="section">
+        <div class="section_intro reveal_up">
+            <p class="overline">Choose your</p>
+            <h2 class="section_title">Champions</h2>
+            <p class="section_sub">Bạn sẽ mang anh hùng nào vào trận đấu?</p>
+        </div>
+
+        <div class="champion_slider reveal_up">
+            <button class="champ_arrow" id="prevChampion">‹</button>
+
+            <div class="champions_grid" id="championsGrid">
+                <div class="loading_text">Đang tải Champions...</div>
+            </div>
+
+            <button class="champ_arrow" id="nextChampion">›</button>
         </div>
     </section>
 
-    <section id="champions" class="section champions">
-        <div class="section_head reveal">
-            <p class="eyebrow liquid_text">Choose your legend</p>
-            <h2 class="section_title liquid_text">Champions</h2>
+    <section id="regions" class="section section_dark">
+        <div class="section_intro reveal_up">
+            <p class="overline">World of Runeterra</p>
+            <h2 class="section_title">Regions</h2>
+            <p class="section_sub">Tất cả vùng đất lớn trong Runeterra</p>
         </div>
 
-        <div class="champion_showcase">
+        <div class="regions_grid" id="regionsGrid"></div>
+    </section>
 
-            <article class="champion_panel reveal tilt_card ahri">
-                <img style="object-position: 60% center" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt="Ahri">
+    <section id="lore" class="section lore_section">
+        <div class="lore_bg"></div>
+        <div class="lore_overlay"></div>
 
-                <div class="champion_info">
-                    <p class="champion_role">MAGE / ASSASSIN</p>
+        <div class="lore_inner">
+            <div class="lore_text reveal_up">
+                <p class="overline">Ancient stories</p>
+                <h2 class="section_title">Lore of Runeterra</h2>
 
-                    <h3 class="liquid_text">Ahri</h3>
+                <p class="lore_body">
+                    Runeterra là một thế giới rộng lớn, nơi ma thuật cổ xưa, chiến tranh,
+                    danh dự và bóng tối cùng tồn tại. Mỗi vùng đất mang trong mình một huyền thoại riêng,
+                    mỗi vị tướng là một mảnh ghép của lịch sử đang chuyển động.
+                </p>
 
-                    <span class="champion_bio">
-                        A mysterious fox spirit who manipulates emotions and draws power from the souls of her prey.
-                    </span>
+                <a href="#gallery" class="btn_primary">
+                    <span class="btn_glow"></span>
+                    <span>Xem Gallery</span>
+                </a>
+            </div>
+
+            <div class="stats_row">
+                <div class="stat_card reveal_up">
+                    <span class="stat_num" id="championCount">0</span><span class="stat_suffix">+</span>
+                    <p>Champions</p>
                 </div>
-            </article>
 
-            <article class="champion_panel reveal tilt_card big yasuo">
-                <img style="object-position: 80% center" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg" alt="Yasuo">
-
-                <div class="champion_info">
-                    <p class="champion_role">FIGHTER / ASSASSIN</p>
-
-                    <h3 class="liquid_text">Yasuo</h3>
-
-                    <span class="champion_bio">
-                        An ionian swordsman driven by guilt, wind technique and the search for redemption.
-                    </span>
+                <div class="stat_card reveal_up">
+                    <span class="stat_num" id="regionCount">0</span>
+                    <p>Regions</p>
                 </div>
-            </article>
 
-            <article class="champion_panel reveal tilt_card jinx">
-                <img style="object-position: 70% center" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jinx_0.jpg" alt="Jinx">
-
-                <div class="champion_info">
-                    <p class="champion_role">MARKSMAN</p>
-
-                    <h3 class="liquid_text">Jinx</h3>
-
-                    <span class="champion_bio">
-                        A chaotic marksman from Zaun who lives for explosions, madness and beautiful destruction.
-                    </span>
+                <div class="stat_card reveal_up">
+                    <span class="stat_num" data-target="2026">0</span>
+                    <p>Universe</p>
                 </div>
-            </article>
 
+                <div class="stat_card reveal_up">
+                    <span class="stat_num" data-target="5">0</span><span class="stat_suffix">M+</span>
+                    <p>Fans</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="regions" class="section regions">
-        <div class="section_head reveal">
-            <p class="eyebrow liquid_text">World of Runeterra</p>
-            <h2 class="section_title liquid_text">Regions</h2>
+    <section id="gallery" class="section">
+        <div class="section_intro reveal_up">
+            <p class="overline">Visual archive</p>
+            <h2 class="section_title">Gallery</h2>
+            <p class="section_sub">Những hình ảnh đẹp nhất từ thế giới Runeterra</p>
         </div>
 
-        <div class="region_timeline">
-
-            <div class="region_item reveal demacia" style="--bg-pos: 0% center";>
-                <span>01</span>
-                <h3 class="liquid_text">Demacia</h3>
-                <p>Vùng đất của danh dự, ánh sáng và những chiến binh bảo vệ công lý.</p>
-            </div>
-
-            <div class="region_item reveal noxus" style="--bg-pos: 0% 0%";>
-                <span>02</span>
-                <h3 class="liquid_text">Noxus</h3>
-                <p>Đế quốc mạnh mẽ, nơi sức mạnh và tham vọng quyết định vị thế.</p>
-            </div>
-
-            <div class="region_item reveal ionia" style="--bg-pos: 0% 0%";>
-                <span>03</span>
-                <h3 class="liquid_text">Ionia</h3>
-                <p>Vùng đất huyền bí, nơi linh hồn, thiên nhiên và kiếm thuật hòa làm một.</p>
-            </div>
-
-            <div class="region_item reveal freljord" style="--bg-pos: 0% 0%";>
-                <span>04</span>
-                <h3 class="liquid_text">Freljord</h3>
-                <p>Xứ sở băng giá với những bộ tộc cổ xưa và quyền năng nguyên thủy.</p>
-            </div>
-
-            <div class="region_item reveal shurima" style="--bg-pos: 0% 0%";>
-                <span>05</span>
-                <h3 class="liquid_text">Shurima</h3>
-                <p>Đế chế sa mạc cổ đại, nơi những vị thần chiến binh từng thống trị.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="lore" class="section lore">
-        <div class="lore_card reveal">
-            <p class="eyebrow liquid_text">Ancient stories</p>
-
-            <h2 class="section_title liquid_text">
-                Lore of Runeterra
-            </h2>
-
-            <p>
-                Runeterra là một thế giới rộng lớn, nơi ma thuật cổ xưa,
-                chiến tranh, danh dự và bóng tối cùng tồn tại. Mỗi vùng đất
-                mang trong mình một huyền thoại riêng, mỗi vị tướng là một
-                mảnh ghép của lịch sử đang chuyển động.
-            </p>
-
-            <a href="#gallery" class="magic_btn">
-                <span>View Gallery</span>
-            </a>
-        </div>
-    </section>
-
-    <section id="gallery" class="section gallery">
-        <div class="section_head reveal">
-            <p class="eyebrow liquid_text">Visual archive</p>
-            <h2 class="section_title liquid_text">Gallery</h2>
-        </div>
-
-        <div class="gallery_grid">
-            <img class="gallery_img reveal" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Irelia_0.jpg" alt="Irelia">
-            <img class="gallery_img reveal" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg" alt="Lux">
-            <img class="gallery_img reveal" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Zed_0.jpg" alt="Zed">
-            <img class="gallery_img reveal" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Morgana_0.jpg" alt="Morgana">
-            <img class="gallery_img reveal" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg" alt="Akali">
-            <img class="gallery_img reveal" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg" alt="Ashe">
-        </div>
+        <div class="gallery_grid" id="galleryGrid"></div>
     </section>
 
     <div class="lightbox" id="lightbox">
-        <img src="" alt="">
+        <div class="lightbox_inner">
+            <button class="lightbox_close" id="lightboxClose">✕</button>
+            <img src="" alt="" id="lightboxImg">
+            <p class="lightbox_caption" id="lightboxCaption"></p>
+        </div>
     </div>
 
-    <footer>
-        <p>© 2026 Legends of Runeterra — Fanmade Cinematic Website</p>
+    <div class="champion_modal" id="championModal">
+        <div class="champion_modal_box">
+            <button class="champion_modal_close" id="championModalClose">✕</button>
+            <img id="modalChampionImg" src="" alt="">
+
+            <div class="champion_modal_content">
+                <p id="modalChampionRole"></p>
+                <h2 id="modalChampionName"></h2>
+                <p id="modalChampionBio"></p>
+                <div id="modalChampionStats"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer_inner">
+            <div class="footer_brand">
+                <a href="index.html">
+                    <img src="images/logo/logo.png" alt="Logo" class="footer_logo">
+                </a>
+                <p>Fanmade cinematic experience. Not affiliated with Riot Games.</p>
+            </div>
+
+            <div class="footer_nav">
+                <a href="#home">Home</a>
+                <a>|</a>
+                <a href="#champions">Champions</a>
+                <a>|</a>
+                <a href="#regions">Regions</a>
+                <a>|</a>
+                <a href="#gallery">Gallery</a>
+            </div>
+
+            <div class="footer_copy">
+                <div class="footer_divider"></div>
+                <p>© 2026 Legends of Runeterra — Fanmade Cinematic Website</p>
+                <a href="https://www.facebook.com/JemNaNa" target="_blank"> Nguyễn Gia Phú - PS47618 | JemNG</a>
+            </div>
+        </div>
     </footer>
 
     <script src="js/main.js"></script>
-
 </body>
 </html>

@@ -2,11 +2,443 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=./ASM/Runeterra-Legends/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirect</title>
+
+  <!-- Font hiện đại, hỗ trợ tiếng Việt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:wght@500;600;700&family=Playfair+Display:wght@700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    body {
+      background: #bfbfbf;
+      color: #111827;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* 
+      STAGE là cái box trắng ở giữa web.
+      Toàn bộ bên trong sẽ scale chung, không bị lệch bố cục.
+    */
+    .stage {
+      position: relative;
+      width: 1200px;
+      height: 900px;
+      flex-shrink: 0;
+      background: #f8f9fb;
+      box-shadow: 0 28px 80px rgba(15, 23, 42, 0.24);
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1200px;
+      height: 900px;
+      overflow: hidden;
+      transform-origin: top left;
+      background: #f8f9fb;
+    }
+
+    /* Ảnh nền nhân vật nằm bên trong box trắng */
+    .bg-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background: #f8f9fb;
+    }
+
+    .bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .bg-img.active {
+      opacity: 1;
+    }
+
+    /* Lớp phủ nhẹ để chữ dễ đọc */
+    .soft-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        90deg,
+        rgba(248, 249, 251, 0.78) 0%,
+        rgba(248, 249, 251, 0.5) 48%,
+        rgba(248, 249, 251, 0.04) 100%
+      );
+    }
+
+    /* Nội dung web nằm trên ảnh nền */
+    .content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      padding: 70px 80px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 13px 20px;
+      background: #111827;
+      color: #ffffff;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      margin-bottom: 42px;
+    }
+
+    h1 {
+      width: 760px;
+      font-family: "Playfair Display", serif;
+      font-size: 84px;
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: -2.8px;
+      color: #111827;
+      margin-bottom: 28px;
+    }
+
+    .intro {
+      width: 720px;
+      font-family: "Lora", serif;
+      font-size: 19px;
+      line-height: 1.8;
+      color: #334155;
+      margin-bottom: 66px;
+    }
+
+    .buttons {
+      width: 980px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .btn {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+
+      /* Box trong suốt + blur nền phía dưới */
+      background: rgba(255, 255, 255, 0.34);
+      border: 1px solid rgba(15, 23, 42, 0.16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 20px 70px rgba(15, 23, 42, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+      transition: 0.35s ease;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(17, 24, 39, 0.94),
+        rgba(29, 78, 216, 0.88)
+      );
+      opacity: 0;
+      transition: 0.35s ease;
+    }
+
+    .btn:hover::before {
+      opacity: 1;
+    }
+
+    .btn:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow:
+        22px 22px 0 rgba(37, 99, 235, 0.15),
+        0 28px 80px rgba(15, 23, 42, 0.18);
+    }
+
+    .main-link {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding: 44px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .arrow {
+      align-self: flex-end;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 42px;
+      font-weight: 600;
+      color: #2563eb;
+      transition: 0.35s ease;
+    }
+
+    .btn:hover .arrow {
+      color: #ffffff;
+      transform: translateX(10px);
+    }
+
+    .title {
+      display: block;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 52px;
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -1.8px;
+      margin-bottom: 20px;
+      color: #111827;
+      transition: 0.35s ease;
+    }
+
+    .desc {
+      display: block;
+      max-width: 410px;
+      font-family: "Lora", serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: #334155;
+      transition: 0.35s ease;
+    }
+
+    .btn:hover .title,
+    .btn:hover .desc {
+      color: #ffffff;
+    }
+
+    .download-icon {
+      position: absolute;
+      right: 26px;
+      bottom: 26px;
+      z-index: 5;
+      width: 54px;
+      height: 54px;
+
+      border: 1px solid rgba(37, 99, 235, 0.38);
+      background: rgba(255, 255, 255, 0.48);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      color: #2563eb;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 25px;
+      font-weight: 800;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover .download-icon {
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .download-icon:hover {
+      background: #ffffff !important;
+      color: #111827 !important;
+      transform: translateY(-5px);
+    }
+
+    .footer {
+      margin-top: 46px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 15px;
+      color: #64748b;
+    }
+
+    .github-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.3s ease;
+    }
+
+    .github-link:hover {
+      color: #111827;
+    }
+
+    /* Màn hình quá nhỏ thì vẫn scale toàn bộ box, không đổi layout */
+    @media (max-width: 700px) {
+      body {
+        overflow: auto;
+        padding: 24px 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <p>Đang chuyển đến trang web...</p>
-  <a href="./ASM/Runeterra-Legends/">Bấm vào đây nếu không tự chuyển</a>
+  <section class="stage" id="stage">
+    <div class="canvas" id="canvas">
+      <!-- Ảnh nền nằm trong box trắng -->
+      <div class="bg-layer">
+        <!-- Mặc định: đứng khoanh tay -->
+        <img class="bg-img active" id="imgDefault" src="./images/bg1.png" alt="">
+
+        <!-- Hover nút 1: tay chỉ nút Legends Of Runeterra -->
+        <img class="bg-img" id="imgAsm" src="./images/bg2.png" alt="">
+
+        <!-- Hover nút 2: tay chỉ nút Download bài lab -->
+        <img class="bg-img" id="imgLab" src="./images/bg3.png" alt="">
+      </div>
+
+      <div class="soft-overlay"></div>
+
+      <main class="content">
+        <div class="badge">Chọn đường dẫn</div>
+
+        <h1>Cô muốn mở trang nào?</h1>
+
+        <p class="intro">
+          Trang web này dành riêng cho cô Lệ để dễ dàng xem và tải xuống các bài lab
+          cũng như dự án ASM. Hãy chọn một trong hai đường dẫn dưới đây để tiếp tục!
+        </p>
+
+        <div class="buttons">
+          <!-- Nút 1 -->
+          <div class="btn btn-asm">
+            <a class="main-link" href="./ASM/Runeterra-Legends/">
+              <span class="arrow">→</span>
+
+              <span>
+                <span class="title">Legends Of Runeterra</span>
+                <span class="desc">Đi đến trang bài ASM.</span>
+              </span>
+            </a>
+
+            <!-- Thay link demo tải xuống tại đây -->
+            <a class="download-icon" href="LINK_DEMO_TAI_XUONG_CUA_BAN" target="_blank" title="Tải xuống demo">
+              ↓
+            </a>
+          </div>
+
+          <!-- Nút 2 -->
+          <div class="btn btn-lab">
+            <a class="main-link" href="./downloadlab.html">
+              <span class="arrow">→</span>
+
+              <span>
+                <span class="title">Download bài lab</span>
+                <span class="desc">Đi đến trang tải xuống các bài lab.</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer">
+          <span>Nguyễn Gia Phú PS47618 - GAM21201.</span>
+          <a class="github-link" href="LINK_GITHUB_CUA_BAN" target="_blank">GitHub</a>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <script>
+    /* 
+      Scale toàn bộ box theo màn hình.
+      Không reflow layout, nên vị trí tay chỉ và vị trí nút giữ nguyên tỉ lệ.
+    */
+    const DESIGN_WIDTH = 1200;
+    const DESIGN_HEIGHT = 900;
+
+    const stage = document.getElementById("stage");
+    const canvas = document.getElementById("canvas");
+
+    function scaleStage() {
+      const padding = 48;
+
+      const availableWidth = window.innerWidth - padding;
+      const availableHeight = window.innerHeight - padding;
+
+      const scale = Math.min(
+        availableWidth / DESIGN_WIDTH,
+        availableHeight / DESIGN_HEIGHT
+      );
+
+      stage.style.width = DESIGN_WIDTH * scale + "px";
+      stage.style.height = DESIGN_HEIGHT * scale + "px";
+
+      canvas.style.transform = "scale(" + scale + ")";
+    }
+
+    window.addEventListener("load", scaleStage);
+    window.addEventListener("resize", scaleStage);
+
+    /* Đổi ảnh nền khi hover nút */
+    const imgDefault = document.getElementById("imgDefault");
+    const imgAsm = document.getElementById("imgAsm");
+    const imgLab = document.getElementById("imgLab");
+
+    const btnAsm = document.querySelector(".btn-asm");
+    const btnLab = document.querySelector(".btn-lab");
+
+    function showImage(image) {
+      imgDefault.classList.remove("active");
+      imgAsm.classList.remove("active");
+      imgLab.classList.remove("active");
+
+      image.classList.add("active");
+    }
+
+    btnAsm.addEventListener("mouseenter", function () {
+      showImage(imgAsm);
+    });
+
+    btnLab.addEventListener("mouseenter", function () {
+      showImage(imgLab);
+    });
+
+    btnAsm.addEventListener("mouseleave", function () {
+      showImage(imgDefault);
+    });
+
+    btnLab.addEventListener("mouseleave", function () {
+      showImage(imgDefault);
+    });
+  </script>
 </body>
 </html>
