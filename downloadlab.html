@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Lab</title>
+
+  <!-- Font hiện đại, hỗ trợ tiếng Việt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:wght@500;600;700&family=Playfair+Display:wght@700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    body {
+      background: #bfbfbf;
+      color: #111827;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .stage {
+      position: relative;
+      width: 1200px;
+      height: 900px;
+      flex-shrink: 0;
+      background:
+        radial-gradient(circle at 88% 14%, rgba(37, 99, 235, 0.10), transparent 30%),
+        radial-gradient(circle at 12% 86%, rgba(124, 58, 237, 0.08), transparent 34%),
+        #f8f9fb;
+      box-shadow: 0 28px 80px rgba(15, 23, 42, 0.24);
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1200px;
+      height: 900px;
+      overflow: hidden;
+      transform-origin: top left;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      padding: 70px 80px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 42px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 13px 20px;
+      background: #111827;
+      color: #ffffff;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .back-link {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: #2563eb;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: #111827;
+    }
+
+    h1 {
+      width: 820px;
+      font-family: "Playfair Display", serif;
+      font-size: 84px;
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: -2.8px;
+      color: #111827;
+      margin-bottom: 28px;
+    }
+
+    .intro {
+      width: 760px;
+      font-family: "Lora", serif;
+      font-size: 19px;
+      line-height: 1.8;
+      color: #334155;
+      margin-bottom: 54px;
+    }
+
+    .download-area {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .download-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      max-height: 430px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .download-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .download-list::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.08);
+    }
+
+    .download-list::-webkit-scrollbar-thumb {
+      background: rgba(37, 99, 235, 0.55);
+    }
+
+    .download-card {
+      position: relative;
+      min-height: 118px;
+      padding: 28px 30px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(15, 23, 42, 0.16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 18px 50px rgba(15, 23, 42, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+      transition: 0.35s ease;
+      overflow: hidden;
+    }
+
+    .download-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(17, 24, 39, 0.94),
+        rgba(29, 78, 216, 0.88)
+      );
+      opacity: 0;
+      z-index: 0;
+      transition: 0.35s ease;
+    }
+
+    .download-card:hover::before {
+      opacity: 1;
+    }
+
+    .download-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow:
+        16px 16px 0 rgba(37, 99, 235, 0.14),
+        0 24px 70px rgba(15, 23, 42, 0.16);
+    }
+
+    .download-info,
+    .download-action {
+      position: relative;
+      z-index: 1;
+    }
+
+    .download-title {
+      display: block;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 30px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #111827;
+      margin-bottom: 9px;
+      transition: 0.35s ease;
+    }
+
+    .download-desc {
+      display: block;
+      font-family: "Lora", serif;
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: #475569;
+      transition: 0.35s ease;
+    }
+
+    .download-action {
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(37, 99, 235, 0.38);
+      background: rgba(255, 255, 255, 0.48);
+      color: #2563eb;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 25px;
+      font-weight: 800;
+      transition: 0.3s ease;
+    }
+
+    .download-card:hover .download-title,
+    .download-card:hover .download-desc {
+      color: #ffffff;
+    }
+
+    .download-card:hover .download-action {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .download-action:hover {
+      background: #ffffff !important;
+      color: #111827 !important;
+      transform: translateY(-4px);
+    }
+
+    .side-panel {
+      min-height: 430px;
+      padding: 34px;
+      background: rgba(255, 255, 255, 0.34);
+      border: 1px solid rgba(15, 23, 42, 0.16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow:
+        0 18px 60px rgba(15, 23, 42, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .side-title {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 34px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      color: #111827;
+      margin-bottom: 18px;
+    }
+
+    .side-text {
+      font-family: "Lora", serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #475569;
+    }
+
+    .side-number {
+      font-family: "Playfair Display", serif;
+      font-size: 112px;
+      line-height: 0.85;
+      font-weight: 900;
+      color: rgba(37, 99, 235, 0.18);
+      text-align: right;
+      margin-top: 40px;
+    }
+
+    .footer {
+      position: absolute;
+      left: 80px;
+      bottom: 58px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 15px;
+      color: #64748b;
+      z-index: 3;
+    }
+
+    .github-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.3s ease;
+    }
+
+    .github-link:hover {
+      color: #111827;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        overflow: auto;
+        padding: 24px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="stage" id="stage">
+    <div class="canvas" id="canvas">
+      <main class="content">
+        <div class="topbar">
+          <div class="badge">Download Lab</div>
+          <a class="back-link" href="./index.html">← Quay lại trang chính</a>
+        </div>
+
+        <h1>Tải xuống bài lab</h1>
+
+        <p class="intro">
+          Danh sách các bài lab được tổng hợp tại đây để cô có thể xem hoặc tải xuống nhanh.
+          Các đường dẫn có thể được cập nhật thêm trong những lần nộp bài sau.
+        </p>
+
+        <section class="download-area">
+          <div class="download-list" id="downloadList"></div>
+
+          <aside class="side-panel">
+            <div>
+              <div class="side-title">Danh sách bài nộp</div>
+              <p class="side-text">
+                Mỗi mục bên trái gồm tên bài, mô tả ngắn và nút tải xuống. Chỉ cần thêm link mới trong phần
+                <b>downloadItems</b> là trang sẽ tự render thêm.
+              </p>
+            </div>
+
+            <div class="side-number" id="itemCount">00</div>
+          </aside>
+        </section>
+
+        <div class="footer">
+          <span>Nguyễn Gia Phú PS47618 - GAM21201.</span>
+          <a class="github-link" href="LINK_GITHUB_CUA_BAN" target="_blank">GitHub</a>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <script>
+    /*
+      THÊM LINK TẢI Ở ĐÂY.
+      Muốn thêm bài mới thì copy một block:
+      {
+        title: "...",
+        desc: "...",
+        link: "..."
+      },
+    */
+    const downloadItems = [
+      {
+        title: "Lab 1",
+        desc: "Tải xuống thư mục bài Lab 1.",
+        link: "LINK_TAI_LAB_1"
+      },
+      {
+        title: "Lab 2",
+        desc: "Tải xuống thư mục bài Lab 2.",
+        link: "LINK_TAI_LAB_2"
+      },
+      {
+        title: "Lab 3",
+        desc: "Tải xuống thư mục bài Lab 3.",
+        link: "LINK_TAI_LAB_3"
+      },
+      {
+        title: "Lab 4",
+        desc: "Tải xuống thư mục bài Lab 4.",
+        link: "LINK_TAI_LAB_4"
+      }
+    ];
+
+    const downloadList = document.getElementById("downloadList");
+    const itemCount = document.getElementById("itemCount");
+
+    function renderDownloadItems() {
+      downloadList.innerHTML = "";
+
+      downloadItems.forEach(function(item) {
+        const card = document.createElement("div");
+        card.className = "download-card";
+
+        card.innerHTML = `
+          <div class="download-info">
+            <span class="download-title">${item.title}</span>
+            <span class="download-desc">${item.desc}</span>
+          </div>
+
+          <a class="download-action" href="${item.link}" target="_blank" title="Tải xuống">
+            ↓
+          </a>
+        `;
+
+        downloadList.appendChild(card);
+      });
+
+      itemCount.textContent = String(downloadItems.length).padStart(2, "0");
+    }
+
+    renderDownloadItems();
+
+    /*
+      Scale toàn bộ box theo màn hình.
+      Layout, chữ, nút giữ nguyên tỉ lệ như thiết kế ban đầu.
+    */
+    const DESIGN_WIDTH = 1200;
+    const DESIGN_HEIGHT = 900;
+
+    const stage = document.getElementById("stage");
+    const canvas = document.getElementById("canvas");
+
+    function scaleStage() {
+      const padding = 48;
+
+      const availableWidth = window.innerWidth - padding;
+      const availableHeight = window.innerHeight - padding;
+
+      const scale = Math.min(
+        availableWidth / DESIGN_WIDTH,
+        availableHeight / DESIGN_HEIGHT
+      );
+
+      stage.style.width = DESIGN_WIDTH * scale + "px";
+      stage.style.height = DESIGN_HEIGHT * scale + "px";
+
+      canvas.style.transform = "scale(" + scale + ")";
+    }
+
+    window.addEventListener("load", scaleStage);
+    window.addEventListener("resize", scaleStage);
+  </script>
+</body>
+</html>
