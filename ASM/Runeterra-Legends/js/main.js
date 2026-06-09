@@ -279,7 +279,7 @@ const regions = [
         type:"video",
         pos:"60% 50%",
         size:"120%",
-        icon:"https://static.wikia.nocookie.net/leagueoflegends/images/c/cb/Void_Crest.png/revision/latest/scale-to-width-down/268?cb=20180801201707",
+        icon:"https://static.wikia.nocookie.net/leagueoflegends/images/c/cb/Void_Crest.png/revision/latest?cb=20180801201707",
         info:{
             Void:"Void là chiều không gian xa lạ.",
             Horror:"Sinh vật Void mang cảm giác kinh hoàng.",
