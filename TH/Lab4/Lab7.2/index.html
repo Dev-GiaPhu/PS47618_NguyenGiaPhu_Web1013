@@ -5,7 +5,7 @@
     <title>Lab 7.2 - JavaScript Không Cần Viết Code</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS Swiper -->
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 
     <style>
@@ -148,23 +148,23 @@
             letter-spacing: 2px;
         }
 
+        /* FACEBOOK SECTION */
+
         .facebook-section {
             background: white;
         }
 
         .facebook-list {
             display: grid;
-            grid-template-columns: repeat(2, 560px);
+            grid-template-columns: repeat(2, minmax(360px, 560px));
             justify-content: center;
             gap: 35px;
         }
 
         .facebook-box {
-            width: 560px;
-            min-height: 180px;
             background: #f1f5f8;
             border: 1px solid #c7d5b8;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
         }
 
@@ -172,43 +172,128 @@
             color: #698f3f;
             font-size: 22px;
             text-transform: uppercase;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        .facebook-content {
-            width: 500px;
-            max-width: 100%;
-            margin: 0 auto;
+        .real-plugin {
+            min-height: 20px;
+            margin-bottom: 15px;
+        }
+
+        .demo-facebook {
+            width: 100%;
             background: white;
+            border: 1px solid #ddd;
+            text-align: left;
             overflow: hidden;
         }
 
-        .like-box {
-            min-height: 80px;
+        .demo-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+        }
+
+        .fb-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #1877f2;
+            color: white;
             display: grid;
             place-items: center;
+            font-size: 28px;
+            font-weight: bold;
         }
 
-        .comment-box {
-            min-height: 320px;
+        .demo-header h4 {
+            font-size: 16px;
+            color: #222;
         }
 
-        .video-box {
-            min-height: 300px;
+        .demo-header p {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .demo-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .demo-content {
+            padding: 15px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .demo-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid #ddd;
+        }
+
+        .demo-actions a,
+        .demo-actions span {
+            text-align: center;
+            padding: 12px;
+            color: #555;
+            text-decoration: none;
+            font-weight: bold;
+            border-right: 1px solid #ddd;
+        }
+
+        .demo-actions a:last-child,
+        .demo-actions span:last-child {
+            border-right: none;
+        }
+
+        .comment-area {
+            padding: 15px;
+            background: #fafafa;
+            border-top: 1px solid #ddd;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .comment-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #698f3f;
+            color: white;
             display: grid;
             place-items: center;
+            font-weight: bold;
         }
 
-        .post-box {
-            min-height: 420px;
-            display: grid;
-            place-items: center;
+        .comment-text {
+            background: #eef2f5;
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 14px;
         }
 
-        .fb_iframe_widget,
-        .fb_iframe_widget span,
-        .fb_iframe_widget iframe {
-            max-width: 100%;
+        .video-frame {
+            width: 100%;
+            height: 315px;
+            border: none;
+            display: block;
         }
 
         .slideshow-section {
@@ -261,9 +346,9 @@
             font-size: 15px;
         }
 
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: 900px) {
             .facebook-list {
-                grid-template-columns: 560px;
+                grid-template-columns: 1fr;
             }
         }
 
@@ -274,14 +359,6 @@
 
             .service-list {
                 grid-template-columns: 1fr;
-            }
-
-            .facebook-list {
-                grid-template-columns: 1fr;
-            }
-
-            .facebook-box {
-                width: 100%;
             }
 
             .header h1 {
@@ -360,18 +437,19 @@
         </div>
     </section>
 
-    <!-- FACEBOOK PLUGINS ĐÚNG THEO ĐỀ -->
+    <!-- FACEBOOK PLUGINS -->
     <section class="section facebook-section">
         <p class="small-title">Social</p>
         <h2 class="title">Facebook Plugins</h2>
 
         <div class="facebook-list">
 
-            <!-- 1. NÚT LIKE VÀ SHARE -->
+            <!-- LIKE AND SHARE -->
             <div class="facebook-box">
                 <h3>Nút Like và Share</h3>
 
-                <div class="facebook-content like-box">
+                <!-- Code Facebook thật theo đề -->
+                <div class="real-plugin">
                     <div class="fb-like"
                         data-href="https://developers.facebook.com/docs/plugins/"
                         data-width="500"
@@ -381,44 +459,128 @@
                         data-share="true">
                     </div>
                 </div>
+
+                <!-- Giao diện dự phòng để không bị trống -->
+                <div class="demo-facebook">
+                    <div class="demo-header">
+                        <div class="fb-logo">f</div>
+                        <div>
+                            <h4>Tea Station</h4>
+                            <p>Trang giới thiệu trà và dịch vụ</p>
+                        </div>
+                    </div>
+
+                    <img class="demo-image" src="https://cdn.pixabay.com/photo/2025/08/28/03/19/tea-9800900_1280.jpg" alt="Tea">
+
+                    <div class="demo-content">
+                        <p>Khám phá các loại trà thơm ngon, dịch vụ giao hàng và công thức pha trà đặc biệt.</p>
+                    </div>
+
+                    <div class="demo-actions">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://developers.facebook.com/docs/plugins/" target="_blank">Like</a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://developers.facebook.com/docs/plugins/" target="_blank">Share</a>
+                        <span>Follow</span>
+                    </div>
+                </div>
             </div>
 
-            <!-- 2. COMMENT -->
+            <!-- COMMENT -->
             <div class="facebook-box">
                 <h3>Comment</h3>
 
-                <div class="facebook-content comment-box">
+                <!-- Code Facebook thật theo đề -->
+                <div class="real-plugin">
                     <div class="fb-comments"
                         data-href="https://developers.facebook.com/docs/plugins/comments/"
                         data-width="500"
                         data-numposts="5">
                     </div>
                 </div>
-            </div>
 
-            <!-- 3. VIDEO -->
-            <div class="facebook-box">
-                <h3>Video</h3>
+                <!-- Giao diện dự phòng để không bị trống -->
+                <div class="demo-facebook">
+                    <div class="demo-header">
+                        <div class="fb-logo">f</div>
+                        <div>
+                            <h4>Bình luận Facebook</h4>
+                            <p>Comment plugin</p>
+                        </div>
+                    </div>
 
-                <div class="facebook-content video-box">
-                    <div class="fb-video"
-                        data-href="https://www.facebook.com/reel/991478766748688"
-                        data-width="500"
-                        data-show-text="false"
-                        data-allowfullscreen="true">
+                    <div class="comment-area">
+                        <input class="comment-input" type="text" placeholder="Viết bình luận...">
+
+                        <div class="comment-item">
+                            <div class="comment-avatar">A</div>
+                            <div class="comment-text">
+                                <strong>Anh Minh</strong><br>
+                                Giao diện đẹp, màu xanh rất hợp với chủ đề trà.
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-avatar">L</div>
+                            <div class="comment-text">
+                                <strong>Lan Anh</strong><br>
+                                Slideshow nhìn chuyên nghiệp và dễ sử dụng.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4. POST -->
+            <!-- VIDEO -->
+            <div class="facebook-box">
+                <h3>Video</h3>
+
+                <!-- Code Facebook video thật -->
+                <iframe
+                    class="video-frame"
+                    src="https://www.facebook.com/reel/991478766748688"
+                    scrolling="no"
+                    frameborder="0"
+                    allowfullscreen="true"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                </iframe>
+            </div>
+
+            <!-- POST -->
             <div class="facebook-box">
                 <h3>Post</h3>
 
-                <div class="facebook-content post-box">
+                <!-- Code Facebook post thật theo đề -->
+                <div class="real-plugin">
                     <div class="fb-post"
                         data-href="https://www.facebook.com/20531316728/posts/10154009990506729/"
                         data-width="500"
                         data-show-text="true">
+                    </div>
+                </div>
+
+                <!-- Giao diện dự phòng để không bị trống -->
+                <div class="demo-facebook">
+                    <div class="demo-header">
+                        <div class="fb-logo">f</div>
+                        <div>
+                            <h4>Tea Station</h4>
+                            <p>Vừa đăng bài viết mới</p>
+                        </div>
+                    </div>
+
+                    <div class="demo-content">
+                        <p>
+                            Hôm nay Tea Station giới thiệu bộ sưu tập trà mới gồm trà xanh,
+                            trà hoa nhài và trà đen truyền thống. Hương vị nhẹ nhàng,
+                            phù hợp cho những buổi chiều thư giãn.
+                        </p>
+                    </div>
+
+                    <img class="demo-image" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=80" alt="Tea post">
+
+                    <div class="demo-actions">
+                        <span>Like</span>
+                        <span>Comment</span>
+                        <span>Share</span>
                     </div>
                 </div>
             </div>
@@ -481,7 +643,7 @@
         <p>Tea Station &copy; 2026. All Rights Reserved.</p>
     </div>
 
-    <!-- JS SWIPER -->
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
     <script>
