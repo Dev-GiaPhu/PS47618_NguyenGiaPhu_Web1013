@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 8.1 - JavaScript Không Cần Viết Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- LIGHTBOX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f1f5f8;
+            color: #333;
+        }
+
+        .menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 99;
+            background-color: white;
+            border: none;
+            color: #698f3f;
+            font-size: 28px;
+            padding: 8px 13px;
+            cursor: pointer;
+        }
+
+        .hero {
+            height: 350px;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url("https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            color: #9ec46a;
+            font-family: cursive;
+            font-size: 30px;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .section {
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .small-title {
+            color: #698f3f;
+            font-family: cursive;
+            font-size: 30px;
+            letter-spacing: 4px;
+        }
+
+        .title {
+            font-size: 32px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .about {
+            background-color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+            text-align: left;
+        }
+
+        .about-img {
+            height: 360px;
+            border: 5px solid #698f3f;
+            overflow: hidden;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 25% 50%;
+            display: block;
+        }
+
+        .about-content h2 {
+            color: #698f3f;
+            font-family: cursive;
+            font-size: 32px;
+        }
+
+        .about-content h3 {
+            font-size: 30px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #698f3f;
+            color: white;
+            padding: 12px 18px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+
+        .products {
+            background-color: #f1f5f8;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #c7d5b8;
+            padding: 15px;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-card h3 {
+            color: #698f3f;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin: 18px 0 8px;
+        }
+
+        .product-card p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .video-section {
+            background-color: white;
+        }
+
+        .video-box {
+            max-width: 850px;
+            margin: 0 auto;
+            border: 5px solid #698f3f;
+            background-color: #000;
+        }
+
+        .video-box iframe {
+            width: 100%;
+            height: 470px;
+            display: block;
+            border: none;
+        }
+
+        .map-section {
+            background-color: #f1f5f8;
+        }
+
+        .map-box {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 5px solid #698f3f;
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 450px;
+            display: block;
+            border: none;
+        }
+
+        .footer {
+            background-color: #2f3a33;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .footer p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer span {
+            color: #9ec46a;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 768px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .video-box iframe {
+                height: 260px;
+            }
+
+            .map-box iframe {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="menu">☰</button>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <h2>Over one hundred flavors of tea</h2>
+            <h1>Tea Station</h1>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about">
+        <div class="about-img">
+            <img src="https://images.pexels.com/photos/33983463/pexels-photo-33983463/free-photo-of-lush-green-tea-fields-in-phu-th-vietnam.jpeg" alt="Tea field">
+        </div>
+
+        <div class="about-content">
+            <h2>About Our</h2>
+            <h3>Tea Station</h3>
+
+            <p>
+                Tea Station là website giới thiệu các loại trà xanh, trà nóng,
+                trà thảo mộc và dịch vụ liên quan đến trà.
+            </p>
+
+            <p>
+                Nội dung bài lab này tích hợp các tiện ích như Google Map,
+                YouTube và Lightbox bằng thư viện có sẵn.
+            </p>
+
+            <a href="#map" class="btn">Xem bản đồ</a>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX PRODUCTS -->
+    <section class="section products">
+        <p class="small-title">Products</p>
+        <h2 class="title">Tea Gallery Lightbox</h2>
+
+        <div class="product-list">
+
+            <div class="product-card">
+                <a href="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=1600&q=80" class="glightbox" data-gallery="tea-gallery">
+                    <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=800&q=80" alt="Green Tea">
+                </a>
+
+                <h3>Green Tea</h3>
+                <p>Trà xanh thanh mát, phù hợp với phong cách tự nhiên của website.</p>
+            </div>
+
+            <div class="product-card">
+                <a href="https://cdn.pixabay.com/photo/2025/08/28/03/19/tea-9800900_1280.jpg" class="glightbox" data-gallery="tea-gallery">
+                    <img src="https://cdn.pixabay.com/photo/2025/08/28/03/19/tea-9800900_1280.jpg" alt="Tea Cup">
+                </a>
+
+                <h3>Hot Tea</h3>
+                <p>Hình ảnh tách trà nóng dùng để minh họa sản phẩm khi bấm lightbox.</p>
+            </div>
+
+            <div class="product-card">
+                <a href="https://images.pexels.com/photos/33983463/pexels-photo-33983463/free-photo-of-lush-green-tea-fields-in-phu-th-vietnam.jpeg" class="glightbox" data-gallery="tea-gallery">
+                    <img src="https://images.pexels.com/photos/33983463/pexels-photo-33983463/free-photo-of-lush-green-tea-fields-in-phu-th-vietnam.jpeg" alt="Tea Field">
+                </a>
+
+                <h3>Tea Field</h3>
+                <p>Đồi trà xanh dùng để thể hiện nguồn gốc tự nhiên của sản phẩm.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- YOUTUBE -->
+    <section class="section video-section">
+        <p class="small-title">Video</p>
+        <h2 class="title">YouTube Tea Video</h2>
+
+        <div class="video-box">
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/ExtFskrOHUQ"
+                title="Stop Ruining Green Tea - Brew It Properly"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe
+        </div>
+    </section>
+
+    <!-- GOOGLE MAP -->
+    <section class="section map-section" id="map">
+        <p class="small-title">Location</p>
+        <h2 class="title">Google Map</h2>
+
+        <div class="map-box">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105438.36873544127!2d106.65435394669633!3d10.858917265393387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d7de75557381%3A0x9b13b354b3414d7d!2zVOG6rXAgxJFvw6BuIE7GsOG7m2MgZ2nhuqNpIGtow6F0IFTDom4gSGnhu4dwIFBow6F0!5e0!3m2!1svi!2s!4v1781421663211!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            &copy; 2026 <span>TEA STATION</span>. Designed for Lab 8.1.
+        </p>
+        <p>
+            Tích hợp Google Map, YouTube và Lightbox bằng thư viện JavaScript.
+        </p>
+    </footer>
+
+    <!-- LIGHTBOX JS -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <script>
+        const lightbox = GLightbox({
+            selector: ".glightbox"
+        });
+    </script>
+
+</body>
+</html>

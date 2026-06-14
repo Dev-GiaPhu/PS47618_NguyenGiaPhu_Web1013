@@ -2,10 +2,10 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Lab 7.2 - JavaScript Không Cần Viết Code</title>
+    <title>Lab 7.2 - Facebook Plugin và Swiper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Swiper CSS -->
+    <!-- CSS Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 
     <style>
@@ -148,153 +148,90 @@
             letter-spacing: 2px;
         }
 
-        /* FACEBOOK SECTION */
+        /* =========================
+           FACEBOOK SECTION
+        ========================== */
 
         .facebook-section {
             background: white;
         }
 
-        .facebook-list {
+        .facebook-layout {
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+
             display: grid;
-            grid-template-columns: repeat(2, minmax(360px, 560px));
+            grid-template-columns: repeat(2, 540px);
+            gap: 30px;
             justify-content: center;
-            gap: 35px;
+            align-items: start;
         }
 
-        .facebook-box {
+        .facebook-card {
+            width: 540px;
             background: #f1f5f8;
-            border: 1px solid #c7d5b8;
-            padding: 25px;
+            border: 1px solid #b7c8a6;
+            padding: 18px;
             text-align: center;
         }
 
-        .facebook-box h3 {
+        .facebook-card h3 {
             color: #698f3f;
-            font-size: 22px;
+            font-size: 16px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
 
-        .real-plugin {
-            min-height: 20px;
-            margin-bottom: 15px;
-        }
-
-        .demo-facebook {
-            width: 100%;
+        .facebook-inner {
+            width: 500px;
+            max-width: 100%;
+            margin: 0 auto;
             background: white;
-            border: 1px solid #ddd;
-            text-align: left;
             overflow: hidden;
         }
 
-        .demo-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px;
-        }
-
-        .fb-logo {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: #1877f2;
-            color: white;
-            display: grid;
-            place-items: center;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .demo-header h4 {
-            font-size: 16px;
-            color: #222;
-        }
-
-        .demo-header p {
-            font-size: 13px;
-            color: #777;
-        }
-
-        .demo-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
+        .facebook-frame {
+            width: 500px;
+            max-width: 100%;
+            border: none;
             display: block;
+            background: white;
         }
 
-        .demo-content {
-            padding: 15px;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .demo-actions {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            border-top: 1px solid #ddd;
-        }
-
-        .demo-actions a,
-        .demo-actions span {
-            text-align: center;
-            padding: 12px;
-            color: #555;
-            text-decoration: none;
-            font-weight: bold;
-            border-right: 1px solid #ddd;
-        }
-
-        .demo-actions a:last-child,
-        .demo-actions span:last-child {
-            border-right: none;
-        }
-
-        .comment-area {
-            padding: 15px;
-            background: #fafafa;
-            border-top: 1px solid #ddd;
-        }
-
-        .comment-input {
+        .share-card {
+            grid-column: 1 / -1;
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            font-size: 14px;
         }
 
-        .comment-item {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .comment-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #698f3f;
-            color: white;
+        .share-inner {
+            height: 70px;
             display: grid;
             place-items: center;
-            font-weight: bold;
         }
 
-        .comment-text {
-            background: #eef2f5;
-            padding: 10px 14px;
-            border-radius: 16px;
-            font-size: 14px;
+        .share-frame {
+            width: 145px;
+            height: 32px;
+            border: none;
+            overflow: hidden;
+        }
+
+        .post-frame {
+            height: 610px;
+        }
+
+        .page-frame {
+            height: 610px;
         }
 
         .video-frame {
-            width: 100%;
-            height: 315px;
-            border: none;
-            display: block;
+            height: 610px;
         }
+
+        /* =========================
+           SWIPER SECTION
+        ========================== */
 
         .slideshow-section {
             background: #111;
@@ -346,19 +283,37 @@
             font-size: 15px;
         }
 
-        @media screen and (max-width: 900px) {
-            .facebook-list {
-                grid-template-columns: 1fr;
+        @media screen and (max-width: 1150px) {
+            .facebook-layout {
+                grid-template-columns: 540px;
+            }
+
+            .share-card {
+                grid-column: auto;
+                width: 540px;
             }
         }
 
         @media screen and (max-width: 768px) {
+            .section {
+                padding: 50px 5%;
+            }
+
             .about {
                 grid-template-columns: 1fr;
             }
 
             .service-list {
                 grid-template-columns: 1fr;
+            }
+
+            .facebook-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .facebook-card,
+            .share-card {
+                width: 100%;
             }
 
             .header h1 {
@@ -374,13 +329,6 @@
 </head>
 
 <body>
-
-    <!-- FACEBOOK SDK -->
-    <div id="fb-root"></div>
-
-    <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0">
-    </script>
 
     <!-- HEADER -->
     <div class="header">
@@ -442,146 +390,69 @@
         <p class="small-title">Social</p>
         <h2 class="title">Facebook Plugins</h2>
 
-        <div class="facebook-list">
+        <div class="facebook-layout">
 
-            <!-- LIKE AND SHARE -->
-            <div class="facebook-box">
-                <h3>Nút Like và Share</h3>
+            <!-- SHARE BUTTON -->
+            <div class="facebook-card share-card">
+                <h3>Share Button</h3>
 
-                <!-- Code Facebook thật theo đề -->
-                <div class="real-plugin">
-                    <div class="fb-like"
-                        data-href="https://developers.facebook.com/docs/plugins/"
-                        data-width="500"
-                        data-layout="standard"
-                        data-action="like"
-                        data-size="large"
-                        data-share="true">
-                    </div>
-                </div>
-
-                <!-- Giao diện dự phòng để không bị trống -->
-                <div class="demo-facebook">
-                    <div class="demo-header">
-                        <div class="fb-logo">f</div>
-                        <div>
-                            <h4>Tea Station</h4>
-                            <p>Trang giới thiệu trà và dịch vụ</p>
-                        </div>
-                    </div>
-
-                    <img class="demo-image" src="https://cdn.pixabay.com/photo/2025/08/28/03/19/tea-9800900_1280.jpg" alt="Tea">
-
-                    <div class="demo-content">
-                        <p>Khám phá các loại trà thơm ngon, dịch vụ giao hàng và công thức pha trà đặc biệt.</p>
-                    </div>
-
-                    <div class="demo-actions">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://developers.facebook.com/docs/plugins/" target="_blank">Like</a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://developers.facebook.com/docs/plugins/" target="_blank">Share</a>
-                        <span>Follow</span>
-                    </div>
+                <div class="facebook-inner share-inner">
+                    <iframe
+                        class="share-frame"
+                        src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2Ftraxanhkhongdo.txkd%2Fposts%2F1188026946702116%2F&layout=button_count&size=large&width=145&height=32"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
                 </div>
             </div>
 
-            <!-- COMMENT -->
-            <div class="facebook-box">
-                <h3>Comment</h3>
+            <!-- EMBEDDED POST -->
+            <div class="facebook-card">
+                <h3>Embedded Post</h3>
 
-                <!-- Code Facebook thật theo đề -->
-                <div class="real-plugin">
-                    <div class="fb-comments"
-                        data-href="https://developers.facebook.com/docs/plugins/comments/"
-                        data-width="500"
-                        data-numposts="5">
-                    </div>
-                </div>
-
-                <!-- Giao diện dự phòng để không bị trống -->
-                <div class="demo-facebook">
-                    <div class="demo-header">
-                        <div class="fb-logo">f</div>
-                        <div>
-                            <h4>Bình luận Facebook</h4>
-                            <p>Comment plugin</p>
-                        </div>
-                    </div>
-
-                    <div class="comment-area">
-                        <input class="comment-input" type="text" placeholder="Viết bình luận...">
-
-                        <div class="comment-item">
-                            <div class="comment-avatar">A</div>
-                            <div class="comment-text">
-                                <strong>Anh Minh</strong><br>
-                                Giao diện đẹp, màu xanh rất hợp với chủ đề trà.
-                            </div>
-                        </div>
-
-                        <div class="comment-item">
-                            <div class="comment-avatar">L</div>
-                            <div class="comment-text">
-                                <strong>Lan Anh</strong><br>
-                                Slideshow nhìn chuyên nghiệp và dễ sử dụng.
-                            </div>
-                        </div>
-                    </div>
+                <div class="facebook-inner">
+                    <iframe
+                        class="facebook-frame post-frame"
+                        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftraxanhkhongdo.txkd%2Fposts%2F1188026946702116%2F&show_text=true&width=500"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
                 </div>
             </div>
 
-            <!-- VIDEO -->
-            <div class="facebook-box">
-                <h3>Video</h3>
+            <!-- PAGE PLUGIN -->
+            <div class="facebook-card">
+                <h3>Page Plugin</h3>
 
-                <!-- Code Facebook video thật -->
-                <iframe
-                    class="video-frame"
-                    src="https://www.facebook.com/reel/991478766748688"
-                    scrolling="no"
-                    frameborder="0"
-                    allowfullscreen="true"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                </iframe>
+                <div class="facebook-inner">
+                    <iframe
+                        class="facebook-frame page-frame"
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftraxanhkhongdo.txkd&tabs=timeline&width=500&height=610&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                </div>
             </div>
 
-            <!-- POST -->
-            <div class="facebook-box">
-                <h3>Post</h3>
+            <!-- EMBEDDED VIDEO -->
+            <div class="facebook-card">
+                <h3>Embedded Video</h3>
 
-                <!-- Code Facebook post thật theo đề -->
-                <div class="real-plugin">
-                    <div class="fb-post"
-                        data-href="https://www.facebook.com/20531316728/posts/10154009990506729/"
-                        data-width="500"
-                        data-show-text="true">
-                    </div>
-                </div>
-
-                <!-- Giao diện dự phòng để không bị trống -->
-                <div class="demo-facebook">
-                    <div class="demo-header">
-                        <div class="fb-logo">f</div>
-                        <div>
-                            <h4>Tea Station</h4>
-                            <p>Vừa đăng bài viết mới</p>
-                        </div>
-                    </div>
-
-                    <div class="demo-content">
-                        <p>
-                            Hôm nay Tea Station giới thiệu bộ sưu tập trà mới gồm trà xanh,
-                            trà hoa nhài và trà đen truyền thống. Hương vị nhẹ nhàng,
-                            phù hợp cho những buổi chiều thư giãn.
-                        </p>
-                    </div>
-
-                    <img class="demo-image" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=80" alt="Tea post">
-
-                    <div class="demo-actions">
-                        <span>Like</span>
-                        <span>Comment</span>
-                        <span>Share</span>
-                    </div>
+                <div class="facebook-inner">
+                    <iframe
+                        class="facebook-frame video-frame"
+                        src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ftraxanhkhongdo.txkd%2Fvideos%2F2242689699539153%2F&show_text=false&width=500"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
                 </div>
             </div>
 
@@ -643,7 +514,7 @@
         <p>Tea Station &copy; 2026. All Rights Reserved.</p>
     </div>
 
-    <!-- Swiper JS -->
+    <!-- JS Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
     <script>

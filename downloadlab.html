@@ -331,6 +331,15 @@
       transform: translateY(-3px);
     }
 
+    .page-link.host-link {
+      border-color: rgba(22, 163, 74, 0.55);
+      color: #16a34a;
+    }
+
+    .page-link.host-link:hover {
+      color: #111827;
+    }
+
     .page-empty {
       font-family: "Lora", serif;
       font-size: 14px;
@@ -537,6 +546,10 @@
       return `${githubConfig.pagesBaseUrl}/${filePath}`;
     }
 
+    function getRawFileUrl(filePath) {
+      return `https://raw.githubusercontent.com/${githubConfig.owner}/${githubConfig.repo}/${githubConfig.branch}/${filePath}?t=${Date.now()}`;
+    }
+
     function getTopLabName(path) {
       const prefix = githubConfig.folderPath + "/";
       const pathWithoutPrefix = path.slice(prefix.length);
@@ -607,6 +620,66 @@
       itemCount.textContent = "0";
     }
 
+    function parseHostLinkFromHtml(htmlText) {
+      //   Format cần đặt ở đầu file HTML bài Lab:
+
+      //   <!-- HOST: https://link-host-rieng-cua-bai.com -->
+
+      //   Không cần JS trong file bài Lab.
+      //   Chỉ là comment HTML bình thường.
+      const firstPart = htmlText.slice(0, 3000);
+      const hostMatch = firstPart.match(/<!--\s*HOST\s*:\s*(https?:\/\/[^\s<>"]+)\s*-->/i);
+
+      if (!hostMatch) {
+        return "";
+      }
+
+      return hostMatch[1].trim();
+    }
+
+    async function readHostLinkFromFile(filePath) {
+      try {
+        const response = await fetch(getRawFileUrl(filePath), {
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          return "";
+        }
+
+        const htmlText = await response.text();
+        return parseHostLinkFromHtml(htmlText);
+      } catch (error) {
+        return "";
+      }
+    }
+
+    async function applyHostLinksToLabs(labs) {
+      const tasks = [];
+
+      labs.forEach(function(lab) {
+        Object.keys(lab.subFolders).forEach(function(folderName) {
+          lab.subFolders[folderName].forEach(function(file) {
+            const task = readHostLinkFromFile(file.path).then(function(hostLink) {
+              file.hostLink = hostLink;
+            });
+
+            tasks.push(task);
+          });
+        });
+      });
+
+      await Promise.all(tasks);
+    }
+
+    function getOpenPageUrl(file) {
+      if (file.hostLink) {
+        return file.hostLink;
+      }
+
+      return getGithubPagesUrl(file.path);
+    }
+
     function createFileButtons(htmlFiles) {
       if (!htmlFiles.length) {
         return `
@@ -618,11 +691,12 @@
 
       return htmlFiles.map(function(file) {
         const fileName = getFileName(file.path);
-        const pageUrl = getGithubPagesUrl(file.path);
+        const pageUrl = getOpenPageUrl(file);
+        const isHostLink = Boolean(file.hostLink);
 
         return `
-          <a class="page-link" href="${pageUrl}" target="_blank" rel="noopener noreferrer" title="Mở ${file.path}">
-            <i class="fa-solid fa-up-right-from-square"></i>
+          <a class="page-link ${isHostLink ? "host-link" : ""}" href="${pageUrl}" target="_blank" rel="noopener noreferrer" title="Mở ${file.path}">
+            <i class="fa-solid ${isHostLink ? "fa-globe" : "fa-up-right-from-square"}"></i>
             ${fileName}
           </a>
         `;
@@ -801,6 +875,8 @@
         }
 
         const labs = groupLabsFromTree(data.tree);
+
+        await applyHostLinksToLabs(labs);
 
         renderDownloadItems(labs);
       } catch (error) {
