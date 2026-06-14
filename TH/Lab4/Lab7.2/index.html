@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 7.2 - JavaScript Không Cần Viết Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link CSS của Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f8;
+            color: #333;
+        }
+
+        .header {
+            height: 350px;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+            url("https://cdn.pixabay.com/photo/2025/08/28/03/19/tea-9800900_1280.jpg");
+            background-size: cover;
+            background-position: center;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .header p {
+            font-size: 22px;
+            color: #9ec46a;
+            margin-bottom: 15px;
+            font-family: cursive;
+            letter-spacing: 3px;
+        }
+
+        .header h1 {
+            font-size: 46px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .section {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .small-title {
+            color: #698f3f;
+            font-family: cursive;
+            font-size: 30px;
+            letter-spacing: 4px;
+        }
+
+        .title {
+            font-size: 32px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .about {
+            background: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            text-align: left;
+        }
+
+        .about-img {
+            height: 350px;
+            border: 5px solid #698f3f;
+            overflow: hidden;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 25% 50%;
+            display: block;
+        }
+
+        .about-content h2 {
+            color: #698f3f;
+            font-family: cursive;
+            font-size: 32px;
+        }
+
+        .about-content h3 {
+            font-size: 30px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #698f3f;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .services {
+            background: #f1f5f8;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #698f3f;
+            color: white;
+            border: 4px solid #698f3f;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-card h3 {
+            padding: 30px 15px;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .plugin-section {
+            background: white;
+        }
+
+        .plugin-box {
+            max-width: 850px;
+            margin: 25px auto;
+            padding: 25px;
+            background: #f1f5f8;
+            border: 1px solid #c7d5b8;
+        }
+
+        .plugin-box h3 {
+            color: #698f3f;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .slideshow-section {
+            background: #111;
+            color: white;
+        }
+
+        .slideshow-section .title {
+            color: white;
+        }
+
+        .swiper {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 70px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 320px;
+            height: 320px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 4px solid #698f3f;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-pagination-bullet {
+            background: white;
+            opacity: 0.7;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #698f3f;
+            opacity: 1;
+        }
+
+        .footer {
+            background: #2f3a33;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 34px;
+            }
+
+            .swiper-slide {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0">
+    </script>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div>
+            <p>Over one hundred flavors of tea</p>
+            <h1>Tea Station</h1>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section about">
+        <div class="about-img">
+            <img src="https://images.pexels.com/photos/33983463/pexels-photo-33983463/free-photo-of-lush-green-tea-fields-in-phu-th-vietnam.jpeg" alt="Tea field">
+        </div>
+
+        <div class="about-content">
+            <h2>About Our</h2>
+            <h3>Tea Station</h3>
+
+            <p>
+                Once upon a time we only had a couple of teapots and enjoyed tea only with our family.
+                Over time, we were able to afford to buy a small tea plantation.
+            </p>
+
+            <p>
+                Now we have a whole teahouse and we delight many people with delicious and hot tea.
+                We serve black tea, green tea, jasmine tea and many other flavors.
+            </p>
+
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services">
+        <p class="small-title">Explore</p>
+        <h2 class="title">Our Services</h2>
+
+        <div class="service-list">
+            <div class="service-card">
+                <img src="https://cdn.pixabay.com/photo/2025/08/28/03/19/tea-9800900_1280.jpg" alt="Custom Recipe Service">
+                <h3>Custom Recipe Service</h3>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=1200&q=80" alt="Home Delivery Service">
+                <h3>Home Delivery Service</h3>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=1200&q=80" alt="Tea Aging Service">
+                <h3>Tea Aging Service</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACEBOOK PLUGINS -->
+    <section class="section plugin-section">
+        <p class="small-title">Social</p>
+        <h2 class="title">Facebook Plugins</h2>
+
+        <div class="plugin-box">
+            <h3>Nút Like và Share</h3>
+
+            <div class="fb-like"
+                data-href="https://www.facebook.com/facebook"
+                data-width=""
+                data-layout="button_count"
+                data-action="like"
+                data-size="large"
+                data-share="true">
+            </div>
+        </div>
+
+        <div class="plugin-box">
+            <h3>Comment</h3>
+
+            <div class="fb-comments"
+                data-href="https://www.facebook.com/facebook"
+                data-width="100%"
+                data-numposts="5">
+            </div>
+        </div>
+
+        <div class="plugin-box">
+            <h3>Video</h3>
+
+            <div class="fb-video"
+                data-href="https://www.facebook.com/facebook/videos/10153231379946729/"
+                data-width="500"
+                data-show-text="false">
+            </div>
+        </div>
+
+        <div class="plugin-box">
+            <h3>Post</h3>
+
+            <div class="fb-post"
+                data-href="https://www.facebook.com/Facebook/posts/10154009990506729"
+                data-width="500">
+            </div>
+        </div>
+    </section>
+
+    <!-- SWIPER SLIDESHOW -->
+    <section class="section slideshow-section">
+        <p class="small-title">Gallery</p>
+        <h2 class="title">Tea Slideshow</h2>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="https://cdn.pixabay.com/photo/2025/08/28/03/19/tea-9800900_1280.jpg" alt="Tea image 1">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.pexels.com/photos/33983463/pexels-photo-33983463/free-photo-of-lush-green-tea-fields-in-phu-th-vietnam.jpeg" alt="Tea image 2">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=80" alt="Tea image 3">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=1200&q=80" alt="Tea image 4">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=1200&q=80" alt="Tea image 5">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=1200&q=80" alt="Tea image 6">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=1200&q=80" alt="Tea image 7">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=1200&q=80" alt="Tea image 8">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=1200&q=80" alt="Tea image 9">
+                </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>Tea Station &copy; 2026. All Rights Reserved.</p>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <!-- Khởi tạo Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true
+            },
+
+            pagination: {
+                el: ".swiper-pagination"
+            }
+        });
+    </script>
+
+</body>
+</html>
