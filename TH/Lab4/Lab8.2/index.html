@@ -737,6 +737,199 @@
             }
         }
 
+
+        /* =========================
+           CHAT BOX - CSS ONLY
+        ========================== */
+
+        #chat-toggle {
+            display: none;
+        }
+
+        .chat-widget {
+            position: fixed;
+            right: 2.4rem;
+            bottom: 2.4rem;
+            z-index: 1200;
+            font-family: "Catamaran", sans-serif;
+        }
+
+        .chat-button {
+            width: 5.8rem;
+            height: 5.8rem;
+            border-radius: 50%;
+            background: var(--primaryColor);
+            color: var(--mainWhite);
+            box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.28);
+            display: grid;
+            place-items: center;
+            font-size: 2.8rem;
+            cursor: pointer;
+            transition: var(--mainTransition);
+        }
+
+        .chat-button:hover {
+            background: var(--primaryDark);
+            transform: translateY(-0.4rem);
+        }
+
+        .chat-close {
+            display: none;
+            font-size: 3.2rem;
+            line-height: 1;
+        }
+
+        #chat-toggle:checked ~ .chat-widget .chat-open {
+            display: none;
+        }
+
+        #chat-toggle:checked ~ .chat-widget .chat-close {
+            display: block;
+        }
+
+        .chat-panel {
+            position: absolute;
+            right: 0;
+            bottom: 7.5rem;
+            width: 34rem;
+            max-width: calc(100vw - 4rem);
+            background: var(--mainWhite);
+            border: 0.2rem solid rgba(105, 143, 63, 0.45);
+            box-shadow: 0 1.4rem 3.5rem rgba(0, 0, 0, 0.24);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(1.5rem);
+            pointer-events: none;
+            transition: var(--mainTransition);
+            overflow: hidden;
+        }
+
+        #chat-toggle:checked ~ .chat-widget .chat-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .chat-header {
+            background: var(--primaryDark);
+            color: var(--mainWhite);
+            padding: 1.8rem;
+            text-align: left;
+        }
+
+        .chat-header h3 {
+            font-size: 1.8rem;
+            letter-spacing: 0.15rem;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .chat-header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .chat-body {
+            padding: 1.8rem;
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .chat-message {
+            width: fit-content;
+            max-width: 90%;
+            padding: 1rem 1.2rem;
+            font-size: 1.35rem;
+            line-height: 1.5;
+        }
+
+        .chat-message.bot {
+            background: var(--mainGrey);
+            color: var(--mainDark);
+            border-left: 0.4rem solid var(--primaryColor);
+        }
+
+        .chat-options {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .chat-options a {
+            display: block;
+            padding: 1rem 1.2rem;
+            border: 0.1rem solid rgba(105, 143, 63, 0.45);
+            color: var(--primaryDark);
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: var(--mainTransition);
+        }
+
+        .chat-options a:hover {
+            background: var(--primaryColor);
+            color: var(--mainWhite);
+            border-color: var(--primaryColor);
+        }
+
+        .chat-form {
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 0.4rem;
+        }
+
+        .chat-form input,
+        .chat-form textarea {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: #eef2f6;
+            padding: 1rem 1.1rem;
+            font-size: 1.2rem;
+            color: #555555;
+        }
+
+        .chat-form textarea {
+            min-height: 7rem;
+            resize: none;
+        }
+
+        .chat-form button {
+            border: none;
+            background: var(--primaryColor);
+            color: var(--mainWhite);
+            padding: 1rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--mainTransition);
+        }
+
+        .chat-form button:hover {
+            background: var(--primaryDark);
+        }
+
+        @media (max-width: 560px) {
+            .chat-widget {
+                right: 1.6rem;
+                bottom: 1.6rem;
+            }
+
+            .chat-button {
+                width: 5.2rem;
+                height: 5.2rem;
+                font-size: 2.5rem;
+            }
+
+            .chat-panel {
+                right: -0.4rem;
+                bottom: 6.8rem;
+                width: calc(100vw - 3.2rem);
+            }
+        }
+
     </style>
 </head>
 
@@ -962,6 +1155,44 @@
             </form>
         </div>
     </section>
+
+
+    <!-- CHAT BOX - CSS ONLY -->
+    <input type="checkbox" id="chat-toggle">
+
+    <div class="chat-widget">
+        <div class="chat-panel">
+            <div class="chat-header">
+                <h3>Tea Station Chat</h3>
+                <p>Chúng tôi sẵn sàng hỗ trợ bạn chọn trà và dịch vụ phù hợp.</p>
+            </div>
+
+            <div class="chat-body">
+                <div class="chat-message bot">
+                    Xin chào! Bạn muốn tìm hiểu về loại trà, dịch vụ giao hàng hay công thức pha trà riêng?
+                </div>
+
+                <div class="chat-options">
+                    <a href="#product">Xem sản phẩm trà</a>
+                    <a href="#services">Xem dịch vụ</a>
+                    <a href="#contacts">Liên hệ tư vấn</a>
+                </div>
+
+                <form class="chat-form">
+                    <input type="text" placeholder="Tên của bạn">
+                    <input type="email" placeholder="Email">
+                    <textarea placeholder="Bạn cần tư vấn gì?"></textarea>
+                    <button type="submit">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </div>
+
+        <label for="chat-toggle" class="chat-button" aria-label="Mở hộp chat">
+            <span class="chat-open">💬</span>
+            <span class="chat-close">×</span>
+        </label>
+    </div>
+
 
     <!-- FOOTER -->
     <footer class="footer">
