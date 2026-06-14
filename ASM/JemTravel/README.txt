@@ -1,3 +1,2 @@
-Bản JemTravel đã đồng bộ linh vật với logo web: logo xuất hiện trên trang phục, thẻ phụ kiện, bản đồ và vali. Website không dùng JavaScript, ảnh nằm trong thư mục images.
-
-Code da duoc format xuong dong ro rang de de chinh sua trong VS Code.
+JemTravel - bản nội dung thương mại, footer đúng mẫu và số điện thoại 0123 456 789.
+Giữ nguyên thư mục images/ của project gốc khi chạy website.

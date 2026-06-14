@@ -1,383 +1,468 @@
 <!DOCTYPE html>
 <html lang="vi">
  <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   JemTravel | Khám phá Việt Nam
-  </title>
-  <link href="images/favicon.svg" rel="icon" type="image/svg+xml"/>
-  <link href="style.css" rel="stylesheet"/>
+ <meta charset="utf-8"/>
+ <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+ <meta name="referrer" content="strict-origin-when-cross-origin"/>
+ <title>
+ JemTravel | Khám phá Việt Nam
+ </title>
+ <link href="images/favicon.svg" rel="icon" type="image/svg+xml"/>
+ <link href="style.css" rel="stylesheet"/>
  </head>
  <body class="page-index">
-  <header class="topbar">
-   <div class="container nav">
-    <a aria-label="JemTravel" class="logo" href="index.html">
-     <img alt="JemTravel" class="brand-logo" src="images/logo-jemtravel-light.svg"/>
-    </a>
-    <nav class="menu">
-     <a class="active" href="index.html">
-      Trang chủ
-     </a>
-     <a class="" href="tours.html">
-      Tour
-     </a>
-     <a class="" href="hotels.html">
-      Lưu trú
-     </a>
-     <a class="" href="food.html">
-      Ẩm thực
-     </a>
-     <a class="" href="festival.html">
-      Lễ hội
-     </a>
-     <a class="" href="transport.html">
-      Di chuyển
-     </a>
-     <a class="" href="contact.html">
-      Liên hệ
-     </a>
-    </nav>
-   </div>
-  </header>
-  <main>
-   <section class="hero hero-home" style="--hero:url('images/hero-halong.png')">
-    <div class="hero-inner">
-     <div class="hero-copy">
-      <span class="kicker">
-       Vietnam travel guide
-      </span>
-      <h1>
-       Khám phá Việt Nam qua những hành trình có chiều sâu.
-      </h1>
-      <p>
-       Từ vịnh biển đá vôi ở Quảng Ninh, phố đèn lồng Hội An đến ruộng bậc thang Sa Pa, JemTravel kết nối điểm đến, lịch trình, lưu trú và trải nghiệm địa phương trong một không gian trực quan, rõ ràng và dễ theo dõi.
-      </p>
-      <div class="btns">
-       <a class="btn primary" href="tours.html">
-        Xem tour nổi bật
-       </a>
-       <a class="btn ghost" href="hotels.html">
-        Khám phá lưu trú
-       </a>
-      </div>
-     </div>
-     <div class="hero-mascot-wrap">
-      <img alt="Linh vật JemTravel" class="hero-mascot" src="images/mascot-jemtravel.png"/>
-     </div>
-    </div>
-   </section>
-   <section class="section">
-    <div class="container">
-     <div class="info-grid">
-      <div>
-       <span class="kicker">
-        Điểm đến nổi bật
-       </span>
-       <h2 style="font-family:Inter, 'Be Vietnam Pro', sans-serif;font-size:clamp(2.3rem,4.4vw,4rem);line-height:1.08;letter-spacing:-.02em;margin:14px 0 18px;color:var(--ink)">
-        Ba hình ảnh biểu tượng mở ra ba sắc thái rất khác của Việt Nam.
-       </h2>
-       <p class="lead">
-        Vịnh Hạ Long mang vẻ kỳ vĩ của thiên nhiên, Hội An gợi cảm xúc văn hóa sống động vào buổi tối, còn Sa Pa là nhịp đi chậm giữa khí hậu vùng cao và ruộng bậc thang.
-       </p>
-       <div class="feature-list" style="margin-top:24px">
-        <div class="feature-item">
-         <strong>
-          Hạ Long:
-         </strong>
-         phù hợp với hành trình thư giãn, ngắm cảnh và ngủ đêm trên du thuyền.
-        </div>
-        <div class="feature-item">
-         <strong>
-          Hội An:
-         </strong>
-         phù hợp với cặp đôi, người thích phố cổ, ẩm thực và các trải nghiệm buổi tối.
-        </div>
-        <div class="feature-item">
-         <strong>
-          Sa Pa:
-         </strong>
-         dành cho du khách yêu thiên nhiên, săn mây, bản làng và không khí vùng cao.
-        </div>
-       </div>
-      </div>
-      <div class="mosaic">
-       <a class="zoom-link media-frame large" href="#lb-index-halong">
-        <img alt="Vịnh Hạ Long" src="images/hero-halong.png"/>
-        <span class="zoom-chip">
-         Mở to ảnh
-        </span>
-       </a>
-       <div class="mosaic-side">
-        <a class="zoom-link media-frame" href="#lb-index-hoian">
-         <img alt="Hội An" src="images/tour-hoian.png"/>
-         <span class="zoom-chip">
-          Mở to ảnh
-         </span>
-        </a>
-        <a class="zoom-link media-frame" href="#lb-index-sapa">
-         <img alt="Sa Pa" src="images/tour-sapa.png"/>
-         <span class="zoom-chip">
-          Mở to ảnh
-         </span>
-        </a>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="section alt">
-    <div class="container">
-     <div class="section-head">
-      <div>
-       <span class="kicker">
-        Hướng khám phá
-       </span>
-       <h2>
-        Từ tour đến lưu trú, mỗi trang đều tập trung vào ảnh lớn và thông tin thực tế.
-       </h2>
-      </div>
-      <p>
-       Thay vì trình bày như bài tập đơn giản, JemTravel được sắp theo logic của một website du lịch thật: chọn tour, xem nơi ở, theo dấu món ăn và tìm hiểu bầu không khí văn hóa tại điểm đến.
-      </p>
-     </div>
-     <div class="grid-4">
-      <article class="card">
-       <a class="zoom-link media-frame" href="#lb-card-tour" style="height:320px">
-        <img alt="Tour trọn gói" src="images/tour-halong.png"/>
-        <span class="zoom-chip">
-         Mở to ảnh
-        </span>
-       </a>
-       <div class="card-body">
-        <span class="kicker">
-         Tour
-        </span>
-        <h3>
-         Hành trình được xây sẵn
-        </h3>
-        <p>
-         Mỗi tour có thời lượng, giá tham khảo, lộ trình từng ngày và nhóm du khách phù hợp.
-        </p>
-        <div class="badge-row">
-         <a class="pill" href="tours.html">
-          Xem chi tiết
-         </a>
-        </div>
-       </div>
-      </article>
-      <article class="card">
-       <a class="zoom-link media-frame" href="#lb-card-hotel" style="height:320px">
-        <img alt="Khách sạn và resort" src="images/hotel-phuquoc.png"/>
-        <span class="zoom-chip">
-         Mở to ảnh
-        </span>
-       </a>
-       <div class="card-body">
-        <span class="kicker">
-         Lưu trú
-        </span>
-        <h3>
-         Khách sạn &amp; resort
-        </h3>
-        <p>
-         Chọn nơi ở theo phong cách chuyến đi: nghỉ dưỡng ven biển, khách sạn thành phố hay retreat vùng núi.
-        </p>
-        <div class="badge-row">
-         <a class="pill" href="hotels.html">
-          Xem lưu trú
-         </a>
-        </div>
-       </div>
-      </article>
-      <article class="card">
-       <a class="zoom-link media-frame" href="#lb-card-food" style="height:320px">
-        <img alt="Ẩm thực Việt Nam" src="images/food-pho.png"/>
-        <span class="zoom-chip">
-         Mở to ảnh
-        </span>
-       </a>
-       <div class="card-body">
-        <span class="kicker">
-         Ẩm thực
-        </span>
-        <h3>
-         Món ăn tiêu biểu
-        </h3>
-        <p>
-         Từ phở đến bánh mì, mỗi món là một phần của trải nghiệm điểm đến chứ không chỉ là bữa ăn.
-        </p>
-        <div class="badge-row">
-         <a class="pill" href="food.html">
-          Khám phá món ăn
-         </a>
-        </div>
-       </div>
-      </article>
-      <article class="card">
-       <a class="zoom-link media-frame" href="#lb-card-festival" style="height:320px">
-        <img alt="Lễ hội và văn hóa" src="images/festival-river.png"/>
-        <span class="zoom-chip">
-         Mở to ảnh
-        </span>
-       </a>
-       <div class="card-body">
-        <span class="kicker">
-         Văn hóa
-        </span>
-        <h3>
-         Lễ hội &amp; bầu không khí
-        </h3>
-        <p>
-         Những đêm đèn lồng, không gian ven sông và các mùa lễ hội giúp hành trình có chiều sâu cảm xúc hơn.
-        </p>
-        <div class="badge-row">
-         <a class="pill" href="festival.html">
-          Xem lễ hội
-         </a>
-        </div>
-       </div>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="section">
-    <div class="container quote-strip">
-     <p>
-      “Một website du lịch đẹp không chỉ cần hình ảnh hấp dẫn, mà còn phải kể được nhịp đi của hành trình.”
-     </p>
-     <span>
-      JemTravel Travel Direction
-     </span>
-    </div>
-   </section>
-   <div class="lightbox" id="lb-index-halong">
-    <a aria-label="Đóng" class="lightbox-bg" href="#">
-    </a>
-    <div class="lightbox-inner">
-     <img alt="Vịnh Hạ Long" src="images/hero-halong.png"/>
-     <a class="lightbox-close" href="#">
-      Đóng
-     </a>
-    </div>
-   </div>
-   <div class="lightbox" id="lb-index-hoian">
-    <a aria-label="Đóng" class="lightbox-bg" href="#">
-    </a>
-    <div class="lightbox-inner">
-     <img alt="Hội An" src="images/tour-hoian.png"/>
-     <a class="lightbox-close" href="#">
-      Đóng
-     </a>
-    </div>
-   </div>
-   <div class="lightbox" id="lb-index-sapa">
-    <a aria-label="Đóng" class="lightbox-bg" href="#">
-    </a>
-    <div class="lightbox-inner">
-     <img alt="Sa Pa" src="images/tour-sapa.png"/>
-     <a class="lightbox-close" href="#">
-      Đóng
-     </a>
-    </div>
-   </div>
-   <div class="lightbox" id="lb-card-tour">
-    <a aria-label="Đóng" class="lightbox-bg" href="#">
-    </a>
-    <div class="lightbox-inner">
-     <img alt="Tour Hạ Long" src="images/tour-halong.png"/>
-     <a class="lightbox-close" href="#">
-      Đóng
-     </a>
-    </div>
-   </div>
-   <div class="lightbox" id="lb-card-hotel">
-    <a aria-label="Đóng" class="lightbox-bg" href="#">
-    </a>
-    <div class="lightbox-inner">
-     <img alt="Resort Phú Quốc" src="images/hotel-phuquoc.png"/>
-     <a class="lightbox-close" href="#">
-      Đóng
-     </a>
-    </div>
-   </div>
-   <div class="lightbox" id="lb-card-food">
-    <a aria-label="Đóng" class="lightbox-bg" href="#">
-    </a>
-    <div class="lightbox-inner">
-     <img alt="Phở Việt Nam" src="images/food-pho.png"/>
-     <a class="lightbox-close" href="#">
-      Đóng
-     </a>
-    </div>
-   </div>
-   <div class="lightbox" id="lb-card-festival">
-    <a aria-label="Đóng" class="lightbox-bg" href="#">
-    </a>
-    <div class="lightbox-inner">
-     <img alt="Lễ hội đèn lồng ven sông" src="images/festival-river.png"/>
-     <a class="lightbox-close" href="#">
-      Đóng
-     </a>
-    </div>
-   </div>
-  </main>
-  <footer class="footer">
-   <div class="container footer-grid">
-    <div>
-     <a aria-label="JemTravel" class="logo" href="index.html">
-      <img alt="JemTravel" class="brand-logo" src="images/logo-jemtravel-light.svg"/>
-     </a>
-     <p>
-      JemTravel là website giới thiệu hành trình, lưu trú, ẩm thực và trải nghiệm văn hóa đặc sắc của Việt Nam.
-     </p>
-    </div>
-    <div>
-     <h4>
-      Khám phá
-     </h4>
-     <a href="tours.html">
-      Tour trọn gói
-     </a>
-     <a href="hotels.html">
-      Khách sạn &amp; resort
-     </a>
-     <a href="transport.html">
-      Di chuyển
-     </a>
-    </div>
-    <div>
-     <h4>
-      Cảm hứng
-     </h4>
-     <a href="food.html">
-      Ẩm thực Việt Nam
-     </a>
-     <a href="festival.html">
-      Lễ hội &amp; văn hóa
-     </a>
-     <a href="contact.html">
-      Liên hệ tư vấn
-     </a>
-    </div>
-    <div>
-     <h4>
-      JemTravel
-     </h4>
-     <p>
-      Hotline: 0908 268 268
-     </p>
-     <p>
-      Email: hello@jemtravel.vn
-     </p>
-     <p>
-      Văn phòng: 86 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh
-     </p>
-    </div>
-   </div>
-   <div class="container copy">
-    © 2026 JemTravel. Thiết kế bằng HTML &amp; CSS, ảnh local trong thư mục images.
-   </div>
-  </footer>
+ <header class="topbar">
+ <div class="container nav">
+ <a aria-label="JemTravel" class="logo" href="index.html">
+ <img alt="JemTravel" class="brand-logo" src="images/logo-jemtravel-light.svg"/>
+ </a>
+ <nav class="menu">
+ <a class="active" href="index.html">
+ Trang chủ
+ </a>
+ <a class="" href="tours.html">
+ Tour
+ </a>
+ <a class="" href="hotels.html">
+ Lưu trú
+ </a>
+ <a class="" href="food.html">
+ Ẩm thực
+ </a>
+ <a class="" href="festival.html">
+ Lễ hội
+ </a>
+ <a class="" href="transport.html">
+ Di chuyển
+ </a>
+ <a class="" href="contact.html">
+ Liên hệ
+ </a>
+ </nav>
+ </div>
+ </header>
+ <main>
+ <section class="hero hero-home" style="--hero:url('images/hero-halong.png')">
+ <div class="hero-inner">
+ <div class="hero-copy">
+ <span class="kicker">
+ Vietnam travel guide
+ </span>
+ <h1>
+ Khám phá Việt Nam qua những hành trình có chiều sâu.
+ </h1>
+ <p>
+ Từ vịnh biển đá vôi ở Quảng Ninh, phố đèn lồng Hội An đến ruộng bậc thang Sa Pa, JemTravel kết nối điểm đến, lịch trình, lưu trú và trải nghiệm địa phương để mỗi chuyến đi có nhịp riêng, cảm xúc riêng.
+ </p>
+ <div class="btns">
+ <a class="btn primary" href="tours.html">
+ Xem tour nổi bật
+ </a>
+ <a class="btn ghost" href="hotels.html">
+ Khám phá lưu trú
+ </a>
+ </div>
+ </div>
+ <div class="hero-mascot-wrap">
+ <img alt="Linh vật JemTravel" class="hero-mascot" src="images/mascot-jemtravel.png"/>
+ </div>
+ </div>
+ </section>
+ <section class="section">
+ <div class="container">
+ <div class="info-grid">
+ <div>
+ <span class="kicker">
+ Điểm đến nổi bật
+ </span>
+ <h2 style="font-family:Inter, 'Be Vietnam Pro', sans-serif;font-size:clamp(2.3rem,4.4vw,4rem);line-height:1.08;letter-spacing:-.02em;margin:14px 0 18px;color:var(--ink)">
+ Ba hình ảnh biểu tượng mở ra ba sắc thái rất khác của Việt Nam.
+ </h2>
+ <p class="lead">
+ Vịnh Hạ Long mang vẻ kỳ vĩ của thiên nhiên, Hội An gợi cảm xúc văn hóa sống động vào buổi tối, còn Sa Pa là nhịp đi chậm giữa khí hậu vùng cao và ruộng bậc thang.
+ </p>
+ <div class="feature-list" style="margin-top:24px">
+ <div class="feature-item">
+ <strong>
+ Hạ Long:
+ </strong>
+ phù hợp với hành trình thư giãn, ngắm cảnh và ngủ đêm trên du thuyền.
+ </div>
+ <div class="feature-item">
+ <strong>
+ Hội An:
+ </strong>
+ phù hợp với cặp đôi, người thích phố cổ, ẩm thực và các trải nghiệm buổi tối.
+ </div>
+ <div class="feature-item">
+ <strong>
+ Sa Pa:
+ </strong>
+ dành cho du khách yêu thiên nhiên, săn mây, bản làng và không khí vùng cao.
+ </div>
+ </div>
+ </div>
+ <div class="mosaic">
+ <a class="zoom-link media-frame large" href="#lb-index-halong">
+ <img alt="Vịnh Hạ Long" src="images/hero-halong.png"/>
+ <span class="zoom-chip">
+ Mở to ảnh
+ </span>
+ </a>
+ <div class="mosaic-side">
+ <a class="zoom-link media-frame" href="#lb-index-hoian">
+ <img alt="Hội An" src="images/tour-hoian.png"/>
+ <span class="zoom-chip">
+ Mở to ảnh
+ </span>
+ </a>
+ <a class="zoom-link media-frame" href="#lb-index-sapa">
+ <img alt="Sa Pa" src="images/tour-sapa.png"/>
+ <span class="zoom-chip">
+ Mở to ảnh
+ </span>
+ </a>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+ <section class="section alt">
+ <div class="container">
+ <div class="section-head">
+ <div>
+ <span class="kicker">
+ Hướng khám phá
+ </span>
+ <h2>
+ Khám phá trọn vẹn hành trình từ tour, lưu trú đến ẩm thực và văn hóa.
+ </h2>
+ </div>
+ <p>
+ JemTravel giúp bạn chọn tour phù hợp, tìm nơi ở đúng nhu cầu, thưởng thức món ngon địa phương và cảm nhận bầu không khí văn hóa tại từng điểm đến.
+ </p>
+ </div>
+ <div class="grid-4">
+ <article class="card">
+ <a class="zoom-link media-frame" href="#lb-card-tour" style="height:320px">
+ <img alt="Tour trọn gói" src="images/tour-halong.png"/>
+ <span class="zoom-chip">
+ Mở to ảnh
+ </span>
+ </a>
+ <div class="card-body">
+ <span class="kicker">
+ Tour
+ </span>
+ <h3>
+ Hành trình được xây sẵn
+ </h3>
+ <p>
+ Mỗi tour có thời lượng, giá , lộ trình từng ngày và nhóm du khách phù hợp.
+ </p>
+ <div class="badge-row">
+ <a class="pill" href="tours.html">
+ Xem chi tiết
+ </a>
+ </div>
+ </div>
+ </article>
+ <article class="card">
+ <a class="zoom-link media-frame" href="#lb-card-hotel" style="height:320px">
+ <img alt="Khách sạn và resort" src="images/hotel-phuquoc.png"/>
+ <span class="zoom-chip">
+ Mở to ảnh
+ </span>
+ </a>
+ <div class="card-body">
+ <span class="kicker">
+ Lưu trú
+ </span>
+ <h3>
+ Khách sạn &amp; resort
+ </h3>
+ <p>
+ Chọn nơi ở theo phong cách chuyến đi: nghỉ dưỡng ven biển, khách sạn thành phố hay retreat vùng núi.
+ </p>
+ <div class="badge-row">
+ <a class="pill" href="hotels.html">
+ Xem lưu trú
+ </a>
+ </div>
+ </div>
+ </article>
+ <article class="card">
+ <a class="zoom-link media-frame" href="#lb-card-food" style="height:320px">
+ <img alt="Ẩm thực Việt Nam" src="images/food-pho.png"/>
+ <span class="zoom-chip">
+ Mở to ảnh
+ </span>
+ </a>
+ <div class="card-body">
+ <span class="kicker">
+ Ẩm thực
+ </span>
+ <h3>
+ Món ăn tiêu biểu
+ </h3>
+ <p>
+ Từ phở đến bánh mì, mỗi món là một phần của trải nghiệm điểm đến chứ không chỉ là bữa ăn.
+ </p>
+ <div class="badge-row">
+ <a class="pill" href="food.html">
+ Khám phá món ăn
+ </a>
+ </div>
+ </div>
+ </article>
+ <article class="card">
+ <a class="zoom-link media-frame" href="#lb-card-festival" style="height:320px">
+ <img alt="Lễ hội và văn hóa" src="images/festival-river.png"/>
+ <span class="zoom-chip">
+ Mở to ảnh
+ </span>
+ </a>
+ <div class="card-body">
+ <span class="kicker">
+ Văn hóa
+ </span>
+ <h3>
+ Lễ hội &amp; bầu không khí
+ </h3>
+ <p>
+ Những đêm đèn lồng, không gian ven sông và các mùa lễ hội giúp hành trình có chiều sâu cảm xúc hơn.
+ </p>
+ <div class="badge-row">
+ <a class="pill" href="festival.html">
+ Xem lễ hội
+ </a>
+ </div>
+ </div>
+ </article>
+ </div>
+ </div>
+ </section>
+ <section class="section">
+ <div class="container quote-strip">
+ <p>
+ “Một hành trình đáng nhớ bắt đầu từ lịch trình vừa sức, dịch vụ tin cậy và những trải nghiệm được chọn lọc kỹ lưỡng.”
+ </p>
+ <span>
+ JemTravel Travel Direction
+ </span>
+ </div>
+ </section>
+
+ <section class="section asm-media-section" id="asianstar-media">
+ <div class="container">
+ <div class="section-head compact-head asm-head-centered">
+ <div>
+ <span class="kicker">Dịch vụ nổi bật</span>
+ <h2>JemTravel đồng hành từ ý tưởng chuyến đi đến ngày khởi hành.</h2>
+ </div>
+ <p>JemTravel đồng hành cùng khách hàng từ khâu chọn tour, đặt nơi lưu trú, sắp xếp phương tiện đến gợi ý trải nghiệm phù hợp với ngân sách, thời gian và phong cách du lịch.</p>
+ </div>
+
+ <div class="asm-info-strip clean">
+ <div>
+ <strong>Thiết kế hành trình</strong>
+ <span>Tour biển đảo, phố cổ, vùng cao, du thuyền và nghỉ dưỡng cao cấp.</span>
+ </div>
+ <div>
+ <strong>Dịch vụ trọn gói</strong>
+ <span>Tư vấn tour, khách sạn, vé máy bay, xe đưa đón và trải nghiệm địa phương.</span>
+ </div>
+ <div>
+ <strong>Điểm hỗ trợ</strong>
+ <span>Đội ngũ tư vấn tại TP. Hồ Chí Minh, hỗ trợ trước và trong chuyến đi.</span>
+ </div>
+ <div>
+ <strong>Liên hệ nhanh</strong>
+ <span>0123 456 789 · sales@asiastartravel.com.vn</span>
+ </div>
+ </div>
+
+ <div class="asm-media-grid balanced">
+ <article class="asm-embed-card asm-video-card">
+ <div class="asm-embed-head">
+ <span>YouTube</span>
+ <h3>Góc nhìn khác từ du thuyền 5 sao</h3>
+ </div>
+ <p class="asm-embed-desc">Cảm nhận không gian du thuyền 5 sao với góc nhìn rộng, mặt biển thoáng và nhịp nghỉ dưỡng chậm rãi. Đây là lựa chọn phù hợp cho khách muốn một kỳ nghỉ sang trọng, riêng tư và nhiều trải nghiệm trên biển.</p>
+ <div class="asm-video-wrap">
+ <iframe class="asm-embed-frame asm-video-frame" src="https://www.youtube.com/embed/FUdkmUn9u9A" title="Góc nhìn khác từ du thuyền 5 sao" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+ <div class="asm-card-actions">
+ <a class="pill" href="https://www.youtube.com/watch?v=FUdkmUn9u9A" target="_blank" rel="noopener">Mở video gốc</a>
+ </div>
+ </article>
+
+ <article class="asm-embed-card asm-video-card">
+ <div class="asm-embed-head">
+ <span>YouTube</span>
+ <h3>Giới thiệu du thuyền 5 sao Mariner of the Seas</h3>
+ </div>
+ <p class="asm-embed-desc">Mariner of the Seas mang đến trải nghiệm du thuyền quốc tế với khu giải trí, nhà hàng, không gian nghỉ ngơi và nhiều hoạt động dành cho gia đình, cặp đôi hoặc nhóm bạn.</p>
+ <div class="asm-video-wrap">
+ <iframe class="asm-embed-frame asm-video-frame" src="https://www.youtube.com/embed/mEDj5QppvCA" title="Giới thiệu du thuyền 5 sao Mariner of the Seas - Thành phố giải trí 5 sao trên biển" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+ <div class="asm-card-actions">
+ <a class="pill" href="https://www.youtube.com/watch?v=mEDj5QppvCA" target="_blank" rel="noopener">Mở video gốc</a>
+ </div>
+ </article>
+
+ <article class="asm-embed-card asm-social-card">
+ <div class="asm-embed-head">
+ <span>Facebook</span>
+ <h3>Cập nhật hành trình mới</h3>
+ </div>
+ <p class="asm-embed-desc">Theo dõi các bài đăng mới về tour, hình ảnh điểm đến, kinh nghiệm du lịch và những gợi ý mùa đẹp để lên kế hoạch cho chuyến đi tiếp theo.</p>
+ <div class="asm-embed-body">
+ <iframe class="asm-embed-frame asm-facebook-frame" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fasianstartravel.vn%2F&amp;tabs=timeline&amp;width=500&amp;height=420&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+ </div>
+ </article>
+
+ <article class="asm-embed-card asm-map-card">
+ <div class="asm-embed-head">
+ <span>Google Map</span>
+ <h3>Văn phòng hỗ trợ tư vấn</h3>
+ </div>
+ <p class="asm-embed-desc">Khách hàng có thể xem vị trí văn phòng, ước lượng quãng đường di chuyển và chủ động liên hệ trước khi đến để được tư vấn tour, lưu trú hoặc phương tiện phù hợp.</p>
+ <div class="asm-embed-body">
+ <iframe class="asm-embed-frame asm-map-frame" src="https://www.google.com/maps?q=No.%2037%20Road%205%2C%20Him%20Lam%20Residence%2C%20Ward%20Tan%20Hung%2C%20Ho%20Chi%20Minh%20City%2C%20Vietnam&amp;output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+ </div>
+ <div class="asm-map-meta">
+ <strong>JemTravel Office</strong>
+ <span>No. 37 Road 5, Him Lam Residence, Ward Tan Hung, Ho Chi Minh City</span>
+ </div>
+ </article>
+ </div>
+ </div>
+ </section>
+ <div class="lightbox" id="lb-index-halong">
+ <a aria-label="Đóng" class="lightbox-bg" href="#">
+ </a>
+ <div class="lightbox-inner">
+ <img alt="Vịnh Hạ Long" src="images/hero-halong.png"/>
+ <a class="lightbox-close" href="#">
+ Đóng
+ </a>
+ </div>
+ </div>
+ <div class="lightbox" id="lb-index-hoian">
+ <a aria-label="Đóng" class="lightbox-bg" href="#">
+ </a>
+ <div class="lightbox-inner">
+ <img alt="Hội An" src="images/tour-hoian.png"/>
+ <a class="lightbox-close" href="#">
+ Đóng
+ </a>
+ </div>
+ </div>
+ <div class="lightbox" id="lb-index-sapa">
+ <a aria-label="Đóng" class="lightbox-bg" href="#">
+ </a>
+ <div class="lightbox-inner">
+ <img alt="Sa Pa" src="images/tour-sapa.png"/>
+ <a class="lightbox-close" href="#">
+ Đóng
+ </a>
+ </div>
+ </div>
+ <div class="lightbox" id="lb-card-tour">
+ <a aria-label="Đóng" class="lightbox-bg" href="#">
+ </a>
+ <div class="lightbox-inner">
+ <img alt="Tour Hạ Long" src="images/tour-halong.png"/>
+ <a class="lightbox-close" href="#">
+ Đóng
+ </a>
+ </div>
+ </div>
+ <div class="lightbox" id="lb-card-hotel">
+ <a aria-label="Đóng" class="lightbox-bg" href="#">
+ </a>
+ <div class="lightbox-inner">
+ <img alt="Resort Phú Quốc" src="images/hotel-phuquoc.png"/>
+ <a class="lightbox-close" href="#">
+ Đóng
+ </a>
+ </div>
+ </div>
+ <div class="lightbox" id="lb-card-food">
+ <a aria-label="Đóng" class="lightbox-bg" href="#">
+ </a>
+ <div class="lightbox-inner">
+ <img alt="Phở Việt Nam" src="images/food-pho.png"/>
+ <a class="lightbox-close" href="#">
+ Đóng
+ </a>
+ </div>
+ </div>
+ <div class="lightbox" id="lb-card-festival">
+ <a aria-label="Đóng" class="lightbox-bg" href="#">
+ </a>
+ <div class="lightbox-inner">
+ <img alt="Lễ hội đèn lồng ven sông" src="images/festival-river.png"/>
+ <a class="lightbox-close" href="#">
+ Đóng
+ </a>
+ </div>
+ </div>
+ </main>
+ <footer class="footer">
+ <div class="container footer-grid">
+ <div>
+ <a aria-label="JemTravel" class="logo" href="index.html">
+ <img alt="JemTravel" class="brand-logo" src="images/logo-jemtravel-light.svg"/>
+ </a>
+ <p>
+ JemTravel là website giới thiệu hành trình, lưu trú, ẩm thực và trải nghiệm văn hóa đặc sắc của Việt Nam.
+ </p>
+ </div>
+ <div>
+ <h4>
+ Khám phá
+ </h4>
+ <a href="tours.html">
+ Tour trọn gói
+ </a>
+ <a href="hotels.html">
+ Khách sạn &amp; resort
+ </a>
+ <a href="transport.html">
+ Di chuyển
+ </a>
+ </div>
+ <div>
+ <h4>
+ Cảm hứng
+ </h4>
+ <a href="food.html">
+ Ẩm thực Việt Nam
+ </a>
+ <a href="festival.html">
+ Lễ hội &amp; văn hóa
+ </a>
+ <a href="contact.html">
+ Liên hệ tư vấn
+ </a>
+ </div>
+ <div>
+ <h4>
+ JemTravel
+ </h4>
+ <p>
+ Hotline: 0123 456 789
+ </p>
+ <p>
+ Email: sales@asiastartravel.com.vn
+ </p>
+ <p>
+ Văn phòng: No. 37 Road 5, Him Lam Residence, Ward Tan Hung, HCM City
+ </p>
+ </div>
+ </div>
+ </footer>
  </body>
 </html>
