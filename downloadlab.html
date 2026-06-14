@@ -12,7 +12,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:wght@500;600;700&family=Playfair+Display:wght@700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
 
-  <!-- Font Awesome để dùng icon download -->
+  <!-- Font Awesome để dùng icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -151,12 +151,12 @@
 
     .download-card {
       position: relative;
-      min-height: 118px;
+      min-height: 150px;
       padding: 28px 30px;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 24px;
-      align-items: center;
+      align-items: start;
 
       background: rgba(255, 255, 255, 0.42);
       border: 1px solid rgba(15, 23, 42, 0.16);
@@ -198,7 +198,8 @@
     }
 
     .download-info,
-    .download-action {
+    .download-actions,
+    .folder-area {
       position: relative;
       z-index: 1;
     }
@@ -224,6 +225,12 @@
       transition: 0.35s ease;
     }
 
+    .download-actions {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
     .download-action {
       width: 54px;
       height: 54px;
@@ -242,24 +249,121 @@
       transition: 0.3s ease;
     }
 
+    .folder-area {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .folder-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .folder-btn {
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid rgba(37, 99, 235, 0.35);
+      background: rgba(255, 255, 255, 0.48);
+      color: #2563eb;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .folder-btn:hover,
+    .folder-btn.active {
+      background: #ffffff;
+      color: #111827;
+      transform: translateY(-3px);
+    }
+
+    .subfolder-panel {
+      display: none;
+      padding: 18px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: rgba(255, 255, 255, 0.24);
+    }
+
+    .subfolder-panel.active {
+      display: block;
+    }
+
+    .subfolder-title {
+      display: block;
+      margin-bottom: 12px;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: #111827;
+      transition: 0.35s ease;
+    }
+
+    .page-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .page-link {
+      min-height: 38px;
+      padding: 9px 13px;
+      border: 1px solid rgba(37, 99, 235, 0.35);
+      background: rgba(255, 255, 255, 0.48);
+      color: #2563eb;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      transition: 0.3s ease;
+    }
+
+    .page-link:hover {
+      background: #ffffff;
+      color: #111827;
+      transform: translateY(-3px);
+    }
+
+    .page-empty {
+      font-family: "Lora", serif;
+      font-size: 14px;
+      color: #64748b;
+      transition: 0.35s ease;
+    }
+
     .download-card:hover .download-title,
-    .download-card:hover .download-desc {
+    .download-card:hover .download-desc,
+    .download-card:hover .subfolder-title,
+    .download-card:hover .page-empty {
       color: #ffffff;
     }
 
-    .download-card:hover .download-action {
+    .download-card:hover .download-action,
+    .download-card:hover .folder-btn,
+    .download-card:hover .page-link {
       color: #ffffff;
       border-color: rgba(255, 255, 255, 0.5);
       background: rgba(255, 255, 255, 0.15);
     }
 
-    .download-action:hover {
+    .download-action:hover,
+    .download-card:hover .folder-btn:hover,
+    .download-card:hover .folder-btn.active,
+    .download-card:hover .page-link:hover {
       background: #ffffff !important;
       color: #111827 !important;
       transform: translateY(-4px);
     }
 
-    .download-action:hover i {
+    .download-action:hover i,
+    .download-card:hover .page-link:hover i {
       color: #111827;
     }
 
@@ -340,6 +444,11 @@
       color: #475569;
     }
 
+    .empty-message a {
+      color: #2563eb;
+      font-weight: 800;
+    }
+
     @media (max-width: 700px) {
       body {
         overflow: auto;
@@ -387,7 +496,9 @@
 
         <div class="footer">
           <span>Nguyễn Gia Phú PS47618 - GAM21201.</span>
-          <a class="github-link" href="https://github.com/Dev-GiaPhu/PS47618_NguyenGiaPhu_Web1013.git" rel="noopener noreferrer" target="_blank"><i class="fa-brands fa-square-github"></i> GitHub</a>
+          <a class="github-link" href="https://github.com/Dev-GiaPhu/PS47618_NguyenGiaPhu_Web1013.git" rel="noopener noreferrer" target="_blank">
+            <i class="fa-brands fa-square-github"></i> GitHub
+          </a>
         </div>
       </main>
     </div>
@@ -403,36 +514,77 @@
       owner: "Dev-GiaPhu",
       repo: "PS47618_NguyenGiaPhu_Web1013",
       branch: "main",
-      folderPath: "TH"
+      folderPath: "TH",
+      pagesBaseUrl: "https://dev-giaphu.github.io/PS47618_NguyenGiaPhu_Web1013"
     };
 
     const downloadList = document.getElementById("downloadList");
     const itemCount = document.getElementById("itemCount");
 
-    function getGithubApiUrl() {
-      return `https://api.github.com/repos/${githubConfig.owner}/${githubConfig.repo}/contents/${githubConfig.folderPath}?ref=${githubConfig.branch}`;
+    function getGithubTreeApiUrl() {
+      return `https://api.github.com/repos/${githubConfig.owner}/${githubConfig.repo}/git/trees/${githubConfig.branch}?recursive=1&t=${Date.now()}`;
     }
 
-    function getGithubFolderUrl(folderName) {
-      return `https://github.com/${githubConfig.owner}/${githubConfig.repo}/tree/${githubConfig.branch}/${githubConfig.folderPath}/${folderName}`;
+    function getGithubFolderUrl(labName) {
+      return `https://github.com/${githubConfig.owner}/${githubConfig.repo}/tree/${githubConfig.branch}/${githubConfig.folderPath}/${labName}`;
     }
 
     function getDownGitUrl(githubFolderUrl) {
       return `https://downgit.github.io/#/home?url=${encodeURIComponent(githubFolderUrl)}`;
     }
 
-    function sortLabFolders(a, b) {
-      const numberA = Number(a.name.match(/\d+/)?.[0] || 0);
-      const numberB = Number(b.name.match(/\d+/)?.[0] || 0);
+    function getGithubPagesUrl(filePath) {
+      return `${githubConfig.pagesBaseUrl}/${filePath}`;
+    }
+
+    function getTopLabName(path) {
+      const prefix = githubConfig.folderPath + "/";
+      const pathWithoutPrefix = path.slice(prefix.length);
+      return pathWithoutPrefix.split("/")[0];
+    }
+
+    function getSubFolderName(path, labName) {
+      const prefix = `${githubConfig.folderPath}/${labName}/`;
+      const relativePath = path.replace(prefix, "");
+      const parts = relativePath.split("/");
+
+      if (parts.length <= 1) {
+        return "Trang trực tiếp";
+      }
+
+      return parts[0];
+    }
+
+    function getFileName(path) {
+      return path.split("/").pop();
+    }
+
+    function sortName(a, b) {
+      return a.localeCompare(b, "vi", {
+        numeric: true,
+        sensitivity: "base"
+      });
+    }
+
+    function sortLabNames(a, b) {
+      const numberA = Number(a.match(/\d+/)?.[0] || 0);
+      const numberB = Number(b.match(/\d+/)?.[0] || 0);
 
       if (numberA !== numberB) {
         return numberA - numberB;
       }
 
-      return a.name.localeCompare(b.name, "vi", {
-        numeric: true,
-        sensitivity: "base"
-      });
+      return sortName(a, b);
+    }
+
+    function sortHtmlFiles(a, b) {
+      const aName = getFileName(a.path).toLowerCase();
+      const bName = getFileName(b.path).toLowerCase();
+
+      if (aName === "index.html" && bName !== "index.html") return -1;
+      if (aName !== "index.html" && bName === "index.html") return 1;
+
+      return sortName(aName, bName);
     }
 
     function renderLoading() {
@@ -455,16 +607,149 @@
       itemCount.textContent = "0";
     }
 
-    function renderDownloadItems(items) {
+    function createFileButtons(htmlFiles) {
+      if (!htmlFiles.length) {
+        return `
+          <div class="page-empty">
+            Chưa tìm thấy file HTML trong thư mục này.
+          </div>
+        `;
+      }
+
+      return htmlFiles.map(function(file) {
+        const fileName = getFileName(file.path);
+        const pageUrl = getGithubPagesUrl(file.path);
+
+        return `
+          <a class="page-link" href="${pageUrl}" target="_blank" rel="noopener noreferrer" title="Mở ${file.path}">
+            <i class="fa-solid fa-up-right-from-square"></i>
+            ${fileName}
+          </a>
+        `;
+      }).join("");
+    }
+
+    function createFolderArea(lab) {
+      const subFolders = Object.keys(lab.subFolders).sort(sortName);
+
+      if (!subFolders.length) {
+        return `
+          <div class="folder-area">
+            <div class="page-empty">
+              Chưa tìm thấy thư mục bài bên trong.
+            </div>
+          </div>
+        `;
+      }
+
+      const folderButtons = subFolders.map(function(folderName, index) {
+        return `
+          <button class="folder-btn ${index === 0 ? "active" : ""}" type="button" data-folder="${folderName}">
+            <i class="fa-solid fa-folder-open"></i>
+            ${folderName}
+          </button>
+        `;
+      }).join("");
+
+      const panels = subFolders.map(function(folderName, index) {
+        const htmlFiles = lab.subFolders[folderName].sort(sortHtmlFiles);
+
+        return `
+          <div class="subfolder-panel ${index === 0 ? "active" : ""}" data-panel="${folderName}">
+            <span class="subfolder-title">${folderName}</span>
+
+            <div class="page-buttons">
+              ${createFileButtons(htmlFiles)}
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      return `
+        <div class="folder-area">
+          <div class="folder-buttons">
+            ${folderButtons}
+          </div>
+
+          ${panels}
+        </div>
+      `;
+    }
+
+    function groupLabsFromTree(tree) {
+      const labs = {};
+
+      tree.forEach(function(item) {
+        if (!item.path.startsWith(githubConfig.folderPath + "/")) {
+          return;
+        }
+
+        const labName = getTopLabName(item.path);
+
+        if (!/^lab/i.test(labName)) {
+          return;
+        }
+
+        if (!labs[labName]) {
+          labs[labName] = {
+            name: labName,
+            subFolders: {}
+          };
+        }
+
+        if (item.type === "blob" && /\.html$/i.test(item.path)) {
+          const subFolderName = getSubFolderName(item.path, labName);
+
+          if (!labs[labName].subFolders[subFolderName]) {
+            labs[labName].subFolders[subFolderName] = [];
+          }
+
+          labs[labName].subFolders[subFolderName].push(item);
+        }
+      });
+
+      return Object.values(labs).sort(function(a, b) {
+        return sortLabNames(a.name, b.name);
+      });
+    }
+
+    function setupFolderButtons(card) {
+      const buttons = card.querySelectorAll(".folder-btn");
+      const panels = card.querySelectorAll(".subfolder-panel");
+
+      buttons.forEach(function(button) {
+        button.addEventListener("click", function() {
+          const targetFolder = button.getAttribute("data-folder");
+
+          buttons.forEach(function(btn) {
+            btn.classList.remove("active");
+          });
+
+          panels.forEach(function(panel) {
+            panel.classList.remove("active");
+          });
+
+          button.classList.add("active");
+
+          const targetPanel = card.querySelector(`.subfolder-panel[data-panel="${targetFolder}"]`);
+
+          if (targetPanel) {
+            targetPanel.classList.add("active");
+          }
+        });
+      });
+    }
+
+    function renderDownloadItems(labs) {
       downloadList.innerHTML = "";
 
-      if (!items.length) {
+      if (!labs.length) {
         renderError("Không tìm thấy thư mục Lab nào trong GitHub.");
         return;
       }
 
-      items.forEach(function(item) {
-        const githubFolderUrl = getGithubFolderUrl(item.name);
+      labs.forEach(function(lab) {
+        const githubFolderUrl = getGithubFolderUrl(lab.name);
         const downGitUrl = getDownGitUrl(githubFolderUrl);
 
         const card = document.createElement("div");
@@ -472,28 +757,34 @@
 
         card.innerHTML = `
           <div class="download-info">
-            <span class="download-title">${item.name}</span>
+            <span class="download-title">${lab.name}</span>
             <span class="download-desc">
-              Tải xuống thư mục ${item.name} từ GitHub.
+              Tải xuống thư mục ${lab.name} từ GitHub.
             </span>
           </div>
 
-          <a class="download-action" href="${downGitUrl}" target="_blank" title="Tải xuống ${item.name}">
-            <i class="fa-solid fa-download"></i>
-          </a>
+          <div class="download-actions">
+            <a class="download-action" href="${downGitUrl}" target="_blank" rel="noopener noreferrer" title="Tải xuống ${lab.name}">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+
+          ${createFolderArea(lab)}
         `;
 
         downloadList.appendChild(card);
+        setupFolderButtons(card);
       });
 
-      itemCount.textContent = String(items.length).padStart(2, "0");
+      itemCount.textContent = String(labs.length).padStart(2, "0");
     }
 
-    async function loadGithubFolders() {
+    async function loadGithubLabs() {
       renderLoading();
 
       try {
-        const response = await fetch(getGithubApiUrl(), {
+        const response = await fetch(getGithubTreeApiUrl(), {
+          cache: "no-store",
           headers: {
             "Accept": "application/vnd.github+json"
           }
@@ -505,24 +796,21 @@
 
         const data = await response.json();
 
-        const folders = data
-          .filter(function(item) {
-            return item.type === "dir";
-          })
-          .filter(function(item) {
-            return /^lab/i.test(item.name);
-          })
-          .sort(sortLabFolders);
+        if (!data.tree || !Array.isArray(data.tree)) {
+          throw new Error("Invalid GitHub tree data");
+        }
 
-        renderDownloadItems(folders);
+        const labs = groupLabsFromTree(data.tree);
+
+        renderDownloadItems(labs);
       } catch (error) {
         renderError(
-          "Không thể tải danh sách bài lab từ GitHub. Hãy truy cập trực tiếp vào repo trên GitHub: <a href=\"" + getGithubFolderUrl("") + "\" target=\"_blank\">" + getGithubFolderUrl("") + "</a>"
+          "Không thể tải danh sách bài lab từ GitHub. Hãy truy cập trực tiếp vào repo trên GitHub: <a href=\"https://github.com/Dev-GiaPhu/PS47618_NguyenGiaPhu_Web1013/tree/main/TH\" target=\"_blank\" rel=\"noopener noreferrer\">Mở thư mục TH</a>"
         );
       }
     }
 
-    loadGithubFolders();
+    loadGithubLabs();
 
     /*
       Scale toàn bộ box theo màn hình.

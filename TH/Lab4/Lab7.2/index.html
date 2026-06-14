@@ -5,7 +5,7 @@
     <title>Lab 7.2 - JavaScript Không Cần Viết Code</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Link CSS của Swiper -->
+    <!-- CSS Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 
     <style>
@@ -148,23 +148,67 @@
             letter-spacing: 2px;
         }
 
-        .plugin-section {
+        .facebook-section {
             background: white;
         }
 
-        .plugin-box {
-            max-width: 850px;
-            margin: 25px auto;
-            padding: 25px;
-            background: #f1f5f8;
-            border: 1px solid #c7d5b8;
+        .facebook-list {
+            display: grid;
+            grid-template-columns: repeat(2, 560px);
+            justify-content: center;
+            gap: 35px;
         }
 
-        .plugin-box h3 {
+        .facebook-box {
+            width: 560px;
+            min-height: 180px;
+            background: #f1f5f8;
+            border: 1px solid #c7d5b8;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .facebook-box h3 {
             color: #698f3f;
             font-size: 22px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .facebook-content {
+            width: 500px;
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            overflow: hidden;
+        }
+
+        .like-box {
+            min-height: 80px;
+            display: grid;
+            place-items: center;
+        }
+
+        .comment-box {
+            min-height: 320px;
+        }
+
+        .video-box {
+            min-height: 300px;
+            display: grid;
+            place-items: center;
+        }
+
+        .post-box {
+            min-height: 420px;
+            display: grid;
+            place-items: center;
+        }
+
+        .fb_iframe_widget,
+        .fb_iframe_widget span,
+        .fb_iframe_widget iframe {
+            max-width: 100%;
         }
 
         .slideshow-section {
@@ -217,6 +261,12 @@
             font-size: 15px;
         }
 
+        @media screen and (max-width: 1200px) {
+            .facebook-list {
+                grid-template-columns: 560px;
+            }
+        }
+
         @media screen and (max-width: 768px) {
             .about {
                 grid-template-columns: 1fr;
@@ -224,6 +274,14 @@
 
             .service-list {
                 grid-template-columns: 1fr;
+            }
+
+            .facebook-list {
+                grid-template-columns: 1fr;
+            }
+
+            .facebook-box {
+                width: 100%;
             }
 
             .header h1 {
@@ -240,7 +298,7 @@
 
 <body>
 
-    <!-- Facebook SDK -->
+    <!-- FACEBOOK SDK -->
     <div id="fb-root"></div>
 
     <script async defer crossorigin="anonymous"
@@ -302,51 +360,69 @@
         </div>
     </section>
 
-    <!-- FACEBOOK PLUGINS -->
-    <section class="section plugin-section">
+    <!-- FACEBOOK PLUGINS ĐÚNG THEO ĐỀ -->
+    <section class="section facebook-section">
         <p class="small-title">Social</p>
         <h2 class="title">Facebook Plugins</h2>
 
-        <div class="plugin-box">
-            <h3>Nút Like và Share</h3>
+        <div class="facebook-list">
 
-            <div class="fb-like"
-                data-href="https://www.facebook.com/facebook"
-                data-width=""
-                data-layout="button_count"
-                data-action="like"
-                data-size="large"
-                data-share="true">
+            <!-- 1. NÚT LIKE VÀ SHARE -->
+            <div class="facebook-box">
+                <h3>Nút Like và Share</h3>
+
+                <div class="facebook-content like-box">
+                    <div class="fb-like"
+                        data-href="https://developers.facebook.com/docs/plugins/"
+                        data-width="500"
+                        data-layout="standard"
+                        data-action="like"
+                        data-size="large"
+                        data-share="true">
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="plugin-box">
-            <h3>Comment</h3>
+            <!-- 2. COMMENT -->
+            <div class="facebook-box">
+                <h3>Comment</h3>
 
-            <div class="fb-comments"
-                data-href="https://www.facebook.com/facebook"
-                data-width="100%"
-                data-numposts="5">
+                <div class="facebook-content comment-box">
+                    <div class="fb-comments"
+                        data-href="https://developers.facebook.com/docs/plugins/comments/"
+                        data-width="500"
+                        data-numposts="5">
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="plugin-box">
-            <h3>Video</h3>
+            <!-- 3. VIDEO -->
+            <div class="facebook-box">
+                <h3>Video</h3>
 
-            <div class="fb-video"
-                data-href="https://www.facebook.com/facebook/videos/10153231379946729/"
-                data-width="500"
-                data-show-text="false">
+                <div class="facebook-content video-box">
+                    <div class="fb-video"
+                        data-href="https://www.facebook.com/reel/991478766748688"
+                        data-width="500"
+                        data-show-text="false"
+                        data-allowfullscreen="true">
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="plugin-box">
-            <h3>Post</h3>
+            <!-- 4. POST -->
+            <div class="facebook-box">
+                <h3>Post</h3>
 
-            <div class="fb-post"
-                data-href="https://www.facebook.com/Facebook/posts/10154009990506729"
-                data-width="500">
+                <div class="facebook-content post-box">
+                    <div class="fb-post"
+                        data-href="https://www.facebook.com/20531316728/posts/10154009990506729/"
+                        data-width="500"
+                        data-show-text="true">
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -405,10 +481,9 @@
         <p>Tea Station &copy; 2026. All Rights Reserved.</p>
     </div>
 
-    <!-- Swiper JS -->
+    <!-- JS SWIPER -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
-    <!-- Khởi tạo Swiper -->
     <script>
         var swiper = new Swiper(".mySwiper", {
             effect: "coverflow",
