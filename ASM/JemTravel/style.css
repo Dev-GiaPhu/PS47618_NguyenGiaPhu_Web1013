@@ -474,7 +474,7 @@ button,input,textarea,select {
 .hero-copy h1 {
   margin:16px 0 20px;
   font-family:Inter,"Be Vietnam Pro",sans-serif;
-  font-size:clamp(3rem,6.3vw,6.2rem);
+  font-size:clamp(2rem,5.6vw,3.5rem);
   line-height:1.04;
   letter-spacing:-.03em;
   color:#fff;
@@ -532,7 +532,7 @@ button,input,textarea,select {
 
 .hero-split .hero-copy h1 {
   color:var(--ink);
-  font-size:clamp(2.8rem,5.6vw,5rem);
+  font-size:clamp(2rem,5.6vw,3.5rem);
   line-height:1.06;
   letter-spacing:-.02em
 }
@@ -647,7 +647,7 @@ button,input,textarea,select {
 }
 
 .hero-overlay .hero-copy h1 {
-  font-size:clamp(3rem,6.3vw,5.8rem);
+  font-size:clamp(2rem,5.6vw,3.5rem);
   line-height:1.05;
   letter-spacing:-.025em
 }
@@ -959,7 +959,7 @@ tbody tr:hover {
 
 .contact-hero .hero-copy h1 {
   color:var(--ink);
-  font-size:clamp(2.8rem,5.4vw,4.9rem);
+  font-size:clamp(2rem,5.6vw,3.5rem);
   line-height:1.07;
   letter-spacing:-.02em
 }
@@ -1190,7 +1190,7 @@ textarea {
 }
 
 .hero-copy h1,.hero-split .hero-copy h1,.hero-overlay .hero-copy h1,.contact-hero .hero-copy h1 {
-  font-size:clamp(2.35rem,12vw,4rem);
+  font-size:clamp(2rem,5.6vw,3.5rem);
   line-height:1.1;
   letter-spacing:-.015em
 }
